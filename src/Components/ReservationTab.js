@@ -23,6 +23,10 @@ const ReservationTab = styled.p`
     text-align: left;
     padding: 0;
   }
+
+  :active {
+    opacity: 50%;
+  }
 `;
 
 export const ReservationContainer = styled.div`

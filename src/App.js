@@ -24,8 +24,10 @@ function App() {
   const [name, setName] = useState("hej");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [price, setPrice] = useState("");
   const [users, userOperations] = useCollection("Users");
   const [reservations, bookReservation] = useCollection("Reservations");
+  const [resolved, resolveReservation] = useCollection("ResolvedReservations");
 
   // const options = [
   //   { value: "One", label: "1" },
@@ -70,12 +72,25 @@ function App() {
   function handleRemove(id) {
     bookReservation.delete(id);
   }
+
+  function handleRemoveResolve(id) {
+    resolveReservation.delete(id);
+  }
+
+  function handleResolve(id) {
+    resolveReservation.add(id);
+  }
+
   function addReservation() {
     // const isAvailable = checkAvailability(date, time);
     // if (!isAvailable) return alert("NOPE");
 
     bookReservation.add({ date: date, time: time, name: name });
     setTime("");
+  }
+
+  function addResolve(reservation) {
+    resolveReservation.add(reservation);
   }
 
   return (
@@ -87,21 +102,38 @@ function App() {
           onChange={event => setName(event.target.value)}
         />
         <Button onClick={addUser}>Sign up</Button> */}
+        <Header>Resolved Reservations</Header>
+        <Border>
+          {resolved.map(resolve => (
+            <div>
+              <ReservationTab>
+                <h1>Completed</h1>
+                <ol>Date: {resolve.date}</ol>
+                <ol>Session: {resolve.session}</ol>
+                <ol>Name: {resolve.name}</ol>
+                <ol>Price: {resolve.price}</ol>
+                <Button onClick={() => handleRemoveResolve(resolve.id)}>
+                  Remove
+                </Button>
+              </ReservationTab>
+            </div>
+          ))}
+        </Border>
         <div>------------------</div>
         <Header>Bookings</Header>{" "}
         <Border>
           <ReservationContainer>
             {" "}
-            {reservations.map(reservation => (
+            {reservations.map(({ id, ...reservation }) => (
               <div>
                 <ReservationTab>
                   <h1>Reservation</h1>
                   <ol>Date: {reservation.date}</ol>
                   <ol>Time: {reservation.time}</ol>
                   <ol>Name: {reservation.name}</ol>
-
-                  <Button onClick={() => handleRemove(reservation.id)}>
-                    Remove
+                  <Button onClick={() => handleRemove(id)}>Remove</Button>
+                  <Button onClick={() => addResolve(reservation)}>
+                    Resolve
                   </Button>
                 </ReservationTab>
               </div>
