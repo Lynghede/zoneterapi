@@ -25,4 +25,10 @@ const ReservationTab = styled.p`
   }
 `;
 
+export const ReservationContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 export default ReservationTab;

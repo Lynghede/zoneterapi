@@ -12,15 +12,34 @@ export const ColorStyles = {
   control: styles => ({
     ...styles,
     backgroundColor: "white",
-    color: "palevioletred"
+    color: "palevioletred",
+    marginBottom: "10px",
+    minHeight: "",
+    padding: ""
+  }),
+  indicatorsContainer: styles => ({
+    ...styles,
+    height: "10px",
+    itemsAlign: "center",
+    justifyContent: "center",
+    margin: "auto"
+  }),
+  menu: styles => ({
+    ...styles,
+    height: "inherient",
+    borderRadius: "4px"
+  }),
+  menuList: isFocused => ({
+    ...isFocused,
+    borderRadius: "4px"
   })
 };
 
 export const Foo = styled(Select)`
   font-size: small;
-  backgroundcolor: "black";
+  backgroundcolor: "white";
   color: palevioletred;
-  min-width: 150px;
+  min-width: 10px;
 `;
 
 // function MySelect(props) {

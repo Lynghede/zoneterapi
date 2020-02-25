@@ -7,8 +7,13 @@ import { useCollection } from "./firebase";
 import Button from "./Components/Button";
 import Input, { InputDate } from "./Components/Input";
 import Select, { ColorStyles } from "./Components/Select";
-import ReservationTab from "./Components/ReservationTab";
+import ReservationTab, {
+  ReservationContainer
+} from "./Components/ReservationTab";
 import MakeReservation from "./Components/MakeReservation";
+import Label from "./Components/Label";
+import Header from "./Components/Header";
+import Border from "./Components/Border";
 // import Select from "react-select";
 
 // const colorStyles = {
@@ -83,57 +88,56 @@ function App() {
         />
         <Button onClick={addUser}>Sign up</Button> */}
         <div>------------------</div>
-        {reservations.map(reservation => (
-          <div>
-            <ReservationTab>
-              <h1>Reservation</h1>
-              <ol>Date: {reservation.date}</ol>
-              <ol>Time: {reservation.time}</ol>
-              <ol>Name: {reservation.name}</ol>
+        <Header>Bookings</Header>{" "}
+        <Border>
+          <ReservationContainer>
+            {" "}
+            {reservations.map(reservation => (
+              <div>
+                <ReservationTab>
+                  <h1>Reservation</h1>
+                  <ol>Date: {reservation.date}</ol>
+                  <ol>Time: {reservation.time}</ol>
+                  <ol>Name: {reservation.name}</ol>
 
-              <Button onClick={() => handleRemove(reservation.id)}>
-                Remove
-              </Button>
-            </ReservationTab>
-          </div>
-        ))}
-
+                  <Button onClick={() => handleRemove(reservation.id)}>
+                    Remove
+                  </Button>
+                </ReservationTab>
+              </div>
+            ))}
+          </ReservationContainer>
+        </Border>
+        <div>
+          <Header>Make Reservation</Header>
+        </div>
         <MakeReservation>
-          <label>Name:</label>
-          <Input
-            type="text"
-            value={name}
-            onChange={e => {
-              setName(e.target.value);
-            }}
-          />
-          <label>Date:</label>
-          <InputDate
-            type="date"
-            value={date}
-            onChange={e => setDate(e.target.value)}
-          />
-          <label>Time:</label>
-          <Select
-            type="time"
-            value={{ label: time, value: time }}
-            options={timeSlotOptions}
-            onChange={option => setTime(option.value)}
-            styles={ColorStyles}
-          ></Select>
-          {/* <select
-          type="time"
-          value={time}
-          onChange={e => setTime(e.target.value)}
-        >
-          <option value="">Please select</option>
-          {TimeSlots}
-        </select> */}
-          {/* <input
-          type="time"
-          value={time}
-          onChange={e => setTime(e.target.value)}
-        /> */}
+          <div>
+            <Label>Name</Label>
+            <Input
+              type="text"
+              value={name}
+              onChange={e => {
+                setName(e.target.value);
+              }}
+            />
+            <Label>Date</Label>
+            <InputDate
+              type="date"
+              value={date}
+              onChange={e => setDate(e.target.value)}
+            />
+            <Label>Time</Label>
+            <Select
+              type="time"
+              value={{ label: time, value: time }}
+              options={timeSlotOptions}
+              onChange={option => setTime(option.value)}
+              styles={ColorStyles}
+              // color={isFocused ? "black" : "white"}
+            ></Select>
+          </div>
+
           <Button onClick={addReservation}>Reserve</Button>
         </MakeReservation>
       </header>
