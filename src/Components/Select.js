@@ -2,17 +2,25 @@ import styled from "styled-components";
 import React from "react";
 import Select from "react-select";
 
-const options = [
-  { label: "One", value: 1 },
-  { label: "Two", value: 2 },
-  { label: "Three", value: 3 }
-];
+export const monthStyle = {
+  control: styles => ({
+    ...styles,
+    maxWidth: "300px",
+    color: "palevioletred",
+    width: "300px"
+  }),
+  menu: styles => ({
+    ...styles,
+    width: "300px",
+    justifyContent: "center"
+  })
+};
 
 export const ColorStyles = {
   control: styles => ({
     ...styles,
     backgroundColor: "white",
-    color: "palevioletred",
+
     marginBottom: "10px",
     minHeight: "",
     padding: ""
@@ -34,6 +42,10 @@ export const ColorStyles = {
     borderRadius: "4px"
   })
 };
+
+// export const MonthStyle = {
+//   multiValue: styles => {}
+// }
 
 export const Foo = styled(Select)`
   font-size: small;

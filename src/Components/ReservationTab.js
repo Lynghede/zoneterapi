@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ReservationTab = styled.div`
-  height: 2000px;
+  height: 185px;
   width: 200px;
   border-radius: 3px;
   border-width: 2px;
