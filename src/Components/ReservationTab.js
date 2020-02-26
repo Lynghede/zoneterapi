@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const ReservationTab = styled.p`
-  height: 152px;
+const ReservationTab = styled.div`
+  height: 2000px;
   width: 200px;
   border-radius: 3px;
   border-width: 2px;

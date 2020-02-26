@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-
+import { parse, differenceInDays } from "date-fns";
 import { useCollection } from "./firebase";
 
 // Components
@@ -21,10 +21,10 @@ import Border from "./Components/Border";
 // };
 
 function App() {
-  const [name, setName] = useState("hej");
+  const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(500);
   const [users, userOperations] = useCollection("Users");
   const [reservations, bookReservation] = useCollection("Reservations");
   const [resolved, resolveReservation] = useCollection("ResolvedReservations");
@@ -35,14 +35,23 @@ function App() {
   //   { value: "Three", label: "3" }
   // ];
 
+  const session = [600, 500, 400, 350];
+
   reservations.sort((a, b) => {
     return a.time > b.time;
   });
 
-  console.log(users, userOperations);
-  console.log(reservations, bookReservation);
-
   function checkAvailability(date, time) {
+    const parsed = parse(date, "yyyy-MM-dd", new Date());
+    var result = differenceInDays(parsed, new Date());
+    if (result < 0 || result > 365) {
+      return false;
+    }
+    for (let resolve of resolved) {
+      if (resolve.date === date && resolve.time === time) {
+        return false;
+      }
+    }
     for (let reservation of reservations) {
       if (reservation.date === date && reservation.time === time) {
         return false;
@@ -77,20 +86,20 @@ function App() {
     resolveReservation.delete(id);
   }
 
-  function handleResolve(id) {
-    resolveReservation.add(id);
-  }
-
   function addReservation() {
     // const isAvailable = checkAvailability(date, time);
     // if (!isAvailable) return alert("NOPE");
 
-    bookReservation.add({ date: date, time: time, name: name });
+    bookReservation.add({ date: date, time: time, name: name, price: price });
     setTime("");
   }
 
-  function addResolve(reservation) {
-    resolveReservation.add(reservation);
+  function addResolve({ id, ...origReservation }) {
+    bookReservation.delete(id);
+    resolveReservation.add({
+      session: origReservation.time,
+      ...origReservation
+    });
   }
 
   return (
@@ -124,14 +133,17 @@ function App() {
         <Border>
           <ReservationContainer>
             {" "}
-            {reservations.map(({ id, ...reservation }) => (
+            {reservations.map(reservation => (
               <div>
                 <ReservationTab>
                   <h1>Reservation</h1>
                   <ol>Date: {reservation.date}</ol>
                   <ol>Time: {reservation.time}</ol>
                   <ol>Name: {reservation.name}</ol>
-                  <Button onClick={() => handleRemove(id)}>Remove</Button>
+                  <ol>Price: {reservation.price}</ol>
+                  <Button onClick={() => handleRemove(reservation.id)}>
+                    Cancel
+                  </Button>
                   <Button onClick={() => addResolve(reservation)}>
                     Resolve
                   </Button>
@@ -149,6 +161,7 @@ function App() {
             <Input
               type="text"
               value={name}
+              placeholder="Name"
               onChange={e => {
                 setName(e.target.value);
               }}
