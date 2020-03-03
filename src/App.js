@@ -19,31 +19,46 @@ const monthOptions = [];
 /* eslint-disable no-fallthrough */
 switch (getMonth(new Date())) {
   case 0:
-    monthOptions.push({ value: "Jan", label: "Januar" });
+    monthOptions.push({ value: 0, label: "Januar" });
   case 1:
-    monthOptions.push({ value: "Feb", label: "Februar" });
+    monthOptions.push({ value: 1, label: "Februar" });
   case 2:
-    monthOptions.push({ value: "Mar", label: "Marts" });
+    monthOptions.push({ value: 2, label: "Marts" });
   case 3:
-    monthOptions.push({ value: "Apr", label: "April" });
+    monthOptions.push({ value: 3, label: "April" });
   case 4:
-    monthOptions.push({ value: "Maj", label: "Maj" });
+    monthOptions.push({ value: 4, label: "Maj" });
   case 5:
-    monthOptions.push({ value: "Jun", label: "Juni" });
+    monthOptions.push({ value: 5, label: "Juni" });
   case 6:
-    monthOptions.push({ value: "Jul", label: "Juli" });
+    monthOptions.push({ value: 6, label: "Juli" });
   case 7:
-    monthOptions.push({ value: "Aug", label: "August" });
+    monthOptions.push({ value: 7, label: "August" });
   case 8:
-    monthOptions.push({ value: "Sep", label: "September" });
+    monthOptions.push({ value: 8, label: "September" });
   case 9:
-    monthOptions.push({ value: "Okt", label: "Oktober" });
+    monthOptions.push({ value: 9, label: "Oktober" });
   case 10:
-    monthOptions.push({ value: "Nov", label: "November" });
+    monthOptions.push({ value: 10, label: "November" });
   case 11:
-    monthOptions.push({ value: "Dec", label: "December" });
+    monthOptions.push({ value: 11, label: "December" });
 }
 /* eslint-enable no-fallthrough */
+
+const resolveMonthOptions = [
+  { value: 0, label: "Januar" },
+  { value: 1, label: "Februar" },
+  { value: 2, label: "Marts" },
+  { value: 3, label: "April" },
+  { value: 4, label: "Maj" },
+  { value: 5, label: "Juni" },
+  { value: 6, label: "Juli" },
+  { value: 7, label: "August" },
+  { value: 8, label: "September" },
+  { value: 9, label: "Oktober" },
+  { value: 10, label: "November" },
+  { value: 11, label: "December" }
+];
 
 function App() {
   const [name, setName] = useState("");
@@ -53,31 +68,38 @@ function App() {
   const [bookingMonthFilter, setBookingMonthFilter] = useState([
     monthOptions[0]
   ]);
+  const [resolveMonthFilter, setResolveMonthFilter] = useState([]);
   const [users, userOperations] = useCollection("Users");
   const [reservations, bookReservation] = useCollection("Reservations");
   const [resolved, resolveReservation] = useCollection("ResolvedReservations");
-
-  // const session = [600, 500, 400, 350];
-
-  const parsed1 = parse(date, "yyyy-MM-dd", new Date());
-  console.log("Yolo:" + getMonth(parsed1));
 
   reservations.sort((a, b) => {
     return a.time > b.time;
   });
 
   const filteredReservations = reservations.filter(reservation => {
-    for (reservation of reservations) {
-      // const parsed2 = parse(reservation.date, "yyyy-MM-dd", new Date());
-      // console.log("Hej" + getMonth(parsed2));
-      // console.log("Booking:" + bookingMonthFilter.value);
-      if (reservation.date === "2020-02-27") return true; // PAS!
-    }
+    let parsedMonth = parse(reservation.date, "yyyy-MM-dd", new Date());
+    parsedMonth = getMonth(parsedMonth);
+    if (bookingMonthFilter === null || bookingMonthFilter.length === 0)
+      return true;
+    return bookingMonthFilter.some(bookingMonth => {
+      if (parsedMonth === bookingMonth.value) return true;
+    });
+  });
+
+  const filteredResolved = resolved.filter(resolve => {
+    let parsedMonth = parse(resolve.date, "yyyy-MM-dd", new Date());
+    parsedMonth = getMonth(parsedMonth);
+    if (resolveMonthFilter === null || resolveMonthFilter.length === 0)
+      return true;
+    return resolveMonthFilter.some(bookingMonth => {
+      if (parsedMonth === bookingMonth.value) return true;
+    });
   });
 
   function shouldRemoveDate(date, d, y) {
     const parsed = parse(date, "yyyy-MM-dd", new Date());
-    console.log("Parsed:" + parsed);
+
     var result = differenceInDays(parsed, new Date());
     if (result < d || result > y) {
       return true;
@@ -142,34 +164,36 @@ function App() {
 
   function totalPrice() {
     let total = 0;
-    for (let prices of resolved) {
-      total += prices.price;
+    for (let i = 0; i < filteredResolved.length; i++) {
+      total += resolved[i].price;
     }
     return total;
   }
 
   function handleBookingMonthFilter(selectedItems) {
     setBookingMonthFilter(selectedItems);
-
-    // bookingMonthFilter.filter(
-    //   reservations => reservations.date === bookingMonthFilter
-    // );
   }
 
-  console.log(bookingMonthFilter);
+  function handleResolveMonthFilter(selectedItems) {
+    setResolveMonthFilter(selectedItems);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        {/* <input
-          type="text"
-          value={name}
-          onChange={event => setName(event.target.value)}
-        />
-        <Button onClick={addUser}>Sign up</Button> */}
         <Header>Resolved Reservations</Header>
         <Border>
-          {resolved.map(resolve => (
+          <div style={{ margin: "auto", display: "inline-block" }}>
+            <Select
+              styles={monthStyle}
+              value={resolveMonthFilter}
+              isMulti
+              options={resolveMonthOptions}
+              onChange={handleResolveMonthFilter}
+              placeholder="Sorter efter måned..."
+            ></Select>
+          </div>
+          {filteredResolved.map(resolve => (
             <div>
               <ReservationTab>
                 <h1>Completed</h1>
@@ -195,6 +219,7 @@ function App() {
               isMulti
               options={monthOptions}
               onChange={handleBookingMonthFilter}
+              placeholder="Sorter efter måned..."
             ></Select>
           </div>
           <ReservationContainer>

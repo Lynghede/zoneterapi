@@ -35,7 +35,9 @@ export const ColorStyles = {
   menu: styles => ({
     ...styles,
     height: "inherient",
-    borderRadius: "4px"
+    borderRadius: "4px",
+    top: "auto",
+    bottom: "100%"
   }),
   menuList: isFocused => ({
     ...isFocused,
@@ -43,37 +45,11 @@ export const ColorStyles = {
   })
 };
 
-// export const MonthStyle = {
-//   multiValue: styles => {}
-// }
-
 export const Foo = styled(Select)`
   font-size: small;
   backgroundcolor: "white";
   color: palevioletred;
   min-width: 10px;
 `;
-
-// function MySelect(props) {
-//   return <Foo {...props} />;
-// }
-
-// const Select = styled.select`
-//   width: auto;
-//   height: 35px;
-//   background: white;
-//   color: gray;
-//   padding-left: 5px;
-//   font-size: 14px;
-//   border: none;
-//   margin-left: 10px;
-// `;
-// export const Option = styled.option`
-//   font-size: small;
-//   background-color: blue;
-//   text-align: center;
-
-//   color: blue;
-// `;
 
 export default Foo;
