@@ -10,10 +10,13 @@ import Select, { ColorStyles, monthStyle } from "./Components/Select";
 import ReservationTab, {
   ReservationContainer
 } from "./Components/ReservationTab";
-import MakeReservation from "./Components/MakeReservation";
+import MakeReservation, {
+  WrapperMakeReservation
+} from "./Components/MakeReservation";
 import Label from "./Components/Label";
 import Header from "./Components/Header";
 import Border from "./Components/Border";
+import Page from "./Page";
 
 const monthOptions = [];
 /* eslint-disable no-fallthrough */
@@ -137,9 +140,9 @@ function App() {
     }
   }
 
-  function addUser() {
-    userOperations.add({ name: name });
-  }
+  // function addUser() {
+  //   userOperations.add({ name: name });
+  // }
 
   function handleRemove(id) {
     bookReservation.delete(id);
@@ -179,8 +182,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <Page>
+      <div>
         <Header>Resolved Reservations</Header>
         <Border>
           <div style={{ margin: "auto", display: "inline-block" }}>
@@ -193,23 +196,27 @@ function App() {
               placeholder="Sorter efter måned..."
             ></Select>
           </div>
-          {filteredResolved.map(resolve => (
-            <div>
-              <ReservationTab>
-                <h1>Completed</h1>
-                <ol>Date: {resolve.date}</ol>
-                <ol>Session: {resolve.session}</ol>
-                <ol>Name: {resolve.name}</ol>
-                <ol>Price: {resolve.price}</ol>
-                <Button onClick={() => handleRemoveResolve(resolve.id)}>
-                  Remove
-                </Button>
-              </ReservationTab>
-            </div>
-          ))}
+          <ReservationContainer>
+            {filteredResolved.map(resolve => (
+              <div>
+                <ReservationTab>
+                  <h1>Completed</h1>
+                  <ol>Date: {resolve.date}</ol>
+                  <ol>Session: {resolve.session}</ol>
+                  <ol>Name: {resolve.name}</ol>
+                  <ol>Price: {resolve.price}</ol>
+                  <Button onClick={() => handleRemoveResolve(resolve.id)}>
+                    Remove
+                  </Button>
+                </ReservationTab>
+              </div>
+            ))}
+          </ReservationContainer>
           <p>Total: {totalPrice()}DKK</p>
         </Border>
-        <div>------------------</div>
+      </div>
+
+      <div>
         <Header>Bookings</Header>{" "}
         <Border>
           <div style={{ margin: "auto", display: "inline-block" }}>
@@ -243,42 +250,45 @@ function App() {
             ))}
           </ReservationContainer>
         </Border>
+      </div>
+      <WrapperMakeReservation>
         <div>
           <Header>Make Reservation</Header>
+
+          <MakeReservation>
+            <div>
+              <Label>Name</Label>
+              <Input
+                type="text"
+                value={name}
+                placeholder="Name"
+                onChange={e => {
+                  setName(e.target.value);
+                }}
+              />
+              <Label>Date</Label>
+              <InputDate
+                type="date"
+                value={date}
+                onChange={e => setDate(e.target.value)}
+              />
+              <Label>Time</Label>
+              <Select
+                type="time"
+                value={{ label: time, value: time }}
+                options={timeSlotOptions}
+                onChange={option => setTime(option.value)}
+                styles={ColorStyles}
+
+                // color={isFocused ? "black" : "white"}
+              ></Select>
+            </div>
+
+            <Button onClick={addReservation}>Reserve</Button>
+          </MakeReservation>
         </div>
-        <MakeReservation>
-          <div>
-            <Label>Name</Label>
-            <Input
-              type="text"
-              value={name}
-              placeholder="Name"
-              onChange={e => {
-                setName(e.target.value);
-              }}
-            />
-            <Label>Date</Label>
-            <InputDate
-              type="date"
-              value={date}
-              onChange={e => setDate(e.target.value)}
-            />
-            <Label>Time</Label>
-            <Select
-              type="time"
-              value={{ label: time, value: time }}
-              options={timeSlotOptions}
-              onChange={option => setTime(option.value)}
-              styles={ColorStyles}
-
-              // color={isFocused ? "black" : "white"}
-            ></Select>
-          </div>
-
-          <Button onClick={addReservation}>Reserve</Button>
-        </MakeReservation>
-      </header>
-    </div>
+      </WrapperMakeReservation>
+    </Page>
   );
 }
 

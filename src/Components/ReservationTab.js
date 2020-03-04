@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import device from "../Device";
 
 const ReservationTab = styled.div`
   height: 185px;

@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const Input = styled.input`
   display: flex;
-  min-width: 20em;
+  min-width: 19.2em;
+
   border-radius: 4px;
   border-width: 1px;
   border-color: transparent;

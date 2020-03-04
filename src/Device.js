@@ -8,10 +8,12 @@ const size = {
   tablet: "768px",
   laptop: "1024px",
   laptopL: "1440px",
-  dekstop: "2560px"
+  desktop: "2560px",
+  mobile: "326px"
 };
 
-export const device = {
+const device = {
+  mobile: `(max-width: ${size.iphone678plus}`,
   samsungS9: `(min-width: ${size.samsungS9})`,
   iphone678X: `(min-width: ${size.iphone678X})`,
   iphone678plus: `(min-width: ${size.iphone678plus})`,
@@ -20,3 +22,5 @@ export const device = {
   laptopL: `(min-width: ${size.laptopL})`,
   desktop: `(min-width: ${size.desktop})`
 };
+
+export default device;
