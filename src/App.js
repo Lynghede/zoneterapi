@@ -79,6 +79,7 @@ function App() {
   const [users, userOperations] = useCollection("Users");
   const [reservations, bookReservation] = useCollection("Reservations");
   const [resolved, resolveReservation] = useCollection("ResolvedReservations");
+  const [error, setError] = useState("");
 
   reservations.sort((a, b) => {
     const parsedA = parseDate(a.date);
@@ -167,9 +168,41 @@ function App() {
     resolveReservation.delete(id);
   }
 
-  function addReservation() {
-    bookReservation.add({ date: date, time: time, name: name, price: price });
-    setTime("");
+  // function addReservation() {
+  //   bookReservation.add({ date: date, time: time, name: name, price: price });
+  //   setTime("");
+  // }
+
+  async function addReservation() {
+    const reservationData = {
+      date: date,
+      time: time,
+      name: name,
+      price: price
+    };
+
+    setError(null);
+    if (!name) {
+      setError("Please enter a name");
+      return;
+    }
+    if (!date) {
+      setError("Please enter a date");
+      return;
+    }
+    if (!time) {
+      setError("Please enter a time");
+      return;
+    }
+
+    try {
+      await bookReservation.add(reservationData);
+    } catch (error) {
+      const body = await error.response.text();
+      setError(new Error(body));
+    } finally {
+      setTime("");
+    }
   }
 
   function addResolve({ id, ...origReservation }) {
@@ -269,7 +302,7 @@ function App() {
       <WrapperMakeReservation>
         <div>
           <Header>Make Reservation</Header>
-
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <MakeReservation>
             <div>
               <Label>Name</Label>
