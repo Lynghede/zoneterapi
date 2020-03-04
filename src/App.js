@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { parse, differenceInDays, getMonth } from "date-fns";
+import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "./firebase";
 
 // Components
@@ -63,6 +63,10 @@ const resolveMonthOptions = [
   { value: 11, label: "December" }
 ];
 
+function parseDate(date) {
+  return parse(date, "yyyy-MM-dd", new Date());
+}
+
 function App() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -77,7 +81,18 @@ function App() {
   const [resolved, resolveReservation] = useCollection("ResolvedReservations");
 
   reservations.sort((a, b) => {
-    return a.time > b.time;
+    const parsedA = parseDate(a.date);
+    const parsedB = parseDate(b.date);
+
+    // if same day, order by time
+    if (isSameDay(parsedA, parsedB)) {
+      return a.time > b.time;
+    }
+
+    // if not order by day
+    if (!isSameDay(parsedA, parsedB)) {
+      return a.date > b.date;
+    }
   });
 
   const filteredReservations = reservations.filter(reservation => {
