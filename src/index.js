@@ -1,10 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import FrontPage from "./FrontPage";
+import { Burger } from "./Components/Burger/Burger";
+import { Menu } from "./Components/Menu/Menu";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<FrontPage />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

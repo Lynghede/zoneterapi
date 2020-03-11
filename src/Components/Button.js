@@ -13,12 +13,17 @@ const Button = styled.button`
   color: white;
   margin: 2px;
   padding: 0.25em 1em;
+  text-transform: uppercase;
 
   :hover {
     margin: 0;
     border-width: 2px;
-    background: #282c34;
+    background: transparent;
   }
+`;
+
+export const LargerButton = styled(Button)`
+  width: 200px;
 `;
 
 export default Button;

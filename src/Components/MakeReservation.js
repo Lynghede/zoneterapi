@@ -9,7 +9,7 @@ const MakeReservation = styled.div`
   border-style: none;
   border-radius: 3px;
   border-color: palevioletred;
-  padding: 2em;
+  padding: 30px;
   padding-top: 10px;
   margin: 20px auto;
 
