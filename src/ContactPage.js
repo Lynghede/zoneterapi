@@ -14,6 +14,8 @@ import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
 import Button, { BookingButton } from "./Components/Button";
 import Footer from "./Components/Footer/Footer";
+import Input from "./Components/Form/Input";
+import Label from "./Components/Form/Label.styled";
 
 
 function ContactPage () {
@@ -43,6 +45,14 @@ function ContactPage () {
             
             
         </div>
+        <div>
+          <Label>Navn</Label>
+          <Input/>
+          <Label>Telefon</Label>
+          <Input/>
+          <Label>E-mail</Label>
+          <Input/>
+          </div>
         
         </>
         <Footer /> 
