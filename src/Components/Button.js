@@ -23,7 +23,20 @@ const Button = styled.button`
 `;
 
 export const LargerButton = styled(Button)`
-  width: 200px;
+  width: 100%;
+  height: 30px;
 `;
+
+export const BookingButton = styled(Button)`
+width: 70px;
+height: 70px;
+font-size: 2em;
+padding: 0;
+
+:hover {
+  font-weight: bold;
+}
+
+`
 
 export default Button;

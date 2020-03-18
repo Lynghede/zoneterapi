@@ -9,11 +9,12 @@ html, body {
     box-sizing: border-box;
 }
 body {
-    align-items: center;
+    // align-items: center;
     background: ${({ theme }) => theme.primaryDark};
     color: ${({ theme }) => theme.primaryLight};
     display: flex;
     justify-content: center;
+    margin: 50px 16px 0px 16px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     height: 100vh;
 }
@@ -31,8 +32,12 @@ h2 {
 }
 
 p {
-    ${"" /* text-align: center; */}
-    margin: 16px;
+    text-align:center;
+    margin: 10px 0px 10px 0px;
 
+}
+
+li {
+    text-align:center;
 }
 `;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const NavBar = styled.nav`
   height: 48px;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: space-around;
 
@@ -30,7 +30,7 @@ const NavBar = styled.nav`
   svg {
     margin-top: -2px;
     position: absolute;
-    left: 2rem;
+    left: 10px;
     justify-content: space-around;
   }
 `;

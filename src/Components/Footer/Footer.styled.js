@@ -3,12 +3,14 @@ import styled from "styled-components";
 const StyledFooter = styled.footer`
   display: flex;
   position: absolute;
+  left: 0;
   background: transparent;
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
   text-align: center;
   bottom: auto;
+ 
 
   padding: 5rem 0;
 
@@ -30,5 +32,7 @@ const StyledFooter = styled.footer`
       color: ${({ theme }) => theme.primaryHover};
     }
   }
+
+ 
 `;
 export default StyledFooter;

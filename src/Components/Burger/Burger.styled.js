@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledBurger = styled.button`
   position: absolute;
   top: 5%;
-  right: 2rem;
+  right: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

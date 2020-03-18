@@ -6,7 +6,7 @@ import Home from "../Home/Home";
 const Footer = () => {
   return (
     <StyledFooter>
-      <Seperator />
+      
       <Home></Home>
       <a href="/">
         <span role="img" aria-label="Booking"></span>

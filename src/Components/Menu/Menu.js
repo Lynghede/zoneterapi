@@ -20,7 +20,7 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="Produkter">
           &#x1f4b8;
         </span>
-        Produkter/Priser
+        Priser
       </a>
       <a href="/">
         <span role="img" aria-label="Om mig">

@@ -24,14 +24,13 @@ function FrontPage() {
         <GlobalStyles />
         <NavBar>
           <Home />
-
           <header>Lissi Lynghede</header>
-
           <div ref={node}>
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
           </div>
         </NavBar>
+        
         <div>
           <h1>Zoneterapi</h1>
           <Seperator />
@@ -43,11 +42,11 @@ function FrontPage() {
             stor glæde af zoneterapi! Det er nemlig genvejen til større velvære,
             ligesom behandlingen er forebyggende, før eventuelle skavanker
             opstår. Det handler med andre ord om at bevare en krop i balance.
-          </p>
-          <Seperator />
-          <Wrapper>
-            <LargerButton>Booking</LargerButton>
+          </p><Wrapper>
+            <LargerButton>Bestil Tid</LargerButton>
           </Wrapper>
+          <Seperator />
+          
         </div>
         <div>
           <h2>Behandleren</h2>
@@ -69,6 +68,7 @@ function FrontPage() {
           </div>
         </div> */}
       </>
+      <Seperator />
       <Footer></Footer>
     </ThemeProvider>
   );
