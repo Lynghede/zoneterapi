@@ -16,7 +16,6 @@ const Button = styled.button`
   text-transform: uppercase;
 
   :hover {
-    margin: 0;
     border-width: 2px;
     background: transparent;
   }
