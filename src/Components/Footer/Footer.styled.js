@@ -10,12 +10,10 @@ const StyledFooter = styled.footer`
   width: 100%;
   text-align: center;
   bottom: auto;
- 
-
-  padding: 5rem 0;
+  padding: 2rem 0;
 
   a {
-    font-size: 1rem;
+    font-size: 0.5rem;
     text-transform: uppercase;
     padding: 0.3em 0 2em 0;
     font-weight: bold;
@@ -23,9 +21,11 @@ const StyledFooter = styled.footer`
     color: ${({ theme }) => theme.primaryLight};
     text-decoration: none;
 
-    @media (max-width: ${({ theme }) => theme.mobile}) {
-      font-size: 0.5rem;
+
+    @media (min-width: ${({theme}) => theme.mobile}){
+      font-size: 1rem;
       text-align: center;
+      flex-direction: row;
     }
 
     &:hover {

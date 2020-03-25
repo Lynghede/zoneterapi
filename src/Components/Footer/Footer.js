@@ -1,12 +1,10 @@
 import React from "react";
 import StyledFooter from "./Footer.styled";
-import Seperator from "../Seperator";
 import Home from "../Home/Home";
 
 const Footer = () => {
   return (
     <StyledFooter>
-      
       <Home></Home>
       <a href="/">
         <span role="img" aria-label="Booking"></span>
