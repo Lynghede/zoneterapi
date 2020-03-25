@@ -7,28 +7,20 @@ import useOnClickOutside from "./hooks";
 import Burger from "./Components/Burger/Burger";
 import Menu from "./Components/Menu/Menu";
 import Home from "./Components/Home/Home";
-import NavBar from "./Components/Navbar";
+import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
 import Button, { LargerButton } from "./Components/Button";
 import Footer from "./Components/Footer/Footer";
 
 function FrontPage() {
-  const [open, setOpen] = useState(false);
-  const node = useRef();
-  useOnClickOutside(node, () => setOpen(false));
-
+  
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
-        <NavBar>
-          <Home />
-          <header>Lissi Lynghede</header>
-          <div ref={node}>
-            <Burger open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen} />
-          </div>
+        <NavBar title="Lissi Lynghede">
+          
         </NavBar>
         
         <div>

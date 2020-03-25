@@ -1,24 +1,27 @@
 import React from "react";
-import StyledFooter from "./Footer.styled";
+import StyledFooter, { StyledItem1 } from "./Footer.styled";
 import Home from "../Home/Home";
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <Home></Home>
-      <a href="/">
+      
+      <StyledItem1><Home></Home></StyledItem1>
+        
+     <a href="/booking">
         <span role="img" aria-label="Booking"></span>
         Booking
       </a>
-      <a href="/">
+      
+      <a href="/priser">
         <span role="img" aria-label="Produkter"></span>
-        Produkter/Priser
+        Priser
       </a>
-      <a href="/">
+      <a href="/about">
         <span role="img" aria-label="Om mig"></span>
         Om mig
       </a>
-      <a href="/">
+      <a href="/contact">
         <span role="img" aria-label="Kontakt"></span>
         Kontakt
       </a>

@@ -1,53 +1,62 @@
 import React from 'react';
-import { BroswerRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link, useParams
+  } from "react-router-dom";
+  import { ThemeProvider } from "styled-components";
+  import { GlobalStyles } from "./global";
+  import { theme } from "./theme";
+
+
 import FrontPage from './FrontPage';
+import About from './About';
 import Booking from './Booking';
 import Priser from './Priser';
 import ContactPage from './ContactPage';
+import Footer from './Components/Footer/Footer';
+import NavBar from './Components/Navbar/Navbar';
+ 
 
 
-function Routes () {
+export default function Routes () {
+        
+    
     return (
+        <ThemeProvider theme={theme}>
+        <>
+        <GlobalStyles/>
+               
         <Router>
-            <div>
-            <ul>
-                <li>
-                    <Link to="/">Forside</Link>
-                </li>
-                <li>
-                    <Link to="/Booking">Booking</Link>
-                </li>
-                <li>
-                    <Link to="/Priser">Priser</Link>
-                </li>
-                <li>
-                    <Link to="/About">Om mig</Link>
-                </li>
-                <li>
-                    <Link to="/Contact">Kontakt</Link>
-                </li>
-            </ul>
+                
             <Switch>
-                <Route path="/">
+                <Route exact path="/">
                     <FrontPage />
                 </Route>
-                <Route path="/Booking">
+                <Route path="/booking">
                     <Booking/>
                 </Route>
-                <Route path="/Priser">
+                <Route path="/priser">
                     <Priser />
                 </Route>
-                <Route path="/About">
+                <Route path="/about">
                     <About />
                 </Route>
-                <Route path="/Contact">
+                <Route path="/contact">
                     <ContactPage/>
                 </Route>
             </Switch>
-            </div>
+             
+            
+            
         </Router>
-    )
-}
+         </>
+        <Footer /> 
+        </ThemeProvider>
+ ); }
 
 
-export default Routes;
+    
+
+

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const NavBar = styled.nav`
+const StyledNavBar = styled.nav`
   height: 48px;
   position: fixed;
   display: flex;
@@ -35,4 +35,4 @@ const NavBar = styled.nav`
   }
 `;
 
-export default NavBar;
+export default StyledNavBar;

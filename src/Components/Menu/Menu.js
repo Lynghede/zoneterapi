@@ -10,25 +10,25 @@ const Menu = ({ open }) => {
         </span>
         Forside
       </a>
-      <a href="/">
+      <a href="/booking">
         <span role="img" aria-label="Booking">
           &#x1F5D3;
         </span>
         Booking
       </a>
-      <a href="/">
-        <span role="img" aria-label="Produkter">
+      <a href="/priser">
+        <span role="img" aria-label="Priser">
           &#x1f4b8;
         </span>
         Priser
       </a>
-      <a href="/">
+      <a href="/about">
         <span role="img" aria-label="Om mig">
           &#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;
         </span>
         Om mig
       </a>
-      <a href="/">
+      <a href="/contact">
         <span role="img" aria-label="Kontakt">
           &#x1f4e9;
         </span>

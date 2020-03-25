@@ -12,6 +12,17 @@ const StyledFooter = styled.footer`
   bottom: auto;
   padding: 2rem 0;
 
+  @media (min-width: ${({theme}) => theme.mobile}){
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  @media (min-width: ${({theme}) => theme.tablet}){
+    display: flex;
+    flex-direction: row;
+  }
+
   a {
     font-size: 0.5rem;
     text-transform: uppercase;
@@ -25,7 +36,7 @@ const StyledFooter = styled.footer`
     @media (min-width: ${({theme}) => theme.mobile}){
       font-size: 1rem;
       text-align: center;
-      flex-direction: row;
+      // flex-direction: row;
     }
 
     &:hover {
@@ -35,4 +46,13 @@ const StyledFooter = styled.footer`
 
  
 `;
+
+
+export const StyledItem1 = styled.div`
+grid-column: 1 / span 2;
+margin-bottom: 5px;
+
+`
+
+
 export default StyledFooter;
