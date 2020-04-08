@@ -15,6 +15,7 @@ import About from './About';
 import Booking from './Booking';
 import Priser from './Priser';
 import ContactPage from './ContactPage';
+import Zoneterapi from './Zoneterapi';
 import Footer from './Components/Footer/Footer';
 import NavBar from './Components/Navbar/Navbar';
  
@@ -39,6 +40,9 @@ export default function Routes () {
                 </Route>
                 <Route path="/priser">
                     <Priser />
+                </Route>
+                <Route path="/zoneterapi">
+                    <Zoneterapi />
                 </Route>
                 <Route path="/about">
                     <About />

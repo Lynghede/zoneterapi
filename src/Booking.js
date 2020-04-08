@@ -37,17 +37,18 @@ return (
         <div>
             <h2>Priser</h2>
             <Seperator/>
-            <p>En sesssion består hovedsageligt af 45 minutters zoneterapi.</p>
-            <ul>
-                <li>1 session - 500 kr</li>
-                <li>2 sessions - 900 kr (450 kr/pr)</li>
-                <li>3 sessions - 1200 kr (400 kr/pr)</li>
-                <li>4 sessions - 1400 kr (350 kr/pr)</li>
-                <li>5 sessions - 1500 kr (300 kr/pr)</li>
-            </ul>
-            <p>Første gang vi mødes, vil der gå 10 minutter til en samtale, om patientens laster og gener. 
-                Dette vil blive brugt til at målrette behandlingen, mod den ønskede virkning.</p>
-        </div>
+            <p>En behandling må påregnes at vare 60 min, heraf min. 45 minutters zoneterapi.</p>
+        <ul>
+            <li>1 behandling - 425 kr</li>
+            <li>3 behandlinger - 1.125 kr (375 kr/pr)</li>
+            <li>5 behandlinger - 1.800 kr (360 kr/pr)</li>
+            <li>10 behandlinger - 3.400 kr (340 kr/pr)</li>
+            
+        </ul>
+        <p>Den første behandling tager ca. 5 kvarter, grundet en for samtale, for at afklare de
+            gener og udfordringer du kommer med og for at tilpasse behandlingen mod den ønskede virkning.
+            </p>
+            </div>
         
         </><Footer />
     </ThemeProvider>

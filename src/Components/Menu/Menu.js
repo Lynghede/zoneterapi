@@ -22,6 +22,10 @@ const Menu = ({ open }) => {
         </span>
         Priser
       </a>
+      <a href="/zoneterapi">
+                <span role="img" aria-label="Zoneterapi">&#x1F463; </span>
+                Zoneterapi
+            </a>
       <a href="/about">
         <span role="img" aria-label="Om mig">
           &#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;

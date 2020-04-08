@@ -16,12 +16,15 @@ const StyledFooter = styled.footer`
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto;
+    
   }
 
-  @media (min-width: ${({theme}) => theme.tablet}){
-    display: flex;
-    flex-direction: row;
-  }
+  // @media screen and (min-width: ${({theme}) => theme.tablet}){
+  //   display: flex;
+  //   flex-direction: row;
+
+
+  // }
 
   a {
     font-size: 0.5rem;
@@ -34,7 +37,7 @@ const StyledFooter = styled.footer`
 
 
     @media (min-width: ${({theme}) => theme.mobile}){
-      font-size: 1rem;
+      font-size: 0.7rem;
       text-align: center;
       // flex-direction: row;
     }
@@ -53,6 +56,8 @@ grid-column: 1 / span 2;
 margin-bottom: 5px;
 
 `
+
+
 
 
 export default StyledFooter;

@@ -43,14 +43,26 @@ function FrontPage() {
         <div>
           <h2>Behandleren</h2>
           <Seperator />
-          <p>
-            {" "}
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-            ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-            egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-            eleifend leo
-          </p>
+          <article>
+          Lissi Lynghede, 56 år.
+          <br></br>
+          <br></br>
+          Jeg har valgt at blive zoneterapeut, da jeg de sidste 7 år, selv har modtaget zoneterapi og ved at det virker. Får det stadig regelmæssigt, da kroppen fortæller mig at det er ved at være tid igen.
+          <br></br>
+          <br></br>
+          Jeg har klinik derhjemme i rolige omgivelser og parkering lige ved døren. 10 min gang fra togstation. 2 min. gang fra busholdepladsen i Storegade v/Netto
+          <br></br>
+          Jeg har et holistisk menneskesyn, ønsker at hjælpe dig via zoneterapi-behandlinger og til selvhjælp for bedre balance i dit liv. 
+          <br></br>
+          <br></br>
+          Jeg er Registreret Alternativ Behandler (RAB) og uddannet på Zoneterapeutskolen i Kolding, hvor jeg blev færdig i juni 2020.
+          For at beholde certificeringen RAB, er jeg underlagt at holde min uddannelse ved lige med efteruddannelseskurser.
+          <br></br>
+          <br></br>
+          Er medlem af <a style={{color: "#FFFFFF"}} href="\\www.fdz.dk">FDZ</a>.
+          
+      </article>
+          
         </div>
 
         {/* <div>

@@ -8,7 +8,7 @@ export const theme = {
 
   // Responsive
   mobile: "576px",
-  tablet: "800px",
+  tablet: "750px",
   
 
 };

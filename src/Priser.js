@@ -25,42 +25,36 @@ function Priser () {
          
         </NavBar>
         <div>
-            <h1>Produkter</h1>
-            <Seperator/>
-            <h2>zoneterapi</h2>
-            <Seperator/>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fermentum leo vel orci porta non pulvinar neque laoreet. Lectus urna duis convallis convallis tellus id. Quam lacus suspendisse faucibus interdum posuere lorem. Nisl pretium fusce id velit ut tortor pretium.
-            </p>
-        </div>
-        <div>
-            <h2>clairvoyance</h2>
-            <Seperator/>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fermentum leo vel orci porta non pulvinar neque laoreet. Lectus urna duis convallis convallis tellus id. Quam lacus suspendisse faucibus interdum posuere lorem. Nisl pretium fusce id velit ut tortor pretium.
-            </p>
-        </div>
-        <div>
-            <h2>healing</h2>
-            <Seperator/>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fermentum leo vel orci porta non pulvinar neque laoreet. Lectus urna duis convallis convallis tellus id. Quam lacus suspendisse faucibus interdum posuere lorem. Nisl pretium fusce id velit ut tortor pretium.
-            </p>
-        </div>
-        <div>
             <h1>Priser</h1>
             <Seperator/>
-            <p>En sesssion består hovedsageligt af 45 minutters zoneterapi.</p>
-            <ul>
-                <li>1 session - 500 kr</li>
-                <li>2 sessions - 900 kr (450 kr/pr)</li>
-                <li>3 sessions - 1200 kr (400 kr/pr)</li>
-                <li>4 sessions - 1400 kr (350 kr/pr)</li>
-                <li>5 sessions - 1500 kr (300 kr/pr)</li>
-            </ul>
-            <p>Første gang vi mødes, vil der gå 10 minutter til en samtale, om patientens laster og gener. 
-                Dette vil blive brugt til at målrette behandlingen, mod den ønskede virkning.</p>
-        </div> 
+            <article>En behandling må påregnes at vare 60 min, heraf min. 45 minutters zoneterapi.
+        <ul>
+            <li>1 behandling - 425 kr</li>
+            <li>3 behandlinger - 1.125 kr (375 kr/pr)</li>
+            <li>5 behandlinger - 1.800 kr (360 kr/pr)</li>
+            <li>10 behandlinger - 3.400 kr (340 kr/pr)</li>
+            
+        </ul>
+        Den første behandling tager ca. 5 kvarter, grundet en for samtale, for at afklare de
+            gener og udfordringer du kommer med og for at tilpasse behandlingen mod den ønskede virkning.
+    </article>
+    <h2>Fem gode grunde til at gå til zoneterapeaut</h2>
+            <Seperator/>
+            <article>
+        <ul>
+            <li>Zoneterapi styrker balancer i krop og psyke</li>
+            <li>Zoneterapi kan fremme din almene sundhed</li>
+            <li>Zoneterapi kan lindre smerter</li>
+            <li>Zoneterapi er effektiv som behandling af en række lidelser</li>
+            <li>Zoneterapi bygger på et helhedssyn på dig og dit liv</li>
+        </ul>
+        Uanset hvilken lidelse, du har, kan zoneterapi hjælpe dig videre. Terapien er også god, hvis du vil vedligeholde et godt helbred.
+            <br></br>
+            <br></br>
+            Nogle gange kan zoneterapi stå alene som behandlingsform, andre gange som supplement til konventionel behandling. Mange kombinerer traditionel behandling med zoneterapi.
+        </article>
+        </div>
+       
         </>
         <Footer /> 
        

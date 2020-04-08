@@ -31,13 +31,31 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
 p {
     text-align:center;
     margin: 10px 0px 10px 0px;
 
 }
 
+article {
+    text-align:center;
+    margin: 10px 0px 10px 0px;
+}
+
 li {
     text-align:center;
 }
+
+@media screen and (min-width: ${({theme}) => theme.tablet}) {
+    body {
+        
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
 `;

@@ -17,14 +17,19 @@ const Footer = () => {
         <span role="img" aria-label="Produkter"></span>
         Priser
       </a>
+      <a href="/zoneterapi">
+            <span role="img" aria-label="Zoneterapi"></span>
+            Zoneterapi
+        </a>
       <a href="/about">
         <span role="img" aria-label="Om mig"></span>
         Om mig
       </a>
-      <a href="/contact">
+      <StyledItem1> <a href="/contact">
         <span role="img" aria-label="Kontakt"></span>
         Kontakt
-      </a>
+      </a></StyledItem1>
+     
     </StyledFooter>
   );
 };
