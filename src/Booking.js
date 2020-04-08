@@ -12,8 +12,13 @@ import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
 import Button, { BookingButton } from "./Components/Button";
 import Footer from "./Components/Footer/Footer";
+import App from "./App";
+import Reservation from "./Reservation/Reservation";
 
-function Booking () {
+
+function Booking() {
+    const [quantity, setQuantity] = useState("");
+
     
 return (
     <ThemeProvider theme={theme}>
@@ -22,16 +27,32 @@ return (
         <NavBar title="Booking">
           
         </NavBar>
+        {quantity ? 
         <div>
+            <Reservation quantity={quantity} /> 
+            
+        </div>  
+        :
+        <>
+            <div>
             <h1>Behandlinger</h1>
             <Seperator/>
-              <Wrapper>
-                <BookingButton>1</BookingButton>
-                <BookingButton>2</BookingButton>
-                <BookingButton>3</BookingButton>
-                              
-              </Wrapper>
-            <Wrapper> <BookingButton>4</BookingButton><BookingButton>5</BookingButton></Wrapper>
+            
+               
+                
+                <div>
+                <Wrapper>
+                <BookingButton value={1} onClick={e => setQuantity(e.target.value)}>1</BookingButton>
+                <BookingButton value={3} onClick={e => setQuantity(e.target.value)}>3</BookingButton>
+                </Wrapper>
+                <Wrapper>
+                <BookingButton value={5} onClick={e => setQuantity(e.target.value)}>5</BookingButton>
+                <BookingButton value={10} onClick={e => setQuantity(e.target.value)}>10</BookingButton>
+                {console.log(quantity)}
+                </Wrapper>
+                </div>
+                      
+           
 
         </div>
         <div>
@@ -49,8 +70,11 @@ return (
             gener og udfordringer du kommer med og for at tilpasse behandlingen mod den ønskede virkning.
             </p>
             </div>
-        
-        </><Footer />
+            </>
+        }
+        </>
+        <Seperator/>
+        <Footer />
     </ThemeProvider>
 );
 }

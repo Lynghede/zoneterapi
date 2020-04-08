@@ -12,8 +12,12 @@ const Button = styled.button`
   border-style: solid;
   color: white;
   margin: 2px;
-  padding: 0.25em 1em;
+  // padding: 0.25em 1em;
+  
   text-transform: uppercase;
+    width: 200px;
+    height: 30px;
+
 
   :hover {
     border-width: 2px;
@@ -31,6 +35,7 @@ width: 70px;
 height: 70px;
 font-size: 2em;
 padding: 0;
+margin: 5px;
 
 :hover {
   font-weight: bold;

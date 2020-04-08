@@ -3,8 +3,11 @@ import styled from "styled-components";
 import device from "../Device";
 
 const MakeReservation = styled.div`
-  height: 148px;
-  width: 300px;
+  display: flex;
+  
+  justify-content: center;
+  // height: 100%;
+  width: 320px;
   background-color: transparent;
   border-style: none;
   border-radius: 3px;
