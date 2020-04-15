@@ -9,7 +9,7 @@ html, body {
     box-sizing: border-box;
 }
 body {
-    // align-items: center;
+    //align-items: center;
     background: ${({ theme }) => theme.primaryDark};
     color: ${({ theme }) => theme.primaryLight};
     display: flex;
@@ -37,21 +37,21 @@ h3 {
 }
 
 p {
-    text-align:center;
+    text-align:left;
     margin: 10px 0px 10px 0px;
 
 }
 
 article {
-    text-align:center;
+    text-align:left;
     margin: 10px 0px 10px 0px;
 }
 
 li {
-    text-align:center;
+    text-align:left;
 }
 
-@media screen and (min-width: ${({theme}) => theme.tablet}) {
+@media screen and (min-width: ${({ theme }) => theme.tablet}) {
     body {
         
         margin-left: 100px;
