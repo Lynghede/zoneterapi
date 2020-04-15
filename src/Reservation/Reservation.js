@@ -2,9 +2,13 @@ import React, { useState } from "react";
 
 import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "../firebase";
+import { Discount } from "@styled-icons/boxicons-solid";
+
+import { MoneyBillAlt } from "@styled-icons/fa-regular";
+import styled from "styled-components";
 
 // Components
-import Button, { LargerButton } from "../Components/Button";
+import Button, { BookingButton, LargerButton } from "../Components/Button";
 import Input, { InputDate } from "../Components/Input";
 import Select, { ColorStyles, monthStyle } from "../Components/Select";
 
@@ -14,9 +18,21 @@ import ReservationTab, {
 import MakeReservation, {
   WrapperMakeReservation,
 } from "../Components/MakeReservation";
-import Label from "../Components/Label";
+import Label, { FlashyLabel } from "../Components/Label";
 import Header from "../Components/Header";
 import Wrapper from "../Components/Wrapper";
+import Seperator from "../Components/Seperator";
+
+const StyledDiscount = styled(Discount)`
+  height: 1.2em;
+  margin-bottom: 10px;
+  margin-right: 5px;
+`;
+const StyledMoneyBillAlt = styled(MoneyBillAlt)`
+  height: 1em;
+  margin-top: 2.1px;
+  margin-right: 5px;
+`;
 
 const monthOptions = [];
 /* eslint-disable no-fallthrough */
@@ -56,7 +72,7 @@ function Reservation(props) {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [price, setPrice] = useState(500);
+  const [price, setPrice] = useState(425);
 
   const [tempReservation, setTempReservation] = useState([]);
   const bookTempReservation = {
@@ -70,12 +86,6 @@ function Reservation(props) {
     newArray.splice(i, 1);
     setTempReservation(newArray);
   };
-
-  // function removeTempReservation(e) {
-  //   var index = tempReservation.indexOf(e.target.value);
-  //   setTempReservation(null);
-  //   //delete tempReservation[index];
-  // }
 
   const [reservations, bookReservation] = useCollection("Reservations");
   const [resolved, resolveReservation] = useCollection("ResolvedReservations");
@@ -144,38 +154,6 @@ function Reservation(props) {
     }
   }
 
-  // async function addReservation() {
-  //   const reservationData = {
-  //     date: date,
-  //     time: time,
-  //     name: name,
-  //     price: price,
-  //   };
-
-  //   setError(null);
-  //   if (!name) {
-  //     setError("Please enter a name");
-  //     return;
-  //   }
-  //   if (!date) {
-  //     setError("Please enter a date");
-  //     return;
-  //   }
-  //   if (!time) {
-  //     setError("Please enter a time");
-  //     return;
-  //   }
-
-  //   try {
-  //     await bookReservation.add(reservationData);
-  //   } catch (error) {
-  //     const body = await error.response.text();
-  //     setError(new Error(body));
-  //   } finally {
-  //     setTime("");
-  //   }
-  // }
-
   async function addReservation() {
     try {
       await tempReservation.forEach((reservation) =>
@@ -187,14 +165,6 @@ function Reservation(props) {
     } finally {
       setTempReservation([]);
     }
-  }
-
-  function addResolve({ id, ...origReservation }) {
-    bookReservation.delete(id);
-    resolveReservation.add({
-      session: origReservation.time,
-      ...origReservation,
-    });
   }
 
   async function addTempReservation() {
@@ -241,10 +211,53 @@ function Reservation(props) {
     });
   });
 
+  function totalPrice() {
+    let total = 0;
+    let item = tempReservation.length;
+    let discount3 = 50;
+    let discount5 = 65;
+    let discount10 = 85;
+    for (let i = 0; i < tempReservation.length; i++) {
+      total += tempReservation[i].price;
+    }
+    if (item >= 3 && item < 5) {
+      return total - discount3 * item;
+    }
+    if (item >= 5 && item < 10) {
+      return total - discount5 * item;
+    }
+    if (item === 10) {
+      return total - discount10 * item;
+    } else {
+      return total;
+    }
+  }
+
+  function totalDiscount() {
+    let totalDiscount = 0;
+    let discount3 = 50;
+    let discount5 = 65;
+    let discount10 = 85;
+    let item = tempReservation.length;
+
+    if (item >= 3 && item < 5) {
+      return (totalDiscount = item * discount3);
+    }
+    if (item >= 5 && item < 10) {
+      return (totalDiscount = item * discount5);
+    }
+    if (item === 10) {
+      return (totalDiscount = item * discount10);
+    } else {
+      return totalDiscount;
+    }
+  }
+
   return (
     <WrapperMakeReservation>
       <div>
         <Header>Make Reservation</Header>
+        <Seperator />
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         <MakeReservation>
@@ -277,8 +290,6 @@ function Reservation(props) {
               options={timeSlotOptions}
               onChange={(option) => setTime(option.value)}
               styles={ColorStyles}
-
-              // color={isFocused ? "black" : "white"}
             ></Select>
           </div>{" "}
         </MakeReservation>
@@ -290,13 +301,21 @@ function Reservation(props) {
               Tilføj {props.quantity} mere
             </Button>
           )}
-
-          {/* <Button onClick={addReservation}>
-            {props.quantity === 0
-              ? "Reserver"
-              : "Tilføj " + props.quantity + " mere"}
-          </Button> */}
         </Wrapper>
+        <div>
+          <Wrapper>
+            <FlashyLabel>
+              <StyledMoneyBillAlt />
+              Total: {totalPrice()}
+            </FlashyLabel>
+          </Wrapper>
+          <Wrapper>
+            <FlashyLabel>
+              <StyledDiscount />
+              Discount: {totalDiscount()}
+            </FlashyLabel>
+          </Wrapper>{" "}
+        </div>
         <ReservationContainer>
           {tempFilteredReservations.map((reservation, i) => (
             <div>
@@ -304,8 +323,11 @@ function Reservation(props) {
                 <ol>Date: {reservation.date}</ol>
                 <ol>Time: {reservation.time}</ol>
                 <ol>Name: {reservation.name}</ol>
-                <ol>Price: {reservation.price}</ol>
-                <Button onClick={() => removeTempReservation(i)}>Remove</Button>
+                <Wrapper>
+                  <Button onClick={() => removeTempReservation(i)}>
+                    Remove
+                  </Button>
+                </Wrapper>
               </ReservationTab>
             </div>
           ))}
