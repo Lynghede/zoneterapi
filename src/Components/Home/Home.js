@@ -7,7 +7,7 @@ import { ReactComponent as LogoFront } from "../SVG/LogoFront.svg";
 const Home = () => {
   return (
     <a href="/">
-      <LogoFront />
+      <LogoFront style={{ marginTop: "1px" }} />
     </a>
   );
 };
