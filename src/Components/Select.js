@@ -3,46 +3,48 @@ import React from "react";
 import Select from "react-select";
 
 export const monthStyle = {
-  control: styles => ({
+  control: (styles) => ({
     ...styles,
     maxWidth: "300px",
     color: "palevioletred",
-    width: "300px"
+    width: "300px",
   }),
-  menu: styles => ({
+  menu: (styles) => ({
     ...styles,
     width: "300px",
-    justifyContent: "center"
-  })
+    justifyContent: "center",
+  }),
 };
 
 export const ColorStyles = {
-  control: styles => ({
+  control: (styles) => ({
     ...styles,
     backgroundColor: "white",
 
     marginBottom: "10px",
     minHeight: "",
-    padding: ""
+    padding: "",
   }),
-  indicatorsContainer: styles => ({
+  indicatorsContainer: (styles) => ({
     ...styles,
     height: "10px",
     itemsAlign: "center",
     justifyContent: "center",
-    margin: "auto"
+    margin: "auto",
   }),
-  menu: styles => ({
+  menu: (styles) => ({
     ...styles,
     height: "inherient",
     borderRadius: "4px",
     top: "auto",
-    bottom: "100%"
+    // bottom: "100%",
+
+    textAlign: "center",
   }),
-  menuList: isFocused => ({
+  menuList: (isFocused) => ({
     ...isFocused,
-    borderRadius: "4px"
-  })
+    borderRadius: "4px",
+  }),
 };
 
 export const Foo = styled(Select)`

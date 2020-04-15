@@ -4,18 +4,19 @@ import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "../firebase";
 
 // Components
-import Button, {LargerButton} from "../Components/Button";
+import Button, { LargerButton } from "../Components/Button";
 import Input, { InputDate } from "../Components/Input";
 import Select, { ColorStyles, monthStyle } from "../Components/Select";
 
-import ReservationTab, {ReservationContainer} from "../Components/ReservationTab";
+import ReservationTab, {
+  ReservationContainer,
+} from "../Components/ReservationTab";
 import MakeReservation, {
-  WrapperMakeReservation
+  WrapperMakeReservation,
 } from "../Components/MakeReservation";
 import Label from "../Components/Label";
 import Header from "../Components/Header";
 import Wrapper from "../Components/Wrapper";
-
 
 const monthOptions = [];
 /* eslint-disable no-fallthrough */
@@ -47,8 +48,6 @@ switch (getMonth(new Date())) {
 }
 /* eslint-enable no-fallthrough */
 
-
-
 function parseDate(date) {
   return parse(date, "yyyy-MM-dd", new Date());
 }
@@ -58,13 +57,30 @@ function Reservation(props) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [price, setPrice] = useState(500);
-  
 
-  const [tempReservation, bookTempReservation] = useCollection("tempReservations")
+  const [tempReservation, setTempReservation] = useState([]);
+  const bookTempReservation = {
+    add(newReservation) {
+      setTempReservation([...tempReservation, newReservation]);
+    },
+  };
+
+  const removeTempReservation = (i) => {
+    let newArray = [...tempReservation];
+    newArray.splice(i, 1);
+    setTempReservation(newArray);
+  };
+
+  // function removeTempReservation(e) {
+  //   var index = tempReservation.indexOf(e.target.value);
+  //   setTempReservation(null);
+  //   //delete tempReservation[index];
+  // }
+
   const [reservations, bookReservation] = useCollection("Reservations");
   const [resolved, resolveReservation] = useCollection("ResolvedReservations");
   const [bookingMonthFilter, setBookingMonthFilter] = useState([
-    monthOptions[0]
+    monthOptions[0],
   ]);
   const [error, setError] = useState("");
 
@@ -82,8 +98,6 @@ function Reservation(props) {
       return a.date > b.date;
     }
   });
-
-
 
   function shouldRemoveDate(date, d, y) {
     const parsed = parse(date, "yyyy-MM-dd", new Date());
@@ -110,6 +124,11 @@ function Reservation(props) {
         return false;
       }
     }
+    for (let temp of tempReservation) {
+      if (temp.date === date && temp.time === time) {
+        return false;
+      }
+    }
     return true;
   }
 
@@ -125,47 +144,65 @@ function Reservation(props) {
     }
   }
 
+  // async function addReservation() {
+  //   const reservationData = {
+  //     date: date,
+  //     time: time,
+  //     name: name,
+  //     price: price,
+  //   };
+
+  //   setError(null);
+  //   if (!name) {
+  //     setError("Please enter a name");
+  //     return;
+  //   }
+  //   if (!date) {
+  //     setError("Please enter a date");
+  //     return;
+  //   }
+  //   if (!time) {
+  //     setError("Please enter a time");
+  //     return;
+  //   }
+
+  //   try {
+  //     await bookReservation.add(reservationData);
+  //   } catch (error) {
+  //     const body = await error.response.text();
+  //     setError(new Error(body));
+  //   } finally {
+  //     setTime("");
+  //   }
+  // }
+
+  async function addReservation() {
+    try {
+      await tempReservation.forEach((reservation) =>
+        bookReservation.add(reservation)
+      );
+    } catch (error) {
+      const body = await error.response.text();
+      setError(new Error(body));
+    } finally {
+      setTempReservation([]);
+    }
+  }
+
+  function addResolve({ id, ...origReservation }) {
+    bookReservation.delete(id);
+    resolveReservation.add({
+      session: origReservation.time,
+      ...origReservation,
+    });
+  }
 
   async function addTempReservation() {
     const reservationData = {
       date: date,
       time: time,
       name: name,
-      price: price
-    };
- 
-    setError(null);
-    if (!name) {
-      setError("Please enter a name");
-      return;
-    }
-    if (!date) {
-      setError("Please enter a date");
-      return;
-    }
-    if (!time) {
-      setError("Please enter a time");
-      return;
-    }
-
-    try {
-      await bookTempReservation.add(reservationData);
-    } catch (error) {
-      const body = await error.response.text();
-      setError(new Error(body));
-    } finally {
-      setTime("");
-    }
-  }
-
-  
-
-  async function addReservation() {
-    const reservationData = {
-      date: date,
-      time: time,
-      name: name,
-      price: price
+      price: price,
     };
 
     setError(null);
@@ -184,7 +221,9 @@ function Reservation(props) {
 
     try {
       await bookTempReservation.add(reservationData);
+      props.onComplete();
     } catch (error) {
+      console.log(error);
       const body = await error.response.text();
       setError(new Error(body));
     } finally {
@@ -192,88 +231,87 @@ function Reservation(props) {
     }
   }
 
-
-  const tempFilteredReservations = tempReservation.filter(reservation => {
+  const tempFilteredReservations = tempReservation.filter((reservation) => {
     let parsedMonth = parse(reservation.date, "yyyy-MM-dd", new Date());
     parsedMonth = getMonth(parsedMonth);
     if (bookingMonthFilter === null || bookingMonthFilter.length === 0)
       return true;
-    return bookingMonthFilter.some(bookingMonth => {
+    return bookingMonthFilter.some((bookingMonth) => {
       if (parsedMonth === bookingMonth.value) return true;
     });
   });
 
-  function handleRemove(id) {
-    bookTempReservation.delete(id);
-  }
-
   return (
     <WrapperMakeReservation>
-        <div>
-          <Header>Make Reservation</Header>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          
-          <MakeReservation>
-            <div>
-                {props.quantity === "1" ? <p>Vælg {props.quantity} tid</p> : <p>Vælg {props.quantity} tider</p>}
-                
-              <Label>Name</Label>
-              <Input
-                type="text"
-                value={name}
-                placeholder="Name"
-                onChange={e => {
-                  setName(e.target.value);
-                }}
-              />
-              <Label>Date</Label>
-              <InputDate
-                type="date"
-                value={date}
-                onChange={e => setDate(e.target.value)}
-              />
-              <Label>Time</Label>
-              <Select
-                type="time"
-                value={{ label: time, value: time }}
-                options={timeSlotOptions}
-                onChange={option => setTime(option.value)}
-                styles={ColorStyles}
+      <div>
+        <Header>Make Reservation</Header>
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-                // color={isFocused ? "black" : "white"}
-              ></Select>
-            </div> </MakeReservation>
-            <Wrapper>
-                
-               <Button onClick={addReservation}>
-                   {props.quantity === "1" ? "Reserver" : "Tilføj " + props.quantity + " mere"}
-                   
-                </Button> 
-            </Wrapper>
-            <ReservationContainer>
-              Hejsa
-            {tempFilteredReservations.map(reservation => (
-              <div>
+        <MakeReservation>
+          <div>
+            {props.quantity === 0 ? (
+              <p>Nu mangler du blot at confirm dine bookings</p>
+            ) : (
+              <p>Vælg {props.quantity} tider</p>
+            )}
+
+            <Label>Name</Label>
+            <Input
+              type="text"
+              value={name}
+              placeholder="Name"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+            <Label>Date</Label>
+            <InputDate
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <Label>Time</Label>
+            <Select
+              type="time"
+              value={{ label: time, value: time }}
+              options={timeSlotOptions}
+              onChange={(option) => setTime(option.value)}
+              styles={ColorStyles}
+
+              // color={isFocused ? "black" : "white"}
+            ></Select>
+          </div>{" "}
+        </MakeReservation>
+        <Wrapper>
+          {props.quantity === 0 ? (
+            <Button onClick={addReservation}>Reserver</Button>
+          ) : (
+            <Button onClick={addTempReservation}>
+              Tilføj {props.quantity} mere
+            </Button>
+          )}
+
+          {/* <Button onClick={addReservation}>
+            {props.quantity === 0
+              ? "Reserver"
+              : "Tilføj " + props.quantity + " mere"}
+          </Button> */}
+        </Wrapper>
+        <ReservationContainer>
+          {tempFilteredReservations.map((reservation, i) => (
+            <div>
               <ReservationTab>
-                
                 <ol>Date: {reservation.date}</ol>
                 <ol>Time: {reservation.time}</ol>
                 <ol>Name: {reservation.name}</ol>
                 <ol>Price: {reservation.price}</ol>
-                <Button onClick={() => handleRemove(reservation.id)}>
-                  Remove
-                </Button>
+                <Button onClick={() => removeTempReservation(i)}>Remove</Button>
               </ReservationTab>
             </div>
-            ))}
-              
-            
-          </ReservationContainer>
-            
-         
-        </div>
-      </WrapperMakeReservation>
-
+          ))}
+        </ReservationContainer>
+      </div>
+    </WrapperMakeReservation>
   );
 }
 
