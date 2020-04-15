@@ -8,6 +8,7 @@ import Button, {LargerButton} from "../Components/Button";
 import Input, { InputDate } from "../Components/Input";
 import Select, { ColorStyles, monthStyle } from "../Components/Select";
 
+import ReservationTab, {ReservationContainer} from "../Components/ReservationTab";
 import MakeReservation, {
   WrapperMakeReservation
 } from "../Components/MakeReservation";
@@ -58,8 +59,13 @@ function Reservation(props) {
   const [time, setTime] = useState("");
   const [price, setPrice] = useState(500);
   
+
+  const [tempReservation, bookTempReservation] = useCollection("tempReservations")
   const [reservations, bookReservation] = useCollection("Reservations");
   const [resolved, resolveReservation] = useCollection("ResolvedReservations");
+  const [bookingMonthFilter, setBookingMonthFilter] = useState([
+    monthOptions[0]
+  ]);
   const [error, setError] = useState("");
 
   reservations.sort((a, b) => {
@@ -120,6 +126,40 @@ function Reservation(props) {
   }
 
 
+  async function addTempReservation() {
+    const reservationData = {
+      date: date,
+      time: time,
+      name: name,
+      price: price
+    };
+ 
+    setError(null);
+    if (!name) {
+      setError("Please enter a name");
+      return;
+    }
+    if (!date) {
+      setError("Please enter a date");
+      return;
+    }
+    if (!time) {
+      setError("Please enter a time");
+      return;
+    }
+
+    try {
+      await bookTempReservation.add(reservationData);
+    } catch (error) {
+      const body = await error.response.text();
+      setError(new Error(body));
+    } finally {
+      setTime("");
+    }
+  }
+
+  
+
   async function addReservation() {
     const reservationData = {
       date: date,
@@ -143,7 +183,7 @@ function Reservation(props) {
     }
 
     try {
-      await bookReservation.add(reservationData);
+      await bookTempReservation.add(reservationData);
     } catch (error) {
       const body = await error.response.text();
       setError(new Error(body));
@@ -152,13 +192,20 @@ function Reservation(props) {
     }
   }
 
-  function nrReservations(){
-    //   if (props.quantity === 1) return <Button onClick={addReservation}>Reserver</Button>;
-    //   if (props.quantity === 3) return <Button onClick={addReservation}>Tilføj {props.quantity} reservationer</Button>;
 
+  const tempFilteredReservations = tempReservation.filter(reservation => {
+    let parsedMonth = parse(reservation.date, "yyyy-MM-dd", new Date());
+    parsedMonth = getMonth(parsedMonth);
+    if (bookingMonthFilter === null || bookingMonthFilter.length === 0)
+      return true;
+    return bookingMonthFilter.some(bookingMonth => {
+      if (parsedMonth === bookingMonth.value) return true;
+    });
+  });
+
+  function handleRemove(id) {
+    bookTempReservation.delete(id);
   }
-
-  
 
   return (
     <WrapperMakeReservation>
@@ -203,6 +250,25 @@ function Reservation(props) {
                    
                 </Button> 
             </Wrapper>
+            <ReservationContainer>
+              Hejsa
+            {tempFilteredReservations.map(reservation => (
+              <div>
+              <ReservationTab>
+                
+                <ol>Date: {reservation.date}</ol>
+                <ol>Time: {reservation.time}</ol>
+                <ol>Name: {reservation.name}</ol>
+                <ol>Price: {reservation.price}</ol>
+                <Button onClick={() => handleRemove(reservation.id)}>
+                  Remove
+                </Button>
+              </ReservationTab>
+            </div>
+            ))}
+              
+            
+          </ReservationContainer>
             
          
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+
 import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "./firebase";
 
