@@ -15,9 +15,9 @@ import Reservation from "./Reservation/Reservation";
 function Booking() {
   const [quantity, setQuantity] = useState(-1);
 
-  function handleAdd() {
-    if (quantity !== 0) setQuantity(quantity - 1);
-  }
+  // function handleAdd() {
+  //   if (quantity !== 0) setQuantity(quantity - 1);
+  // }
 
   return (
     <ThemeProvider theme={theme}>
@@ -28,7 +28,7 @@ function Booking() {
           <div></div>
         ) : (
           <div>
-            <Reservation quantity={quantity} onComplete={handleAdd} />
+            <Reservation quantity={quantity} />
           </div>
         )}
 

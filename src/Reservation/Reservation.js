@@ -191,7 +191,7 @@ function Reservation(props) {
 
     try {
       await bookTempReservation.add(reservationData);
-      props.onComplete();
+      // props.onComplete();
     } catch (error) {
       console.log(error);
       const body = await error.response.text();
@@ -253,6 +253,11 @@ function Reservation(props) {
     }
   }
 
+  function currentQuantity() {
+    let quantity = props.quantity - tempReservation.length;
+    return quantity;
+  }
+
   return (
     <WrapperMakeReservation>
       <div>
@@ -262,10 +267,10 @@ function Reservation(props) {
 
         <MakeReservation>
           <div>
-            {props.quantity === 0 ? (
+            {currentQuantity() === 0 ? (
               <p>Nu mangler du blot at confirm dine bookings</p>
             ) : (
-              <p>Vælg {props.quantity} tider</p>
+              <p>Vælg {currentQuantity()} tider</p>
             )}
 
             <Label>Name</Label>
@@ -291,14 +296,15 @@ function Reservation(props) {
               onChange={(option) => setTime(option.value)}
               styles={ColorStyles}
             ></Select>
+            {console.log("After: " + currentQuantity())}
           </div>{" "}
         </MakeReservation>
         <Wrapper>
-          {props.quantity === 0 ? (
+          {currentQuantity() === 0 ? (
             <Button onClick={addReservation}>Reserver</Button>
           ) : (
             <Button onClick={addTempReservation}>
-              Tilføj {props.quantity} mere
+              Tilføj {currentQuantity()} mere
             </Button>
           )}
         </Wrapper>
