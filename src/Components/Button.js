@@ -39,6 +39,10 @@ export const BookingButton = styled(Button)`
   :hover {
     font-weight: bold;
   }
+
+  @media screen and (min-width: ${({ theme }) => theme.pc}) {
+    width: 200px;
+  }
 `;
 
 export default Button;

@@ -77,9 +77,6 @@ function Reservation(props) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [price, setPrice] = useState(425);
-  const [isReserved, setReserved] = useState(false);
-  const [yourReservation, setYourReservation] = useState([]);
-
   const [tempReservation, setTempReservation] = useState([]);
   const bookTempReservation = {
     add(newReservation) {
@@ -172,13 +169,8 @@ function Reservation(props) {
       const body = await error.response.text();
       setError(new Error(body));
     } finally {
-      setYourReservation(tempReservation);
       setTempReservation([]);
     }
-  }
-
-  function handleClick() {
-    addReservation();
   }
 
   async function addTempReservation() {
@@ -315,7 +307,7 @@ function Reservation(props) {
           </MakeReservation>
           <Wrapper>
             {currentQuantity() === 0 ? (
-              <Button onClick={handleClick}>Reserver</Button>
+              <Button onClick={addReservation}>Reserver</Button>
             ) : (
               <Button onClick={addTempReservation}>
                 Tilføj {currentQuantity()} mere

@@ -21,7 +21,6 @@ import Zoneterapi from "./Zoneterapi";
 
 // Components
 import Footer from "./Components/Footer/Footer";
-import NavBar from "./Components/Navbar/Navbar";
 
 export default function Routes() {
   return (
