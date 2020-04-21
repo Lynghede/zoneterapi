@@ -11,6 +11,7 @@ import Button, { BookingButton } from "./Components/Button";
 import Footer from "./Components/Footer/Footer";
 import App from "./App";
 import Reservation from "./Reservation/Reservation";
+import ConfirmedReservation from "./Reservation/ConfirmedReservation";
 
 function Booking() {
   const [quantity, setQuantity] = useState(-1);

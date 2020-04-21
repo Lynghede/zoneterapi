@@ -13,11 +13,10 @@ const Button = styled.button`
   color: white;
   margin: 2px;
   // padding: 0.25em 1em;
-  
-  text-transform: uppercase;
-    width: 200px;
-    height: 30px;
 
+  text-transform: uppercase;
+  width: 200px;
+  height: 30px;
 
   :hover {
     border-width: 2px;
@@ -31,16 +30,15 @@ export const LargerButton = styled(Button)`
 `;
 
 export const BookingButton = styled(Button)`
-width: 70px;
-height: 70px;
-font-size: 2em;
-padding: 0;
-margin: 5px;
+  width: 70px;
+  height: 70px;
+  font-size: 2em;
+  padding: 0;
+  margin: 5px;
 
-:hover {
-  font-weight: bold;
-}
-
-`
+  :hover {
+    font-weight: bold;
+  }
+`;
 
 export default Button;
