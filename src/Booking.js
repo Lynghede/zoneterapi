@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
 import { theme } from "./theme";
-import useOnClickOutside from "./hooks";
 
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";

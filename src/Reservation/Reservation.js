@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { BrowserRouter as Router, useHistory } from "react-router-dom";
+
 import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "../firebase";
 import { Discount } from "@styled-icons/boxicons-solid";
@@ -98,6 +100,8 @@ function Reservation(props) {
   ]);
   const [error, setError] = useState("");
 
+  let history = useHistory();
+
   tempReservation.sort((a, b) => {
     const parsedA = parseDate(a.date);
     const parsedB = parseDate(b.date);
@@ -163,6 +167,7 @@ function Reservation(props) {
       await tempReservation.forEach((reservation) =>
         bookReservation.add(reservation)
       );
+      history.push("/confirmed", { tempReservation });
     } catch (error) {
       const body = await error.response.text();
       setError(new Error(body));
@@ -174,7 +179,6 @@ function Reservation(props) {
 
   function handleClick() {
     addReservation();
-    setReserved(true);
   }
 
   async function addTempReservation() {
@@ -271,91 +275,84 @@ function Reservation(props) {
   return (
     <WrapperMakeReservation>
       <div>
-        {console.log(yourReservation)}
-        {isReserved ? (
-          <ConfirmedReservation yourReservation={yourReservation}>
-            {console.log(yourReservation)}
-          </ConfirmedReservation>
-        ) : (
-          <div>
-            <Header>Make Reservation</Header>
-            <Seperator />
-            {error && <p style={{ color: "red" }}>{error}</p>}
+        <div>
+          <Header>Make Reservation</Header>
+          <Seperator />
+          {error && <p style={{ color: "red" }}>{error}</p>}
 
-            <MakeReservation>
-              <div>
-                {currentQuantity() === 0 ? (
-                  <p>Nu mangler du blot at confirm dine bookings</p>
-                ) : (
-                  <p>Vælg {currentQuantity()} tider</p>
-                )}
-
-                <Label>Name</Label>
-                <Input
-                  type="text"
-                  value={name}
-                  placeholder="Name"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-                <Label>Date</Label>
-                <InputDate
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                />
-                <Label>Time</Label>
-                <Select
-                  type="time"
-                  value={{ label: time, value: time }}
-                  options={timeSlotOptions}
-                  onChange={(option) => setTime(option.value)}
-                  styles={ColorStyles}
-                ></Select>
-              </div>{" "}
-            </MakeReservation>
-            <Wrapper>
-              {currentQuantity() === 0 ? (
-                <Button onClick={handleClick}>Reserver</Button>
-              ) : (
-                <Button onClick={addTempReservation}>
-                  Tilføj {currentQuantity()} mere
-                </Button>
-              )}
-            </Wrapper>
+          <MakeReservation>
             <div>
-              <Wrapper>
-                <FlashyLabel>
-                  <StyledMoneyBillAlt />
-                  Total: {totalPrice()}
-                </FlashyLabel>
-              </Wrapper>
-              <Wrapper>
-                <FlashyLabel>
-                  <StyledDiscount />
-                  Discount: {totalDiscount()}
-                </FlashyLabel>
-              </Wrapper>{" "}
-            </div>
-            <ReservationContainer>
-              {tempFilteredReservations.map((reservation, i) => (
-                <div>
-                  <ReservationTab>
-                    <ol>Date: {reservation.date}</ol>
-                    <ol>Time: {reservation.time}</ol>
-                    <ol>Name: {reservation.name}</ol>
-                    <Wrapper>
-                      <Button onClick={() => removeTempReservation(i)}>
-                        Remove
-                      </Button>
-                    </Wrapper>
-                  </ReservationTab>
-                </div>
-              ))}
-            </ReservationContainer>
+              {currentQuantity() === 0 ? (
+                <p>Nu mangler du blot at confirm dine bookings</p>
+              ) : (
+                <p>Vælg {currentQuantity()} tider</p>
+              )}
+
+              <Label>Name</Label>
+              <Input
+                type="text"
+                value={name}
+                placeholder="Name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+              <Label>Date</Label>
+              <InputDate
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+              <Label>Time</Label>
+              <Select
+                type="time"
+                value={{ label: time, value: time }}
+                options={timeSlotOptions}
+                onChange={(option) => setTime(option.value)}
+                styles={ColorStyles}
+              ></Select>
+            </div>{" "}
+          </MakeReservation>
+          <Wrapper>
+            {currentQuantity() === 0 ? (
+              <Button onClick={handleClick}>Reserver</Button>
+            ) : (
+              <Button onClick={addTempReservation}>
+                Tilføj {currentQuantity()} mere
+              </Button>
+            )}
+          </Wrapper>
+          <div>
+            <Wrapper>
+              <FlashyLabel>
+                <StyledMoneyBillAlt />
+                Total: {totalPrice()}
+              </FlashyLabel>
+            </Wrapper>
+            <Wrapper>
+              <FlashyLabel>
+                <StyledDiscount />
+                Discount: {totalDiscount()}
+              </FlashyLabel>
+            </Wrapper>{" "}
           </div>
-        )}
+          <ReservationContainer>
+            {tempFilteredReservations.map((reservation, i) => (
+              <div>
+                <ReservationTab>
+                  <ol>Date: {reservation.date}</ol>
+                  <ol>Time: {reservation.time}</ol>
+                  <ol>Name: {reservation.name}</ol>
+                  <Wrapper>
+                    <Button onClick={() => removeTempReservation(i)}>
+                      Remove
+                    </Button>
+                  </Wrapper>
+                </ReservationTab>
+              </div>
+            ))}
+          </ReservationContainer>
+        </div>
       </div>
     </WrapperMakeReservation>
   );
