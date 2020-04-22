@@ -130,7 +130,9 @@ function ContactPage() {
           {status === "SUCCESS" ? (
             <p>Thanks!</p>
           ) : (
-            <LargerButton>Submit</LargerButton>
+            <Wrapper>
+              <LargerButton>Submit</LargerButton>
+            </Wrapper>
           )}
           {status === "ERROR" && <p color="red">Ooops! Der skete en fejl.</p>}
           {/* {error && <p style={{ color: "red" }}>{error}</p>} */}

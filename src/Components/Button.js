@@ -27,6 +27,10 @@ const Button = styled.button`
 export const LargerButton = styled(Button)`
   width: 100%;
   height: 30px;
+
+  @media screen and (min-width: ${({ theme }) => theme.pc}) {
+    width: 50%;
+  }
 `;
 
 export const BookingButton = styled(Button)`
@@ -38,6 +42,10 @@ export const BookingButton = styled(Button)`
 
   :hover {
     font-weight: bold;
+  }
+
+  &[disabled] {
+    opacity: 20%;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.pc}) {

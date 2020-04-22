@@ -8,9 +8,16 @@ import Header from "../Components/Header";
 import Table from "../Components/Table/Table.styled";
 import Wrapper from "../Components/Wrapper";
 import { useLocation } from "react-router-dom";
+import Progress, { Filler } from "../Components/ProgressBar/Progress.styled";
+import Tick, {
+  TickNegative,
+  TickConfirmed,
+} from "../Components/SVG/Tick.styled";
 
 function ConfirmedReservation(props) {
   const location = useLocation();
+
+  let percentage = 100;
 
   return (
     <>
@@ -18,6 +25,14 @@ function ConfirmedReservation(props) {
       <div>
         <Header>Bekræftigelse</Header>
         <Seperator />
+        <Wrapper>
+          <Progress>
+            {percentage >= 33 ? <TickConfirmed /> : <TickNegative />}
+            {percentage >= 66 ? <TickConfirmed /> : <TickNegative />}
+            {percentage >= 100 ? <TickConfirmed /> : <TickNegative />}
+            <Filler width={percentage}></Filler>
+          </Progress>
+        </Wrapper>
         <h2>Reservationer</h2>
         <Wrapper>
           {location.state ? (

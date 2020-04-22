@@ -84,6 +84,8 @@ function Reservation(props) {
     },
   };
 
+  // props.myCallBack(tempReservation);
+
   const removeTempReservation = (i) => {
     let newArray = [...tempReservation];
     newArray.splice(i, 1);
@@ -197,12 +199,13 @@ function Reservation(props) {
 
     try {
       await bookTempReservation.add(reservationData);
-      // props.onComplete();
     } catch (error) {
       console.log(error);
       const body = await error.response.text();
       setError(new Error(body));
     } finally {
+      //percentageComplete();
+      props.setNumDone(tempReservation.length + 1);
       setTime("");
     }
   }
@@ -264,11 +267,16 @@ function Reservation(props) {
     return quantity;
   }
 
+  // function percentageComplete() {
+  //   let missingQuantity = props.quantity - tempReservation.length;
+  //   props.setPercentage(33 + 33 / missingQuantity);
+  // }
+
   return (
     <WrapperMakeReservation>
       <div>
         <div>
-          <Header>Make Reservation</Header>
+          <h2>Make Reservation</h2>
           <Seperator />
           {error && <p style={{ color: "red" }}>{error}</p>}
 
