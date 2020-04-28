@@ -44,18 +44,18 @@ h4{
 }
 
 p {
-    text-align:left;
+    text-align:center;
     margin: 10px 0px 10px 0px;
 
 }
 
 article {
-    text-align:left;
+    text-align:center;
     margin: 10px 0px 10px 0px;
 }
 
 li {
-    text-align:left;
+    text-align:center;
 }
 
 
@@ -69,6 +69,18 @@ body {
 
 svg {
     fill: currentColor;
+}
+
+b {
+    color: black;
+}
+
+text {
+    color: black;
+}
+
+t {
+    color: black;
 }
 
 /* store skærme */

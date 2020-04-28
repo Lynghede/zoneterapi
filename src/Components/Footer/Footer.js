@@ -8,6 +8,8 @@ import FacebookIcon from "../SVG/Facebook.styled";
 const Copyright = Styled.p`
 opacity: 30%;
 font-size: 0.5em;
+
+
 `;
 
 const Footer = () => {
@@ -16,6 +18,12 @@ const Footer = () => {
       <StyledItem1>
         <Home></Home>
       </StyledItem1>
+
+      <a href="/booking">
+        <span role="img" aria-label="Booking"></span>
+        Booking
+      </a>
+
       <a href="/priser">
         <span role="img" aria-label="Produkter"></span>
         Priser

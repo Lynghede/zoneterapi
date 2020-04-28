@@ -17,11 +17,12 @@ export const Display1 = styled.div`
     rgba(113, 204, 224, 1) 0%,
     rgba(0, 72, 105, 1) 100%
   );
+  color: black;
 
   width: 130px;
   height: 130px;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   font-size: 1em;
   margin: 5%;
 
