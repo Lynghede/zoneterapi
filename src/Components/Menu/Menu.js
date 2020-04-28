@@ -1,5 +1,6 @@
 import React from "react";
 import StyledMenu from "./Menu.styled";
+import PriceTag from "../SVG/Price.styled";
 
 const Menu = ({ open }) => {
   return (
@@ -23,9 +24,11 @@ const Menu = ({ open }) => {
         Priser
       </a>
       <a href="/zoneterapi">
-                <span role="img" aria-label="Zoneterapi">&#x1F463; </span>
-                Zoneterapi
-            </a>
+        <span role="img" aria-label="Zoneterapi">
+          &#x1F463;{" "}
+        </span>
+        Zoneterapi
+      </a>
       <a href="/about">
         <span role="img" aria-label="Om mig">
           &#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;

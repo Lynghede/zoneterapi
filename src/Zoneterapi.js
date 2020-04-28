@@ -3,6 +3,7 @@ import React from "react";
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
+import MassageIcon from "./Components/SVG/Massage.styled";
 
 function Zoneterapi() {
   return (
@@ -30,6 +31,7 @@ function Zoneterapi() {
         </article>
       </div>
       <div>
+        <MassageIcon />
         <h2>behandling</h2>
         <Seperator />
         <article>

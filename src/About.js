@@ -13,6 +13,9 @@ import Seperator from "./Components/Seperator";
 import Button, { BookingButton } from "./Components/Button";
 import Footer from "./Components/Footer/Footer";
 import Image from "./Components/IMG/Img";
+import TherapistIcon from "./Components/SVG/Therapist.styled";
+import MotivationIcon from "./Components/SVG/Motivation.styled";
+import EducationIcon from "./Components/SVG/Education.styled";
 
 function About() {
   return (
@@ -20,6 +23,7 @@ function About() {
       <NavBar title="Om mig"></NavBar>
       <div>
         <h1>Om behandleren</h1>
+        <TherapistIcon />
         <Seperator />
         <article>
           Lissi Lynghede, 56 år.
@@ -40,6 +44,7 @@ function About() {
         </Wrapper>
       </div>
       <div>
+        <MotivationIcon />
         <h2>Motivation</h2>
         <Seperator />
 
@@ -127,6 +132,7 @@ function About() {
           <h3></h3>
         </article>
       </div>
+      <EducationIcon />
       <h2>Uddannelse</h2>
       <Seperator />
       <article>

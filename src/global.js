@@ -19,6 +19,7 @@ body {
     height: 100vh;
 }
 
+
 h1 {
     font-weight: 200px;
     font-size: 36px;
@@ -34,6 +35,12 @@ h2 {
 h3 {
     text-transform: uppercase;
     text-align: center;
+}
+
+h4{
+    text-transform: uppercase;
+    text-align: center;
+    font-style: italic;
 }
 
 p {
@@ -52,14 +59,33 @@ li {
 }
 
 
+body {
+    --grid-columns: 1fr 1fr;
+    ---grid-columns: 1fr 1fr;
+    ---grid-rows: 1fr;
+    
+    --cell-size: 50%;
+}
 
+svg {
+    fill: currentColor;
+}
 
-
+/* store skærme */
 @media screen and (min-width: ${({ theme }) => theme.tablet}) {
     body {
-        
+        --cell-size: 33%;
         margin-left: 100px;
         margin-right: 100px;
     }
+
+@media screen and (min-width: ${({ theme }) => theme.pc}) {
+    body{
+        --cell-size: auto;
+        --grid-columns: 1fr 1fr 1fr 1fr;
+        ---grid-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+}
 
 `;

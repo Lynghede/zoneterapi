@@ -8,10 +8,10 @@ import Button from "./Components/Button";
 import Input, { InputDate } from "./Components/Input";
 import Select, { ColorStyles, monthStyle } from "./Components/Select";
 import ReservationTab, {
-  ReservationContainer
+  ReservationContainer,
 } from "./Components/ReservationTab";
 import MakeReservation, {
-  WrapperMakeReservation
+  WrapperMakeReservation,
 } from "./Components/MakeReservation";
 import Label from "./Components/Label";
 import Header from "./Components/Header";
@@ -60,7 +60,7 @@ const resolveMonthOptions = [
   { value: 8, label: "September" },
   { value: 9, label: "Oktober" },
   { value: 10, label: "November" },
-  { value: 11, label: "December" }
+  { value: 11, label: "December" },
 ];
 
 function parseDate(date) {
@@ -71,9 +71,9 @@ function App() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [price, setPrice] = useState(500);
+  const [price, setPrice] = useState(425);
   const [bookingMonthFilter, setBookingMonthFilter] = useState([
-    monthOptions[0]
+    monthOptions[0],
   ]);
   const [resolveMonthFilter, setResolveMonthFilter] = useState([]);
   const [users, userOperations] = useCollection("Users");
@@ -96,22 +96,22 @@ function App() {
     }
   });
 
-  const filteredReservations = reservations.filter(reservation => {
+  const filteredReservations = reservations.filter((reservation) => {
     let parsedMonth = parse(reservation.date, "yyyy-MM-dd", new Date());
     parsedMonth = getMonth(parsedMonth);
     if (bookingMonthFilter === null || bookingMonthFilter.length === 0)
       return true;
-    return bookingMonthFilter.some(bookingMonth => {
+    return bookingMonthFilter.some((bookingMonth) => {
       if (parsedMonth === bookingMonth.value) return true;
     });
   });
 
-  const filteredResolved = resolved.filter(resolve => {
+  const filteredResolved = resolved.filter((resolve) => {
     let parsedMonth = parse(resolve.date, "yyyy-MM-dd", new Date());
     parsedMonth = getMonth(parsedMonth);
     if (resolveMonthFilter === null || resolveMonthFilter.length === 0)
       return true;
-    return resolveMonthFilter.some(bookingMonth => {
+    return resolveMonthFilter.some((bookingMonth) => {
       if (parsedMonth === bookingMonth.value) return true;
     });
   });
@@ -178,7 +178,7 @@ function App() {
       date: date,
       time: time,
       name: name,
-      price: price
+      price: price,
     };
 
     setError(null);
@@ -209,7 +209,7 @@ function App() {
     bookReservation.delete(id);
     resolveReservation.add({
       session: origReservation.time,
-      ...origReservation
+      ...origReservation,
     });
   }
 
@@ -245,7 +245,7 @@ function App() {
             ></Select>
           </div>
           <ReservationContainer>
-            {filteredResolved.map(resolve => (
+            {filteredResolved.map((resolve) => (
               <div>
                 <ReservationTab>
                   <h1>Completed</h1>
@@ -279,7 +279,7 @@ function App() {
           </div>
           <ReservationContainer>
             {" "}
-            {filteredReservations.map(reservation => (
+            {filteredReservations.map((reservation) => (
               <div>
                 <ReservationTab>
                   <h1>Reservation</h1>
@@ -310,7 +310,7 @@ function App() {
                 type="text"
                 value={name}
                 placeholder="Name"
-                onChange={e => {
+                onChange={(e) => {
                   setName(e.target.value);
                 }}
               />
@@ -318,14 +318,14 @@ function App() {
               <InputDate
                 type="date"
                 value={date}
-                onChange={e => setDate(e.target.value)}
+                onChange={(e) => setDate(e.target.value)}
               />
               <Label>Time</Label>
               <Select
                 type="time"
                 value={{ label: time, value: time }}
                 options={timeSlotOptions}
-                onChange={option => setTime(option.value)}
+                onChange={(option) => setTime(option.value)}
                 styles={ColorStyles}
 
                 // color={isFocused ? "black" : "white"}

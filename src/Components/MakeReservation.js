@@ -4,7 +4,7 @@ import device from "../Device";
 
 const MakeReservation = styled.div`
   display: flex;
-  
+
   justify-content: center;
   // height: 100%;
   width: 320px;
@@ -20,6 +20,7 @@ const MakeReservation = styled.div`
     border-style: solid;
   }
 `;
+
 export const WrapperMakeReservation = styled.div`
   display: grid;
 

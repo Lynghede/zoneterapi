@@ -6,6 +6,7 @@ import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
 import Button, { LargerButton } from "./Components/Button";
 import Footer from "./Components/Footer/Footer";
+import TherapistIcon from "./Components/SVG/Therapist.styled";
 
 function FrontPage() {
   let history = useHistory();
@@ -33,6 +34,7 @@ function FrontPage() {
         <Seperator />
       </div>
       <div>
+        <TherapistIcon />
         <h2>Behandleren</h2>
         <Seperator />
         <article>

@@ -6,8 +6,6 @@ import Styled from "styled-components";
 export const TickMofo = Styled(Tick)`
 height: 30px;
 width: 30px;
-
-
 `;
 
 export const TickConfirmed = Styled(TickConfirm)`

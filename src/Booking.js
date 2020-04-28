@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
 
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
@@ -11,8 +12,16 @@ import Tick, {
   TickConfirmed,
 } from "./Components/SVG/Tick.styled";
 import Header from "./Components/Header";
+import PriceDisplay from "./Components/Display/PriceDisplay";
+import PriceTag from "./Components/SVG/Price.styled";
+import MassageIcon from "./Components/SVG/Massage.styled";
 
 import Reservation from "./Reservation/Reservation";
+
+const PriceContainer = styled.div`
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+`;
 
 function Booking() {
   const [quantity, setQuantity] = useState(-1);
@@ -32,6 +41,7 @@ function Booking() {
   return (
     <>
       <NavBar title="Booking"></NavBar>
+
       <Header>booking</Header>
       <Seperator />
       <Wrapper>
@@ -55,6 +65,7 @@ function Booking() {
       )}
 
       <div>
+        <MassageIcon />
         <h2>behandlinger</h2>
         <Seperator />
         <div>
@@ -93,18 +104,32 @@ function Booking() {
         </div>
       </div>
       <div>
-        <h2>Priser</h2>
+        <PriceTag style={{ marginTop: "10px" }} />
+        <h2 style={{ marginTop: "0px" }}>Priser</h2>
         <Seperator />
         <p>
           En behandling må påregnes at vare 60 min, heraf min. 45 minutters
           zoneterapi.
         </p>
-        <ul>
-          <li>1 behandling - 425 kr</li>
-          <li>3 behandlinger - 1.125 kr (375 kr/pr)</li>
-          <li>5 behandlinger - 1.800 kr (360 kr/pr)</li>
-          <li>10 behandlinger - 3.400 kr (340 kr/pr)</li>
-        </ul>
+        <PriceContainer>
+          <PriceDisplay treatment="1 Behandling" price="425 kr"></PriceDisplay>
+          <PriceDisplay
+            treatment="3 Behandlinger"
+            price="1.125 kr"
+            pricePr="(375 kr/pr)"
+          ></PriceDisplay>
+          <PriceDisplay
+            treatment="5 Behandlinger"
+            price="1.800 kr"
+            pricePr="(360 kr/pr)"
+          ></PriceDisplay>
+          <PriceDisplay
+            treatment="10 Behandlinger"
+            price="3.400 kr"
+            pricePr="(340 kr/pr)"
+          ></PriceDisplay>
+        </PriceContainer>
+
         <p>
           Den første behandling tager ca. 5 kvarter, grundet en for samtale, for
           at afklare de gener og udfordringer du kommer med og for at tilpasse

@@ -10,6 +10,7 @@ import Button, { BookingButton, LargerButton } from "./Components/Button";
 import Input from "./Components/Form/Input.styled";
 import Label from "./Components/Form/Label.styled";
 import TextArea from "./Components/Form/TextArea.styled";
+import EmailIcon from "./Components/SVG/Email.styled";
 
 function ContactPage() {
   // const [name, setName] = useState("");
@@ -100,6 +101,7 @@ function ContactPage() {
         onSubmit={submitForm}
       >
         <div>
+          <EmailIcon />
           <h1>Kontakt</h1>
           <Seperator />
           <p>

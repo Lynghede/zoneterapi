@@ -278,10 +278,11 @@ function Reservation(props) {
         <div>
           <h2>Make Reservation</h2>
           <Seperator />
-          {error && <p style={{ color: "red" }}>{error}</p>}
 
           <MakeReservation>
+            {" "}
             <div>
+              {error && <p style={{ color: "red" }}>{error}</p>}
               {currentQuantity() === 0 ? (
                 <p>Nu mangler du blot at confirm dine bookings</p>
               ) : (
