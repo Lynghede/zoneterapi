@@ -12,8 +12,9 @@ export const Display = styled.div`
   justify-content: center;
   background: linear-gradient(
     180deg,
-    rgba(129, 65, 92, 1) 0%,
-    rgba(219, 112, 147, 1) 100%
+    rgba(237, 236, 244, 1) 0%,
+    rgba(113, 204, 224, 1) 0%,
+    rgba(0, 72, 105, 1) 100%
   );
   border-style: none !important;
   border-radius: 0px;

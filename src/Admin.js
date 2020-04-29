@@ -77,12 +77,6 @@ function parseDate(date) {
 }
 
 const StyledCalendar = `
- .DayPickerInput{
-   width: auto;
-  min-width: 19.2em
- }
-
-
  .DayPicker-Day.DayPicker-Day--outside:hover{
     background-color: transparent !important
  } 

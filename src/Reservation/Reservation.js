@@ -24,6 +24,9 @@ import Label, { FlashyLabel } from "../Components/Label";
 import Header from "../Components/Header";
 import Wrapper from "../Components/Wrapper";
 import Seperator from "../Components/Seperator";
+import DayPicker, { DateUtils } from "react-day-picker";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import format from "date-fns/format";
 
 import ConfirmedReservation from "./ConfirmedReservation";
 
@@ -68,6 +71,54 @@ switch (getMonth(new Date())) {
 }
 /* eslint-enable no-fallthrough */
 
+const StyledCalendar = `
+ .DayPickerInput{
+   width: auto;
+  min-width: 19.2em
+ }
+
+
+ .DayPicker-Day.DayPicker-Day--outside:hover{
+    background-color: transparent !important
+ } 
+
+ .DayPicker-Day.DayPicker-Day--disabled:hover {
+      background-color: transparent !important
+  }
+  .DayPicker-Day:hover {
+      background-color: palevioletred !important;
+  }
+
+  .DayPicker-Day.DayPicker-Day--today{
+    color: #3b95b0;
+  }
+ 
+  .DayPickerInput-Overlay{
+      background: #0d0c1d;
+  }
+
+  .DayPicker-Day--disabled{
+    
+    opacity: 30%
+  }
+  .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+    background-color: #f0f8ff !important;
+    color: #4a90e2;
+  }
+  .Selectable .DayPicker-Day {
+    border-radius: 0 !important;
+  }
+  .Selectable .DayPicker-Day--start {
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+  }
+  .Selectable .DayPicker-Day--end {
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
+  }
+  
+  `;
+
 function parseDate(date) {
   return parse(date, "yyyy-MM-dd", new Date());
 }
@@ -77,12 +128,33 @@ function Reservation(props) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [price, setPrice] = useState(425);
+  const [selectedDay, setSelectedDay] = useState(getIntialState);
   const [tempReservation, setTempReservation] = useState([]);
   const bookTempReservation = {
     add(newReservation) {
       setTempReservation([...tempReservation, newReservation]);
     },
   };
+
+  function getIntialState() {
+    return {
+      from: undefined,
+      to: undefined,
+    };
+  }
+
+  function handleDayClick(day, { selected, disabled }) {
+    if (disabled) {
+      return;
+    }
+    // if (selected) {
+    //   setSelectedDay(null);
+    //   return;
+    // }
+    // setSelectedDay(day);
+    const range = DateUtils.addDayToRange(day, selectedDay);
+    setSelectedDay(range);
+  }
 
   // props.myCallBack(tempReservation);
 
@@ -266,6 +338,14 @@ function Reservation(props) {
     let quantity = props.quantity - tempReservation.length;
     return quantity;
   }
+  const before = { before: new Date() };
+  const daysOfWeek = { daysOfWeek: [0] };
+
+  const dayPickProps = {
+    selectedDays: selectedDay,
+    disabledDays: [before, daysOfWeek],
+    StyledCalendar,
+  };
 
   // function percentageComplete() {
   //   let missingQuantity = props.quantity - tempReservation.length;
@@ -299,11 +379,20 @@ function Reservation(props) {
                 }}
               />
               <Label>Date</Label>
-              <InputDate
+              <style>{StyledCalendar}</style>
+              <DayPickerInput
+                placeholder=""
+                selectedDay={selectedDay}
+                dayPickerProps={dayPickProps}
+                type="date"
+                value={date}
+                onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
+              />
+              {/* <InputDate
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-              />
+              /> */}
               <Label>Time</Label>
               <Select
                 type="time"
