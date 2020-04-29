@@ -77,6 +77,11 @@ function parseDate(date) {
 }
 
 const StyledCalendar = `
+ .DayPickerInput{
+   width: auto;
+  min-width: 19.2em
+ }
+
 
  .DayPicker-Day.DayPicker-Day--outside:hover{
     background-color: transparent !important
@@ -339,31 +344,37 @@ function Admin() {
   return (
     <Authenticate>
       <NavBar title="Admin" />
-      <Wrapper>
-        {from &&
-          to &&
-          `Selected from ${from.toLocaleDateString()} to
-                ${to.toLocaleDateString()}`}{" "}
-      </Wrapper>
-      <Wrapper>
-        <style>{StyledCalendar}</style>
-
-        <DayPicker
-          className="Selectable"
-          modifiers={modifiers}
-          showWeekNumbers
-          onDayClick={handleDayClick}
-          selectedDays={[from, { from, to }]}
-          disabledDays={[before, daysOfWeek, ...blockDays]}
-        ></DayPicker>
-      </Wrapper>
-
-      <Wrapper>
-        <Button onClick={handleClickBlockDays}>Block dates</Button>
-      </Wrapper>
 
       <div>
         <Header>Admin</Header>
+        <div>
+          <h2>Bloker dage</h2>
+          <Border>
+            <Wrapper>
+              {from &&
+                to &&
+                `Selected from ${from.toLocaleDateString()} to
+                ${to.toLocaleDateString()}`}{" "}
+            </Wrapper>
+            <Wrapper>
+              <style>{StyledCalendar}</style>
+
+              <DayPicker
+                className="Selectable"
+                modifiers={modifiers}
+                showWeekNumbers
+                onDayClick={handleDayClick}
+                selectedDays={[from, { from, to }]}
+                disabledDays={[before, daysOfWeek, ...blockDays]}
+              ></DayPicker>
+            </Wrapper>
+
+            <Wrapper>
+              <Button onClick={handleClickBlockDays}>Block dates</Button>
+            </Wrapper>
+          </Border>
+        </div>
+
         <h2>Resolved Reservations</h2>
         <Border>
           <Wrapper>
@@ -453,18 +464,15 @@ function Admin() {
                   setName(e.target.value);
                 }}
               />
-              <Label>Date</Label>
-              <Wrapper>
-                {" "}
-                <style>{StyledCalendar}</style>
-                <DayPickerInput
-                  selectedDay={selectedDay}
-                  dayPickerProps={dayPickProps}
-                  type="date"
-                  value={date}
-                  onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
-                />
-              </Wrapper>
+              <Label>Date</Label> <style>{StyledCalendar}</style>
+              <DayPickerInput
+                placeholder=""
+                selectedDay={selectedDay}
+                dayPickerProps={dayPickProps}
+                type="date"
+                value={date}
+                onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
+              />
               {/* <InputDate
                 type="date"
                 value={date}
