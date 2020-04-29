@@ -107,10 +107,10 @@ function Booking() {
         <PriceTag style={{ marginTop: "10px" }} />
         <h2 style={{ marginTop: "0px" }}>Priser</h2>
         <Seperator />
-        <p>
+        <article>
           En behandling må påregnes at vare 60 min, heraf min. 45 minutters
           zoneterapi.
-        </p>
+        </article>
         <PriceContainer>
           <PriceDisplay treatment="1 Behandling" price="425 kr"></PriceDisplay>
           <PriceDisplay
@@ -130,11 +130,11 @@ function Booking() {
           ></PriceDisplay>
         </PriceContainer>
 
-        <p>
+        <article>
           Den første behandling tager ca. 5 kvarter, grundet en for samtale, for
           at afklare de gener og udfordringer du kommer med og for at tilpasse
           behandlingen mod den ønskede virkning.
-        </p>
+        </article>
       </div>
       <Seperator />
     </>
