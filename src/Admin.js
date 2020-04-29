@@ -2,6 +2,12 @@ import React, { useState } from "react";
 
 import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "./firebase";
+import DayPicker, { DateUtils } from "react-day-picker";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import format from "date-fns/format";
+import styled from "styled-components";
+
+import "react-day-picker/lib/style.css";
 
 // Components
 import Button from "./Components/Button";
@@ -19,6 +25,7 @@ import Border from "./Components/Border";
 import Page from "./Page";
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
+import Authenticate from "./Components/Authenticate";
 
 const monthOptions = [];
 /* eslint-disable no-fallthrough */
@@ -69,6 +76,49 @@ function parseDate(date) {
   return parse(date, "yyyy-MM-dd", new Date());
 }
 
+const StyledCalendar = `
+
+ .DayPicker-Day.DayPicker-Day--outside:hover{
+    background-color: transparent !important
+ } 
+
+ .DayPicker-Day.DayPicker-Day--disabled:hover {
+      background-color: transparent !important
+  }
+  .DayPicker-Day:hover {
+      background-color: palevioletred !important;
+  }
+
+  .DayPicker-Day.DayPicker-Day--today{
+    color: #3b95b0;
+  }
+ 
+  .DayPickerInput-Overlay{
+      background: #0d0c1d;
+  }
+
+  .DayPicker-Day--disabled{
+    
+    opacity: 30%
+  }
+  .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+    background-color: #f0f8ff !important;
+    color: #4a90e2;
+  }
+  .Selectable .DayPicker-Day {
+    border-radius: 0 !important;
+  }
+  .Selectable .DayPicker-Day--start {
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+  }
+  .Selectable .DayPicker-Day--end {
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
+  }
+  
+  `;
+
 function Admin() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -78,10 +128,51 @@ function Admin() {
     monthOptions[0],
   ]);
   const [resolveMonthFilter, setResolveMonthFilter] = useState([]);
-  const [users, userOperations] = useCollection("Users");
+  //const [users, userOperations] = useCollection("Users");
   const [reservations, bookReservation] = useCollection("Reservations");
   const [resolved, resolveReservation] = useCollection("ResolvedReservations");
   const [error, setError] = useState("");
+  const [selectedDay, setSelectedDay] = useState(getIntialState);
+  const [blockDaysRaw, setBlockDays] = useCollection("Blocked");
+
+  const blockDays = [];
+
+  for (let { from, to } of blockDaysRaw) {
+    blockDays.push({
+      from: parseDate(from),
+      to: parseDate(to),
+    });
+  }
+
+  function getIntialState() {
+    return {
+      from: undefined,
+      to: undefined,
+    };
+  }
+
+  function handleDayClick(day, { selected, disabled }) {
+    if (disabled) {
+      return;
+    }
+    // if (selected) {
+    //   setSelectedDay(null);
+    //   return;
+    // }
+    // setSelectedDay(day);
+    const range = DateUtils.addDayToRange(day, selectedDay);
+    setSelectedDay(range);
+  }
+
+  function handleClickBlockDays() {
+    const blockedFromTo = {
+      from: format(selectedDay.from, "yyyy-MM-dd"),
+      to: format(selectedDay.to, "yyyy-MM-dd"),
+    };
+
+    setBlockDays.add(blockedFromTo);
+    setSelectedDay(getIntialState);
+  }
 
   reservations.sort((a, b) => {
     const parsedA = parseDate(a.date);
@@ -231,9 +322,45 @@ function Admin() {
     setResolveMonthFilter(selectedItems);
   }
 
+  // Blocked days
+  const before = { before: new Date() };
+  const daysOfWeek = { daysOfWeek: [0] };
+
+  const { from, to } = selectedDay;
+  const modifiers = { start: from, end: to };
+
+  //DayInputOverlay - props from DayPicker
+  const dayPickProps = {
+    selectedDays: selectedDay,
+    disabledDays: [before, daysOfWeek, ...blockDays],
+    StyledCalendar,
+  };
+
   return (
-    <>
+    <Authenticate>
       <NavBar title="Admin" />
+      <Wrapper>
+        {from &&
+          to &&
+          `Selected from ${from.toLocaleDateString()} to
+                ${to.toLocaleDateString()}`}{" "}
+      </Wrapper>
+      <Wrapper>
+        <style>{StyledCalendar}</style>
+
+        <DayPicker
+          className="Selectable"
+          modifiers={modifiers}
+          showWeekNumbers
+          onDayClick={handleDayClick}
+          selectedDays={[from, { from, to }]}
+          disabledDays={[before, daysOfWeek, ...blockDays]}
+        ></DayPicker>
+      </Wrapper>
+
+      <Wrapper>
+        <Button onClick={handleClickBlockDays}>Block dates</Button>
+      </Wrapper>
 
       <div>
         <Header>Admin</Header>
@@ -327,11 +454,22 @@ function Admin() {
                 }}
               />
               <Label>Date</Label>
-              <InputDate
+              <Wrapper>
+                {" "}
+                <style>{StyledCalendar}</style>
+                <DayPickerInput
+                  selectedDay={selectedDay}
+                  dayPickerProps={dayPickProps}
+                  type="date"
+                  value={date}
+                  onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
+                />
+              </Wrapper>
+              {/* <InputDate
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-              />
+              /> */}
               <Label>Time</Label>
               <Select
                 type="time"
@@ -347,7 +485,7 @@ function Admin() {
           </MakeReservation>
         </div>
       </WrapperMakeReservation>
-    </>
+    </Authenticate>
   );
 }
 
