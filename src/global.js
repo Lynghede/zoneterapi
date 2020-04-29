@@ -98,6 +98,14 @@ t {
         ---grid-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 
+    li{
+        text-align: left;
+    }
+    article{
+        text-align: left;
+    }
+        
+
 }
 
 `;
