@@ -2,11 +2,15 @@ image: node:8.10.0
 
 pages:
   stage: deploy
+  cache:
+    paths:
+      - node_modules/
   script:
-    - yarn install
-    - yarn build
+    - npm install
+    - CI=false npm run build
     - rm -rf public
     - mv build public
+    - cp public/index.html public/404.html
   artifacts:
     paths:
       - public
