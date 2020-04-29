@@ -56,9 +56,9 @@ export default function Routes() {
               <Admin />
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </>
-      <Footer />
     </ThemeProvider>
   );
 }

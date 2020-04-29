@@ -4,6 +4,7 @@ import Home from "../Home/Home";
 import Styled from "styled-components";
 import Wrapper from "../Wrapper";
 import FacebookIcon from "../SVG/Facebook.styled";
+import { Link } from "react-router-dom";
 
 const Copyright = Styled.p`
 opacity: 30%;
@@ -19,29 +20,29 @@ const Footer = () => {
         <Home></Home>
       </StyledItem1>
 
-      <a href="/booking">
+      <Link to="/booking">
         <span role="img" aria-label="Booking"></span>
         Booking
-      </a>
+      </Link>
 
-      <a href="/priser">
+      <Link to="/priser">
         <span role="img" aria-label="Produkter"></span>
         Priser
-      </a>
-      <a href="/zoneterapi">
+      </Link>
+      <Link to="/zoneterapi">
         <span role="img" aria-label="Zoneterapi"></span>
         Zoneterapi
-      </a>
-      <a href="/about">
+      </Link>
+      <Link to="/about">
         <span role="img" aria-label="Om mig"></span>
         Om mig
-      </a>
+      </Link>
       <StyledItem1>
         {" "}
-        <a href="/contact">
+        <Link to="/contact">
           <span role="img" aria-label="Kontakt"></span>
           Kontakt
-        </a>
+        </Link>
       </StyledItem1>
       <Wrapper>
         {" "}
