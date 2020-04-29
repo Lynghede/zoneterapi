@@ -1,21 +1,14 @@
 import React, { useState, useRef } from "react";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./global";
-import { theme } from "./theme";
-import useOnClickOutside from "./hooks";
 
-import Burger from "./Components/Burger/Burger";
-import Menu from "./Components/Menu/Menu";
-import Home from "./Components/Home/Home";
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
-import Button, { BookingButton } from "./Components/Button";
-import Footer from "./Components/Footer/Footer";
+
 import Image from "./Components/IMG/Img";
 import TherapistIcon from "./Components/SVG/Therapist.styled";
 import MotivationIcon from "./Components/SVG/Motivation.styled";
 import EducationIcon from "./Components/SVG/Education.styled";
+import Lissi from "./Components/IMG/Lissi.jpg";
 
 function About() {
   return (
@@ -40,7 +33,7 @@ function About() {
           <br></br>
         </article>
         <Wrapper>
-          <Image src="https://scontent-cph2-1.xx.fbcdn.net/v/t1.0-9/1619290_10202823778649795_9176068601466896719_n.jpg?_nc_cat=108&_nc_sid=09cbfe&_nc_ohc=u1TTeB94x-sAX9djIbe&_nc_ht=scontent-cph2-1.xx&oh=70e7220fd416a656f0a45d9b6947114c&oe=5E96739A" />
+          <Image src={Lissi} />
         </Wrapper>
       </div>
       <div>
