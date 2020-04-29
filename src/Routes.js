@@ -29,7 +29,7 @@ export default function Routes() {
       <>
         <GlobalStyles />
 
-        <Router>
+        <Router basename="/lyvner-mollen">
           <Switch>
             <Route exact path="/">
               <FrontPage />
