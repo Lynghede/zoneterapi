@@ -18,6 +18,7 @@ import Confirmed from "./Reservation/ConfirmedReservation";
 import Priser from "./Priser";
 import ContactPage from "./ContactPage";
 import Zoneterapi from "./Zoneterapi";
+import Admin from "./Admin";
 
 // Components
 import Footer from "./Components/Footer/Footer";
@@ -50,6 +51,9 @@ export default function Routes() {
             </Route>
             <Route path="/contact">
               <ContactPage />
+            </Route>
+            <Route path="/admin">
+              <Admin />
             </Route>
           </Switch>
         </Router>
