@@ -63,6 +63,7 @@ function Booking() {
             quantity={quantity}
             numDone={numDone}
             setNumDone={setNumDone}
+            
           />
         </div>
       )}
