@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+
 
 const styledMenu = styled.nav`
   display: flex;

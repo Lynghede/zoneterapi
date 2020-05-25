@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
@@ -122,7 +122,7 @@ function About() {
             <li>Senetensbehandling</li>
           </ul>
           Derudover har jeg læst MANGE bøger indenfor ovennævnte felter.
-          <h3></h3>
+          
         </article>
       </div>
       <EducationIcon />

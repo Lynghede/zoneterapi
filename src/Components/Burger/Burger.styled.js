@@ -42,6 +42,11 @@ const StyledBurger = styled.button`
       transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0deg)")};
     }
   }
+
+  @media screen and (min-width: ${({ theme }) => theme.tablet}){
+    right: 100px;
+    
+  }
 `;
 
 export default StyledBurger;

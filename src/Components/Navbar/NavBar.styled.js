@@ -33,6 +33,13 @@ const StyledNavBar = styled.nav`
     left: 10px;
     justify-content: space-around;
   }
+
+  @media screen and (min-width: ${({ theme }) => theme.tablet}){
+  svg {
+    left: 95px;
+  }
+  
+  }
 `;
 
 export default StyledNavBar;

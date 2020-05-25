@@ -27,4 +27,5 @@ export const StyledBurger = styled.button`
     position: relative;
     transform-origin: 1px;
   }
+
 `;

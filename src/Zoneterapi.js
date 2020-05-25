@@ -1,7 +1,7 @@
 import React from "react";
 
+// Components
 import NavBar from "./Components/Navbar/Navbar";
-import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
 import MassageIcon from "./Components/SVG/Massage.styled";
 

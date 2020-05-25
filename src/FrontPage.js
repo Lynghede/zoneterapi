@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
-import { BrowserRouter as Router, useHistory } from "react-router-dom";
+import React from "react";
+import { useHistory } from "react-router-dom";
 
+// Components
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
-import Button, { LargerButton } from "./Components/Button";
-import Footer from "./Components/Footer/Footer";
+import { LargerButton } from "./Components/Button";
 import TherapistIcon from "./Components/SVG/Therapist.styled";
 
 function FrontPage() {
@@ -67,13 +67,6 @@ function FrontPage() {
           .
         </article>
       </div>
-
-      {/* <div>
-          <div ref={node}>
-            <Burger open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen} />
-          </div>
-        </div> */}
       <Seperator />
     </>
   );

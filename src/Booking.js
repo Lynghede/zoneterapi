@@ -1,21 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
+// Components
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
-import Button, { BookingButton } from "./Components/Button";
-import Footer from "./Components/Footer/Footer";
+import  { BookingButton } from "./Components/Button";
 import Progress, { Filler } from "./Components/ProgressBar/Progress.styled";
-import Tick, {
+import Header from "./Components/Header";
+
+// SVG
+import  {
   TickNegative,
   TickConfirmed,
 } from "./Components/SVG/Tick.styled";
-import Header from "./Components/Header";
 import PriceDisplay from "./Components/Display/PriceDisplay";
 import PriceTag from "./Components/SVG/Price.styled";
 import MassageIcon from "./Components/SVG/Massage.styled";
 
+// Sites
 import Reservation from "./Reservation/Reservation";
 
 const PriceContainer = styled.div`

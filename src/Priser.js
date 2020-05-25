@@ -1,14 +1,9 @@
-import React, { useState, useRef } from "react";
-
+import React from "react";
 import styled from "styled-components";
-
-import useOnClickOutside from "./hooks";
-
+// Components
 import NavBar from "./Components/Navbar/Navbar";
-import Wrapper from "./Components/Wrapper";
-import MakeReservation, { Display } from "./Components/MakeReservation";
 import Seperator from "./Components/Seperator";
-import Button, { BookingButton } from "./Components/Button";
+// SVG
 import PriceDisplay from "./Components/Display/PriceDisplay";
 import DefaultDisplay from "./Components/Display/Display";
 import PriceIcon from "./Components/SVG/Price.styled";

@@ -1,6 +1,5 @@
 import React from "react";
 import StyledMenu from "./Menu.styled";
-import PriceTag from "../SVG/Price.styled";
 import { Link } from "react-router-dom";
 
 const Menu = ({ open }) => {

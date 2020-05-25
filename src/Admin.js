@@ -5,13 +5,13 @@ import { useCollection } from "./firebase";
 import DayPicker, { DateUtils } from "react-day-picker";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import format from "date-fns/format";
-import styled from "styled-components";
+
 
 import "react-day-picker/lib/style.css";
 
 // Components
 import Button from "./Components/Button";
-import Input, { InputDate } from "./Components/Input";
+import Input from "./Components/Input";
 import Select, { ColorStyles, monthStyle } from "./Components/Select";
 import ReservationTab, {
   ReservationContainer,
@@ -22,7 +22,6 @@ import MakeReservation, {
 import Label from "./Components/Label";
 import Header from "./Components/Header";
 import Border from "./Components/Border";
-import Page from "./Page";
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Authenticate from "./Components/Authenticate";
@@ -352,7 +351,7 @@ function Admin() {
             </Wrapper>
             <Wrapper>
               <style>{StyledCalendar}</style>
-
+               
               <DayPicker
                 className="Selectable"
                 modifiers={modifiers}

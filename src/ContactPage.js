@@ -1,35 +1,17 @@
-import React, { useState, useRef } from "react";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./global";
-import { theme } from "./theme";
+import React, { useState } from "react";
+
 
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
-import Button, { BookingButton, LargerButton } from "./Components/Button";
+import  {  LargerButton } from "./Components/Button";
 import Input from "./Components/Form/Input.styled";
 import Label from "./Components/Form/Label.styled";
 import TextArea from "./Components/Form/TextArea.styled";
 import EmailIcon from "./Components/SVG/Email.styled";
 
 function ContactPage() {
-  // const [name, setName] = useState("");
-  // const [phoneNumber, setPhoneNumber] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [message, setMessage] = useState("");
-
-  // const [error, setError] = useState("");
-  // const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
-  const [status, setStatus] = useState("");
-  //  const node = useRef();
-  // useOnClickOutside(node, () => setOpen(false));
-
-  // function clearFormSubmit() {
-  //   setName("");
-  //   setPhoneNumber("");
-  //   setEmail("");
-  //   setMessage("");
-  // }
+   const [status, setStatus] = useState("");
 
   function submitForm(ev) {
     ev.preventDefault();
@@ -49,48 +31,6 @@ function ContactPage() {
     };
     xhr.send(data);
   }
-
-  //     async function submitForm(e) {
-  //       e.preventDefault();
-  //       const sumbitData = {
-  //         name: name,
-  //         phoneNumber: phoneNumber,
-  //         email: email,
-  //         message: message
-  //       }
-
-  //     setError(null);
-  //     if (!name){
-  //       setError("Indtast navn");
-  //       return;
-  //     }
-  //     if (!phoneNumber){
-  //       setError("Indtast telefon nummer");
-  //       return;
-  //     }
-  //     if (!email){
-  //       setError("Indtast e-mail");
-  //       return;
-  //     }
-  //     if (!message){
-  //       setError("Hov! Du har ikke indtastet nogen besked, hvis det er svært at formulere, kan du ringe til en snak på 61609064");
-  //       return;
-  //     }
-
-  //     try {
-  //       // await sumbitData(); // ret til et eller andet her, så den ikke konstant loader.
-  //       // Tilføj, så den sender e-mail "mortenlynghede@hotmail.com"
-  //       setHasBeenSubmitted(true);
-  //       clearFormSubmit();
-  //     } catch (error) {
-  //       const body = await error.response.text();
-  //       setError(new Error(body));
-  //     } finally {
-  //       setError("Succes"); // Ret til noget andet
-  //       // clearFormSubmit();
-
-  //     }
-  // };
 
   return (
     <>
@@ -137,22 +77,6 @@ function ContactPage() {
             </Wrapper>
           )}
           {status === "ERROR" && <p color="red">Ooops! Der skete en fejl.</p>}
-          {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
-          {/* <Label>Navn</Label>
-          <Input type="name" value={name} onChange={setName}/>
-          <Label>Telefon</Label>
-          <Input type="phoneNumber" value={phoneNumber} onChange={setPhoneNumber}/>
-          <Label>E-mail</Label>
-          <Input type="email" value={email} onChange={setEmail}/>
-          <Label>Besked/Spørgsmål</Label>
-          <TextArea type="message" value={message} onChange={setMessage}/> */}
-
-          {/* <Wrapper>
-            <LargerButton  onClick={submitForm}>Send</LargerButton>
-            </Wrapper>
-            <div>
-              {hasBeenSubmitted ? (<Label>Jeg vil kontakte dig hurtigst muligt</Label>) : (<p></p>)}
-            </div> */}
         </div>
       </form>
       <Seperator />

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-
-import { BrowserRouter as Router, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "../firebase";
 import { Discount } from "@styled-icons/boxicons-solid";
-
 import { MoneyBillAlt } from "@styled-icons/fa-regular";
 import styled from "styled-components";
 
 // Components
-import Button, { BookingButton, LargerButton } from "../Components/Button";
-import Input, { InputDate } from "../Components/Input";
-import Select, { ColorStyles, monthStyle } from "../Components/Select";
-
+import Button from "../Components/Button";
+import Input from "../Components/Input";
+import Select, { ColorStyles} from "../Components/Select";
 import ReservationTab, {
   ReservationContainer,
 } from "../Components/ReservationTab";
@@ -21,14 +18,12 @@ import MakeReservation, {
   WrapperMakeReservation,
 } from "../Components/MakeReservation";
 import Label, { FlashyLabel } from "../Components/Label";
-import Header from "../Components/Header";
 import Wrapper from "../Components/Wrapper";
 import Seperator from "../Components/Seperator";
-import DayPicker, { DateUtils } from "react-day-picker";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import format from "date-fns/format";
 
-import ConfirmedReservation from "./ConfirmedReservation";
+
 
 const StyledDiscount = styled(Discount)`
   height: 1.2em;
@@ -129,6 +124,17 @@ function Reservation(props) {
   const [time, setTime] = useState("");
   const [price, setPrice] = useState(425);
   const [selectedDay, setSelectedDay] = useState(getIntialState);
+
+  const [blockDaysRaw, setBlockDays] = useCollection("Blocked");
+  const blockDays = [];
+  for (let { from, to } of blockDaysRaw) {
+    blockDays.push({
+      from: parseDate(from),
+      to: parseDate(to),
+    });
+  }
+
+
   const [tempReservation, setTempReservation] = useState([]);
   const bookTempReservation = {
     add(newReservation) {
@@ -143,25 +149,12 @@ function Reservation(props) {
     };
   }
 
-  function handleDayClick(day, { selected, disabled }) {
-    if (disabled) {
-      return;
-    }
-    // if (selected) {
-    //   setSelectedDay(null);
-    //   return;
-    // }
-    // setSelectedDay(day);
-    const range = DateUtils.addDayToRange(day, selectedDay);
-    setSelectedDay(range);
-  }
-
-  // props.myCallBack(tempReservation);
 
   const removeTempReservation = (i) => {
     let newArray = [...tempReservation];
     newArray.splice(i, 1);
     setTempReservation(newArray);
+    props.setNumDone(tempReservation.length - 1);
   };
 
   const [reservations, bookReservation] = useCollection("Reservations");
@@ -197,6 +190,7 @@ function Reservation(props) {
     }
   }
 
+  // Checks for valid dates and times, when the users is browsing through the options.
   function checkAvailability(date, time) {
     let d = 0;
     let y = 365;
@@ -232,6 +226,7 @@ function Reservation(props) {
       }
     }
   }
+
 
   async function addReservation() {
     try {
@@ -283,12 +278,13 @@ function Reservation(props) {
   }
 
   const tempFilteredReservations = tempReservation.filter((reservation) => {
-    let parsedMonth = parse(reservation.date, "yyyy-MM-dd", new Date());
-    parsedMonth = getMonth(parsedMonth);
+    // let parsedMonth = parse(reservation.date, "yyyy-MM-dd", new Date());
+    // parsedMonth = getMonth(parsedMonth);
     if (bookingMonthFilter === null || bookingMonthFilter.length === 0)
       return true;
-    return bookingMonthFilter.some((bookingMonth) => {
-      if (parsedMonth === bookingMonth.value) return true;
+    return bookingMonthFilter.some(() => {
+      //if (parsedMonth === bookingMonth.value)
+       return true;
     });
   });
 
@@ -341,16 +337,12 @@ function Reservation(props) {
   const before = { before: new Date() };
   const daysOfWeek = { daysOfWeek: [0] };
 
+
   const dayPickProps = {
     selectedDays: selectedDay,
-    disabledDays: [before, daysOfWeek],
+    disabledDays: [before, daysOfWeek, ...blockDays],
     StyledCalendar,
   };
-
-  // function percentageComplete() {
-  //   let missingQuantity = props.quantity - tempReservation.length;
-  //   props.setPercentage(33 + 33 / missingQuantity);
-  // }
 
   return (
     <WrapperMakeReservation>
@@ -385,14 +377,11 @@ function Reservation(props) {
                 selectedDay={selectedDay}
                 dayPickerProps={dayPickProps}
                 type="date"
+               
                 value={date}
                 onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
               />
-              {/* <InputDate
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              /> */}
+            
               <Label>Time</Label>
               <Select
                 type="time"
@@ -400,6 +389,7 @@ function Reservation(props) {
                 options={timeSlotOptions}
                 onChange={(option) => setTime(option.value)}
                 styles={ColorStyles}
+               
               ></Select>
             </div>{" "}
           </MakeReservation>

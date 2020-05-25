@@ -9,7 +9,7 @@ import Table from "../Components/Table/Table.styled";
 import Wrapper from "../Components/Wrapper";
 import { useLocation } from "react-router-dom";
 import Progress, { Filler } from "../Components/ProgressBar/Progress.styled";
-import Tick, {
+import  {
   TickNegative,
   TickConfirmed,
 } from "../Components/SVG/Tick.styled";
