@@ -342,6 +342,12 @@ function Reservation(props) {
     selectedDays: selectedDay,
     disabledDays: [before, daysOfWeek, ...blockDays],
     StyledCalendar,
+    
+  };
+
+  const inputProps = {
+    readOnly: true,
+     style: { width: "307px", borderRadius: "4px", borderWidth: "1px", borderStyle: "solid", height: "29px", padding: "0 8px 0 8px"},
   };
 
   return (
@@ -353,7 +359,7 @@ function Reservation(props) {
 
           <MakeReservation>
             {" "}
-            <div>
+            <div style={{display: "flex", flexDirection: "column"}}>
               {error && <p style={{ color: "red" }}>{error}</p>}
               {currentQuantity() === 0 ? (
                 <p>Nu mangler du blot at confirm dine bookings</p>
@@ -377,8 +383,11 @@ function Reservation(props) {
                 selectedDay={selectedDay}
                 dayPickerProps={dayPickProps}
                 type="date"
+                inputProps={inputProps} 
+                placeholder="Klik for at vælge en dato"
                
                 value={date}
+                
                 onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
               />
             

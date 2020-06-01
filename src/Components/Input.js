@@ -3,14 +3,14 @@ import styled from "styled-components";
 const Input = styled.input`
   display: flex;
   min-width: 19.2em;
-
+  height: 29px;
   border-radius: 4px;
   border-width: 1px;
   border-color: transparent;
   border-style: solid;
   padding: 2px 8px;
   box-shadow: "0 0 0 1px #2684FF";
-  height: 22px;
+  
 `;
 
 export const InputDate = styled(Input)`
