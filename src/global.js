@@ -42,12 +42,12 @@ h4{
     text-align: center;
     font-style: italic;
 }
-
+${"" /* 
 p {
     text-align:center;
     margin: 10px 0px 10px 0px;
 
-}
+} */}
 
 article {
     text-align:center;

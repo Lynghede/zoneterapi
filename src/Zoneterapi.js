@@ -1,35 +1,123 @@
 import React from "react";
-
+import { theme } from "./theme";
+import styled from "styled-components";
 // Components
 import NavBar from "./Components/Navbar/Navbar";
 import Seperator from "./Components/Seperator";
 import MassageIcon from "./Components/SVG/Massage.styled";
 
+// Wrappers
+import {
+  Page,
+  Container,
+  Block,
+  Content,
+  ImageWrapper,
+  GridContainer,
+  GridItem,
+} from "./Components/Wrapper";
+import InfoBox from "./Components/InfoBox/InfoBox";
+
+export const P = styled.p`
+  flex-direction: column;
+  margin-bottom: 0;
+  :first-child {
+    margin-top: 10px;
+  }
+`;
+
 function Zoneterapi() {
   return (
-    <>
+    <Page>
       <NavBar title="Zoneterapi"></NavBar>
-      <div>
-        <h1>zoneterapi</h1>
+      <Container>
+        <Block>
+          <h1>zoneterapi</h1>
+        </Block>
         <Seperator />
-        <article>
-          Vi mennesker er en sammensat organisme. Hvis noget ikke fungerer som
-          det skal, bliver der ubalance. Resultatet er sygdom, smerter, træthed
-          og utilpashed.
-          <br />
-          <br />
-          Zoneterapi hjælper til genoprettelse af balancen.
-          <br />
-          <br />
-          Under og på fødderne findes et fuldstændigt kort over hele
-          menneskekroppen. Hver del af kroppen har en zone på fødderne som
-          kaldes en reflekszone. Hvis der er ømhed i en reflekszone, hænger det
-          sammen med, at en del af kroppen ikke fungerer optimalt. Ved at
-          behandle de ømme reflekszoner med specielle trykkombinationer, kan
-          zoneterapeuten på virke organerne til en bedre funktion, og dermed
-          genoprette kroppens balance.
-        </article>
-      </div>
+        <Block>
+          <Content>
+            <div>
+              <article>
+                Vi mennesker er en sammensat organisme. Hvis noget ikke fungerer
+                som det skal, bliver der ubalance. Resultatet er sygdom,
+                smerter, træthed og utilpashed.
+                <br />
+                <br />
+                Zoneterapi hjælper til genoprettelse af balancen.
+                <br />
+                <br />
+                Under og på fødderne findes et fuldstændigt kort over hele
+                menneskekroppen. Hver del af kroppen har en zone på fødderne som
+                kaldes en reflekszone. Hvis der er ømhed i en reflekszone,
+                hænger det sammen med, at en del af kroppen ikke fungerer
+                optimalt. Ved at behandle de ømme reflekszoner med specielle
+                trykkombinationer, kan zoneterapeuten på virke organerne til en
+                bedre funktion, og dermed genoprette kroppens balance.
+              </article>
+            </div>
+          </Content>
+          <Content>
+            <ImageWrapper>
+              <img
+                style={{ width: "100%", height: "100%", maxWidth: "330px" }}
+                src={process.env.PUBLIC_URL + "/zoneterapi.png"}
+              ></img>
+            </ImageWrapper>
+          </Content>
+        </Block>
+      </Container>
+      <Block>
+        <Block>
+          <GridContainer>
+            <GridItem>
+              <InfoBox
+                color={theme.primaryTeal}
+                title="Automatically extract health datasets"
+                subtitle="Bigger datasets leads to more impactful research"
+              >
+                <P>
+                  The Nexus search engine standardizes processes for extracting
+                  health data from PACS, RIS, and EMR, allowing you to build
+                  datasets in days instead of months. Nexus runs as a service
+                  within a hospital’s computer network from where it find and
+                  extract data based on user queries.
+                  {/* Button: See examples -> */}
+                </P>
+              </InfoBox>
+            </GridItem>
+            <GridItem>
+              <InfoBox
+                color={theme.primaryBox}
+                title="Garuantee patients' privacy"
+                subtitle="Become GDPR compliant"
+              >
+                <P>
+                  Built-in anonymization and pseudo-anonymization algorithms
+                  automatically remove patients' personally identifiable
+                  information and generate audit trails. This ensures that you
+                  comply your with data processing agreements, ethical
+                  approvals, and GDPR.
+                </P>
+              </InfoBox>
+            </GridItem>
+            <GridItem>
+              <InfoBox
+                color={theme.primaryBlue}
+                title="Focus on research and development"
+                subtitle="Let Nexus speed up the slow, boring work."
+              >
+                <P>
+                  Automatic extraction and anonymization enables you to scale up
+                  your research project, train AI algorithms on larger datasets,
+                  and securely run AI in clinical practice.
+                  <br />
+                </P>
+              </InfoBox>
+            </GridItem>
+          </GridContainer>
+        </Block>
+      </Block>
       <div>
         <MassageIcon />
         <h2>behandling</h2>
@@ -92,7 +180,7 @@ function Zoneterapi() {
         </article>
       </div>
       <Seperator />
-    </>
+    </Page>
   );
 }
 export default Zoneterapi;
