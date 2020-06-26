@@ -1,26 +1,35 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  background: linear-gradient(
-    180deg,
-    rgba(129, 65, 92, 1) 0%,
-    rgba(219, 112, 147, 1) 100%
-  );
+  background: ${({ theme }) => theme.primaryColor};
   border-radius: 3px;
   border-width: 0;
   border-color: palevioletred;
   border-style: solid;
   color: white;
   margin: 2px;
-  // padding: 0.25em 1em;
+  min-height: 2em;
+  cursor: pointer;
+  font-size: 1.5em;
 
   text-transform: uppercase;
-  width: 200px;
-  height: 30px;
+  //width: 200px;
+  height: 2em;
 
   :hover {
     border-width: 2px;
     background: transparent;
+    font-weight: bold;
+  }
+`;
+
+export const TransparentButton = styled(Button)`
+  background: transparent;
+  border-width: 0.1em;
+
+  :hover {
+    border-width: 0;
+    background: ${({ theme }) => theme.primaryColor};
   }
 `;
 

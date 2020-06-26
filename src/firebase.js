@@ -13,7 +13,7 @@ const firebaseConfig = {
   projectId: "react-firebase-example-3761b",
   storageBucket: "react-firebase-example-3761b.appspot.com",
   messagingSenderId: "975599794967",
-  appId: "1:975599794967:web:f837da0c0057b296bd5552"
+  appId: "1:975599794967:web:f837da0c0057b296bd5552",
 };
 
 // Initialize Firebase
@@ -23,9 +23,9 @@ const database = firebase.firestore();
 export function useCollection(path) {
   const [state, setState] = useState([]);
   useEffect(() => {
-    return database.collection(path).onSnapshot(querySnapshot => {
+    return database.collection(path).onSnapshot((querySnapshot) => {
       const docs = [];
-      querySnapshot.forEach(doc => docs.push({ id: doc.id, ...doc.data() }));
+      querySnapshot.forEach((doc) => docs.push({ id: doc.id, ...doc.data() }));
       setState(docs);
     });
   }, []);
@@ -36,17 +36,11 @@ export function useCollection(path) {
         return database.collection(path).add(data);
       },
       update(id, data) {
-        return database
-          .collection(path)
-          .doc(id)
-          .set(data);
+        return database.collection(path).doc(id).set(data);
       },
       delete(id) {
-        return database
-          .collection(path)
-          .doc(id)
-          .delete();
-      }
-    }
+        return database.collection(path).doc(id).delete();
+      },
+    },
   ];
 }

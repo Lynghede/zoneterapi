@@ -3,36 +3,46 @@ import { useHistory } from "react-router-dom";
 
 // Components
 import NavBar from "./Components/Navbar/Navbar";
-import Wrapper from "./Components/Wrapper";
+import Wrapper, {
+  Page,
+  Container,
+  Content,
+  Block,
+  ButtonWrapper,
+} from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
-import { LargerButton } from "./Components/Button";
+import Button, { TransparentButton, LargerButton } from "./Components/Button";
 import TherapistIcon from "./Components/SVG/Therapist.styled";
 
 function FrontPage() {
   let history = useHistory();
   return (
-    <>
+    <Page>
       <NavBar title="Lissi Lynghede"></NavBar>
+      <Container>
+        <Block size="">
+          <Content align="center">
+            <h1>Zoneterapi</h1>
+            <Seperator />
+            <p style={{ fontSize: "1.5em" }}>
+              Zoneterapi er en behandlingsform, som via tryk og massage på de
+              forskellige reflekszoner under fødderne, sætter skub i kroppens
+              egne energier. Blodgennemstrømningen øges i området og der kommer
+              ny energi til, således at affaldsstofferne skaffes bort.
+            </p>
+            <ButtonWrapper size="1" style={{ justifyContent: "center" }}>
+              <Button onClick={() => history.push("/booking")}>
+                Bestil Tid
+              </Button>
+              <TransparentButton onClick={() => history.push("/zoneterapi")}>
+                Lær mere
+              </TransparentButton>
+            </ButtonWrapper>
 
-      <div>
-        <h1>Zoneterapi</h1>
-        <Seperator />
-        <p>
-          Zoneterapi er en behandlingsform, som via tryk og massage på de
-          forskellige reflekszoner under fødderne, sætter skub i kroppens egne
-          energier. Blodgennemstrømningen øges i området og der kommer ny energi
-          til, således at affaldsstofferne skaffes bort. Alle kan have stor
-          glæde af zoneterapi! Det er nemlig genvejen til større velvære,
-          ligesom behandlingen er forebyggende, før eventuelle skavanker opstår.
-          Det handler med andre ord om at bevare en krop i balance.
-        </p>
-        <Wrapper>
-          <LargerButton onClick={() => history.push("/booking")}>
-            Bestil Tid
-          </LargerButton>
-        </Wrapper>
-        <Seperator />
-      </div>
+            <Seperator />
+          </Content>
+        </Block>
+      </Container>
       <div>
         <TherapistIcon />
         <h2>Behandleren</h2>
@@ -68,7 +78,7 @@ function FrontPage() {
         </article>
       </div>
       <Seperator />
-    </>
+    </Page>
   );
 }
 export default FrontPage;

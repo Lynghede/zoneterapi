@@ -10,7 +10,7 @@ import styled from "styled-components";
 // Components
 import Button from "../Components/Button";
 import Input from "../Components/Input";
-import Select, { ColorStyles} from "../Components/Select";
+import Select, { ColorStyles } from "../Components/Select";
 import ReservationTab, {
   ReservationContainer,
 } from "../Components/ReservationTab";
@@ -22,8 +22,6 @@ import Wrapper from "../Components/Wrapper";
 import Seperator from "../Components/Seperator";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import format from "date-fns/format";
-
-
 
 const StyledDiscount = styled(Discount)`
   height: 1.2em;
@@ -134,7 +132,6 @@ function Reservation(props) {
     });
   }
 
-
   const [tempReservation, setTempReservation] = useState([]);
   const bookTempReservation = {
     add(newReservation) {
@@ -148,7 +145,6 @@ function Reservation(props) {
       to: undefined,
     };
   }
-
 
   const removeTempReservation = (i) => {
     let newArray = [...tempReservation];
@@ -227,7 +223,6 @@ function Reservation(props) {
     }
   }
 
-
   async function addReservation() {
     try {
       await tempReservation.forEach((reservation) =>
@@ -284,7 +279,7 @@ function Reservation(props) {
       return true;
     return bookingMonthFilter.some(() => {
       //if (parsedMonth === bookingMonth.value)
-       return true;
+      return true;
     });
   });
 
@@ -337,17 +332,22 @@ function Reservation(props) {
   const before = { before: new Date() };
   const daysOfWeek = { daysOfWeek: [0] };
 
-
   const dayPickProps = {
     selectedDays: selectedDay,
     disabledDays: [before, daysOfWeek, ...blockDays],
     StyledCalendar,
-    
   };
 
   const inputProps = {
     readOnly: true,
-     style: { width: "307px", borderRadius: "4px", borderWidth: "1px", borderStyle: "solid", height: "29px", padding: "0 8px 0 8px"},
+    style: {
+      width: "307px",
+      borderRadius: "4px",
+      borderWidth: "1px",
+      borderStyle: "solid",
+      height: "29px",
+      padding: "0 8px 0 8px",
+    },
   };
 
   return (
@@ -359,7 +359,7 @@ function Reservation(props) {
 
           <MakeReservation>
             {" "}
-            <div style={{display: "flex", flexDirection: "column"}}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               {error && <p style={{ color: "red" }}>{error}</p>}
               {currentQuantity() === 0 ? (
                 <p>Nu mangler du blot at confirm dine bookings</p>
@@ -383,14 +383,12 @@ function Reservation(props) {
                 selectedDay={selectedDay}
                 dayPickerProps={dayPickProps}
                 type="date"
-                inputProps={inputProps} 
+                inputProps={inputProps}
                 placeholder="Klik for at vælge en dato"
-               
                 value={date}
-                
                 onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
               />
-            
+
               <Label>Time</Label>
               <Select
                 type="time"
@@ -398,7 +396,6 @@ function Reservation(props) {
                 options={timeSlotOptions}
                 onChange={(option) => setTime(option.value)}
                 styles={ColorStyles}
-               
               ></Select>
             </div>{" "}
           </MakeReservation>
