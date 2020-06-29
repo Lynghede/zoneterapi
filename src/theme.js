@@ -19,6 +19,7 @@ export const theme = {
   // Responsive
   mobile: "576px",
   tablet: "750px",
+  tabletTilt: "1113px",
   pc: "1200px",
 
   debugBorderWidth: "1px",

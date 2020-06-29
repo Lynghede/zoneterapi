@@ -5,6 +5,11 @@ export const BoxContainer = styled.div`
   min-height: 626px;
   min-width: 324px;
   margin: 20px;
+  display: flex;
+
+  > * {
+    display: flex;
+  }
 
   @media screen and (min-width: 835px) {
     transition: transform 0.3s ease-out;
@@ -19,11 +24,21 @@ export const Box = styled.div`
   padding: 0 1.5rem 0 1.5rem;
   flex-direction: column;
   border-radius: 3px;
+  display: flex;
+
+  > * {
+    display: flex;
+  }
 
   background: ${(props) => props.color || props.theme.primaryBox};
 `;
 export const SVGWrapper = styled.div`
   margin-bottom: 1.5rem;
+  display: flex;
+
+  > * {
+    display: flex;
+  }
 
   svg {
     width: 40px;
@@ -35,6 +50,11 @@ export const BoxAnimation = styled.div`
   flex-direction: column;
   flex: 1 auto;
   overflow: hidden;
+  display: flex;
+
+  > * {
+    display: flex;
+  }
   p,
   h3,
   div {

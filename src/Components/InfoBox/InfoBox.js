@@ -7,7 +7,7 @@ import { PHeader2, PHeader3 } from "../Headers/PHeader";
 
 const InfoBox = (props) => {
   return (
-    <BoxContainer>
+    <BoxContainer style={{ display: "flex" }}>
       <Box color={props.color}>
         <SVGWrapper></SVGWrapper>
 

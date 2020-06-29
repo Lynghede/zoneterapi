@@ -69,11 +69,11 @@ function Zoneterapi() {
       </Container>
       <Block>
         <Block>
-          <GridContainer>
-            <GridItem>
+          <GridContainer style={{ display: "flex" }}>
+            <GridItem style={{ display: "flex" }}>
               <InfoBox
                 color={theme.primaryTeal}
-                title="Automatically extract health datasets"
+                title="Automatically extract"
                 subtitle="Bigger datasets leads to more impactful research"
               >
                 <P>
