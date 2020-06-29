@@ -22,5 +22,5 @@ export const theme = {
   tabletTilt: "1113px",
   pc: "1200px",
 
-  debugBorderWidth: "1px",
+  debugBorderWidth: "0px",
 };

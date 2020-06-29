@@ -1,5 +1,6 @@
 import React from "react";
 import { BoxContainer, Box, SVGWrapper, BoxAnimation } from "./InfoBox.styled";
+import MassageIcon from "../SVG/Massage.styled";
 
 import { PHeader2, PHeader3 } from "../Headers/PHeader";
 
@@ -9,7 +10,9 @@ const InfoBox = (props) => {
   return (
     <BoxContainer style={{ display: "flex" }}>
       <Box color={props.color}>
-        <SVGWrapper></SVGWrapper>
+        <SVGWrapper>
+          <MassageIcon></MassageIcon>
+        </SVGWrapper>
 
         <BoxAnimation>
           {" "}
