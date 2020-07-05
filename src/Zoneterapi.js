@@ -39,21 +39,13 @@ function Zoneterapi() {
           <Content>
             <div>
               <article>
-                Vi mennesker er en sammensat organisme. Hvis noget ikke fungerer
-                som det skal, bliver der ubalance. Resultatet er sygdom,
-                smerter, træthed og utilpashed.
+              Vi mennesker er en sammensat organisme. Hvis noget ikke fungerer, som det skal, bliver der ubalance. Resultatet er sygdom, smerter, træthed og utilpashed.
                 <br />
                 <br />
                 Zoneterapi hjælper til genoprettelse af balancen.
                 <br />
                 <br />
-                Under og på fødderne findes et fuldstændigt kort over hele
-                menneskekroppen. Hver del af kroppen har en zone på fødderne som
-                kaldes en reflekszone. Hvis der er ømhed i en reflekszone,
-                hænger det sammen med, at en del af kroppen ikke fungerer
-                optimalt. Ved at behandle de ømme reflekszoner med specielle
-                trykkombinationer, kan zoneterapeuten på virke organerne til en
-                bedre funktion, og dermed genoprette kroppens balance.
+                Under og på fødderne findes et fuldstændigt kort over menneskekroppen. Hver del af kroppen har en zone på fødderne, som kaldes reflekszoner. Hvis der er ømhed i en reflekszone, hænger det sammen med, at en del af kroppen ikke fungerer optimalt. Ved at behandle de ømme reflekszoner med specielle trykkombinationer, kan zoneterapeuten påvirke organerne til en bedre funktion og dermed genoprette kroppens balance.
               </article>
             </div>
           </Content>
@@ -77,16 +69,10 @@ function Zoneterapi() {
                 subtitle="Generel information"
               >
                 <P>
-                Behandlingen foregår ved trykmassage på føddernes under- og
-          overside. Gennem de enkelte reflekszoners ømhedsgrad, hudens tilstand
-          o.a., danner zoneterapeuten sig et billede af ubalancens karakter,
-          placering og styrke. Behandlingen tilrettelægges herefter. Gennem
-          behandlingen påvirkes hele kroppen til at søge efter optimal balance.
+                Behandlingen foregår ved trykmassage på føddernes under- og overside. Gennem de enkelte reflekszoners ømhedsgrad, hudens tilstand o.a. danner zoneterapeuten sig et billede af ubalancens karakter, placering og styrke. Behandlingen tilrettelægges herefter. Gennem behandlingen påvirkes hele kroppen til at søge efter optimal balance.
                 <br/>
                 <br/>
-                Da jeg arbejder på dine fødder og op af underbenene, bedes du have bukser på som nemt kan trækkes op til knæerne.
-Du skal ikke medbringe noget, - lagen og håndklæde er der sørget for.
-Drik gerne godt med vand inden du kommer.
+                Da jeg arbejder på dine fødder og op ad underbenene, bedes du have bukser på, som nemt kan trækkes op til knæerne. Du skal ikke medbringe noget, - lagen og håndklæde er der sørget for. Drik gerne godt med vand inden du kommer.
                 </P>
               </InfoBox>
             </GridItem>
@@ -99,20 +85,11 @@ Drik gerne godt med vand inden du kommer.
                 <P>
                   Første behandling:
                   <br/>
-                Her har vi en samtale omkring de ”ting” som du kommer med.
-
-                Jeg er forpligtet ifølge lovgivningen at lave en journal på dig.
-
-                Jeg har tavshedspligt og udlevere info omkring GDPR
-                Ud fra samtalen, tilrette ligger jeg din behandling
-                Du får min 45 min zoneterapi behandling, efterfulgt af vejledning
-                omkring evt. reaktioner og hvad der vil fremme behandlingens
-                effekt når du kommer hjem.
+                  Her har vi en samtale omkring de ”ting”, som du kommer med. Jeg er forpligtet ifølge lovgivningen til at lave en journal på dig. Jeg har tavshedspligt og udleverer info omkring GDPR Ud fra samtalen tilrettelægger jeg din behandling. Du får minimum 45 min. zoneterapibehandling, efterfulgt af vejledning omkring evt. reaktioner og hvad der kan fremme behandlingens effekt, når du kommer hjem.
                 <br/>
                 Efterfølgende behandling:
           
-                Vil altid starte med, hvad er sket siden sidst. 
-                Og tilpasse behandlingen derefter.
+                Vi starter ud med at tale om, hvad er sket siden sidst. Behandlingen tilpasses derefter.
               
 
                 </P>
@@ -125,17 +102,10 @@ Drik gerne godt med vand inden du kommer.
                 subtitle="Forskellige og unikke"
               >
                 <P>
-                Enhver reaktion hænger sammen med
-          en bedre balance og almentilstand. Det er ikke muligt helt at
-          forudsige kroppens måde at reagere på, de reaktionerne er
-          individuelle. Reaktioner skal ses som positive, da det fortæller at
-          kroppen tager imod og og arbejder med de forskellige ubalancer, og at
-          bedring er på vej.
+                Enhver reaktion hænger sammen med en bedre balance og almentilstand. Det er ikke muligt at forudsige kroppens måde at reagere på, de reaktionerne er individuelle. Reaktioner skal ses som positive, da de fortæller, at kroppen tager imod og arbejder med de forskellige ubalancer, og at bedring er på vej.
           <br />
           <br />
-          Efter en behandling vil du få yderligere info omkring forventede
-          reaktioner og vejledning i hvad der vil være hensigtsmæssig at tage
-          hensyn til, for at opnå den bedste effekt af behandlingen.
+          Efter en behandling vil du få yderligere information omkring forventede reaktioner og vejledning i, hvad der vil være hensigtsmæssig at tage hensyn til for at opnå den bedste effekt af behandlingen.
                 </P>
               </InfoBox>
             </GridItem>

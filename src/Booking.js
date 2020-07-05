@@ -112,32 +112,29 @@ function Booking() {
         <h2 style={{ marginTop: "0px" }}>Priser</h2>
         <Seperator />
         <article>
-          En behandling må påregnes at vare 60 min, heraf min. 45 minutters
-          zoneterapi.
+        En behandling må påregnes at vare 60 min., heraf minimum 45 min. zoneterapi.
         </article>
         <PriceContainer>
-          <PriceDisplay treatment="1 Behandling" price="425 kr"></PriceDisplay>
+          <PriceDisplay treatment="1 Behandling" price="425 KR"></PriceDisplay>
           <PriceDisplay
             treatment="3 Behandlinger"
-            price="1.125 kr"
-            pricePr="(375 kr/pr)"
+            price="1.125 KR"
+            pricePr="(375 KR. PR.)"
           ></PriceDisplay>
           <PriceDisplay
             treatment="5 Behandlinger"
-            price="1.800 kr"
-            pricePr="(360 kr/pr)"
+            price="1.800 KR"
+            pricePr="(360 KR. PR.)"
           ></PriceDisplay>
           <PriceDisplay
             treatment="10 Behandlinger"
-            price="3.400 kr"
-            pricePr="(340 kr/pr)"
+            price="3.400 KR"
+            pricePr="(340 KR. PR.)"
           ></PriceDisplay>
         </PriceContainer>
 
         <article>
-          Den første behandling tager ca. 5 kvarter, grundet en for samtale, for
-          at afklare de gener og udfordringer du kommer med og for at tilpasse
-          behandlingen mod den ønskede virkning.
+        Den første behandling tager ca. 5 kvarter, grundet en forsamtale for at afklare de gener og udfordringer, du kommer med og for at tilpasse behandlingen mod den ønskede virkning.
         </article>
       </div>
       <Seperator />

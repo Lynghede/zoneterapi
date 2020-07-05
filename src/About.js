@@ -22,13 +22,10 @@ function About() {
           Lissi Lynghede, 56 år.
           <br></br>
           <br></br>
-          Jeg har valgt at blive zoneterapeut, da jeg de sidste 7 år, selv har
-          modtaget zoneterapi og ved at det virker. Får det stadig regelmæssigt,
-          da kroppen fortæller mig at det er ved at være tid igen.
+          Jeg har valgt at blive zoneterapeut, fordi jeg de sidste 7 år selv har modtaget zoneterapi og derfor ved, at det virker. Jeg modtager det stadig regelmæssigt, når min krop fortæller mig, at det er ved at være tid igen.
           <br></br>
           <br></br>
-          Jeg har et holistisk menneskesyn, ønsker at hjælpe dig via
-          zoneterapi-behandlinger og til selvhjælp for bedre balance i dit liv.
+          Jeg har et holistisk menneskesyn, ønsker at hjælpe dig via zoneterapi-behandlinger og til selvhjælp for bedre balance i dit liv.
           <br></br>
           <br></br>
         </article>
@@ -43,17 +40,10 @@ function About() {
 
         <article>
           <h3>Forhistorie</h3>
-          Min skønne mormor døde alt for tidligt, syntes jeg dengang, hun blev
-          64, jeg var 17 år gammel. Elskede hende så meget. Hun døde af kræft,
-          dog levede hun mange flere år end lægerne først havde antaget. Hun
-          nåede at leve 7 år med sygdommen, lægerne gav hende ½ år.
+          Min skønne mormor døde alt for tidligt, syntes jeg dengang. Hun blev 64 år gammel. Jeg var 17 år gammel og elskede hende højt. Hun døde af kræft, dog levede hun mange flere år end lægerne først havde antaget. Hun nåede at leve 7 år med sygdommen, lægerne gav hende ½ år.
           <br></br>
           <br></br>
-          Min mormor og morfar begyndte at dyrke deres egne økologiske
-          grøntsager, hvilket ikke var meget brugt i 70’erne. Dette led til
-          forbedringer hos min mormor, hvilket gjorde mine bedsteforældre gik
-          all in på at læse om sund kost og ændre deres livsstil. Dengang var
-          det meget alternativt.
+          Min mormor og morfar begyndte at dyrke deres egne økologiske grøntsager, hvilket ikke var meget brugt i 70’erne. Dette ledte til forbedringer hos min mormor, hvilket gjorde, at mine bedsteforældre gik all in på at læse om sund kost og ændrede deres livsstil. Dengang var det meget alternativt.
           <br></br>
           <br></br>
           Dengang var jeg ikke meget bevidst om, hvorfor de gjorde som de
