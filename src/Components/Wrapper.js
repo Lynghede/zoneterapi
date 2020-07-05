@@ -133,9 +133,9 @@ export const ButtonWrapper = styled.div`
 
   max-width: ${(p) => sizeToWidth(p.size)};
 
-  ${"" /* @media screen and (max-width: ${({ theme }) => theme.mobile}) {
+  @media screen and (max-width: ${({ theme }) => theme.mobile}) {
     flex-direction: column;
-  } */}
+  } 
 `;
 
 export const ImageWrapper = styled.div`

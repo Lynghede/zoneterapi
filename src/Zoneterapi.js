@@ -73,52 +73,76 @@ function Zoneterapi() {
             <GridItem style={{ display: "flex" }}>
               <InfoBox
                 color={theme.primaryTeal}
-                title="Automatically extract"
-                subtitle="Bigger datasets leads to more impactful research"
+                title="Behandlingen"
+                subtitle="Generel information"
               >
                 <P>
-                  The Nexus search engine standardizes processes for extracting
-                  health data from PACS, RIS, and EMR, allowing you to build
-                  datasets in days instead of months. Nexus runs as a service
-                  within a hospital’s computer network from where it find and
-                  extract data based on user queries.
-                  {/* Button: See examples -> */}
+                Behandlingen foregår ved trykmassage på føddernes under- og
+          overside. Gennem de enkelte reflekszoners ømhedsgrad, hudens tilstand
+          o.a., danner zoneterapeuten sig et billede af ubalancens karakter,
+          placering og styrke. Behandlingen tilrettelægges herefter. Gennem
+          behandlingen påvirkes hele kroppen til at søge efter optimal balance.
+                <br/>
+                <br/>
+                Da jeg arbejder på dine fødder og op af underbenene, bedes du have bukser på som nemt kan trækkes op til knæerne.
+Du skal ikke medbringe noget, - lagen og håndklæde er der sørget for.
+Drik gerne godt med vand inden du kommer.
                 </P>
               </InfoBox>
             </GridItem>
-            <GridItem>
+            <GridItem style={{ display: "flex" }}>
               <InfoBox
                 color={theme.primaryBox}
-                title="Garuantee patients' privacy"
-                subtitle="Become GDPR compliant"
+                title="Behandlinger i praksis"
+                subtitle="Første og efterfølgende gange"
               >
                 <P>
-                  Built-in anonymization and pseudo-anonymization algorithms
-                  automatically remove patients' personally identifiable
-                  information and generate audit trails. This ensures that you
-                  comply your with data processing agreements, ethical
-                  approvals, and GDPR.
+                  Første behandling:
+                  <br/>
+                Her har vi en samtale omkring de ”ting” som du kommer med.
+
+                Jeg er forpligtet ifølge lovgivningen at lave en journal på dig.
+
+                Jeg har tavshedspligt og udlevere info omkring GDPR
+                Ud fra samtalen, tilrette ligger jeg din behandling
+                Du får min 45 min zoneterapi behandling, efterfulgt af vejledning
+                omkring evt. reaktioner og hvad der vil fremme behandlingens
+                effekt når du kommer hjem.
+                <br/>
+                Efterfølgende behandling:
+          
+                Vil altid starte med, hvad er sket siden sidst. 
+                Og tilpasse behandlingen derefter.
+              
+
                 </P>
               </InfoBox>
             </GridItem>
-            <GridItem>
+            <GridItem style={{ display: "flex" }}>
               <InfoBox
                 color={theme.primaryBlue}
-                title="Focus on research and development"
-                subtitle="Let Nexus speed up the slow, boring work."
+                title="Reaktioner"
+                subtitle="Forskellige og unikke"
               >
                 <P>
-                  Automatic extraction and anonymization enables you to scale up
-                  your research project, train AI algorithms on larger datasets,
-                  and securely run AI in clinical practice.
-                  <br />
+                Enhver reaktion hænger sammen med
+          en bedre balance og almentilstand. Det er ikke muligt helt at
+          forudsige kroppens måde at reagere på, de reaktionerne er
+          individuelle. Reaktioner skal ses som positive, da det fortæller at
+          kroppen tager imod og og arbejder med de forskellige ubalancer, og at
+          bedring er på vej.
+          <br />
+          <br />
+          Efter en behandling vil du få yderligere info omkring forventede
+          reaktioner og vejledning i hvad der vil være hensigtsmæssig at tage
+          hensyn til, for at opnå den bedste effekt af behandlingen.
                 </P>
               </InfoBox>
             </GridItem>
           </GridContainer>
         </Block>
       </Block>
-      <div>
+      {/* <div>
         <MassageIcon />
         <h2>behandling</h2>
         <Seperator />
@@ -178,7 +202,7 @@ function Zoneterapi() {
           reaktioner og vejledning i hvad der vil være hensigtsmæssig at tage
           hensyn til, for at opnå den bedste effekt af behandlingen.
         </article>
-      </div>
+      </div> */}
       <Seperator />
     </Page>
   );

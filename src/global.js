@@ -42,6 +42,10 @@ h4{
     text-align: center;
     font-style: italic;
 }
+
+p {
+    text-align: left;
+}
 ${"" /* 
 p {
     text-align:center;
@@ -50,7 +54,7 @@ p {
 } */}
 
 article {
-    text-align:center;
+    text-align: left;
     margin: 10px 0px 10px 0px;
 }
 
