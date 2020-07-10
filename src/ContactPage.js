@@ -8,6 +8,7 @@ import Input from "./Components/Form/Input.styled";
 import Label from "./Components/Form/Label.styled";
 import TextArea from "./Components/Form/TextArea.styled";
 import EmailIcon from "./Components/SVG/Email.styled";
+import { Page } from "./Components/Wrapper";
 
 function ContactPage() {
   const [status, setStatus] = useState("");
@@ -32,7 +33,7 @@ function ContactPage() {
   }
 
   return (
-    <>
+    <Page>
       <NavBar title="Kontakt"></NavBar>
       <form
         method="POST"
@@ -72,14 +73,14 @@ function ContactPage() {
             <p>Thanks!</p>
           ) : (
             <Wrapper>
-              <LargerButton>Insend</LargerButton>
+              <LargerButton>Send</LargerButton>
             </Wrapper>
           )}
           {status === "ERROR" && <p color="red">Ooops! Der skete en fejl.</p>}
         </div>
       </form>
       <Seperator />
-    </>
+    </Page>
   );
 }
 

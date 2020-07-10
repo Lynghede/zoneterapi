@@ -84,13 +84,9 @@ const HeroSpan = styled.span`
 function FrontPage() {
   let history = useHistory();
   return (
-    <Page>
+    <Page style={{ marginTop: "0" }}>
       <Hero src={process.env.PUBLIC_URL + "/Hero.jpg"}></Hero>
-      <NavBar
-        style={{ zIndex: "0" }}
-        isTransparent
-        title="Lissi Lynghede"
-      ></NavBar>
+      <NavBar style={{ zIndex: "0" }} isTransparent title=""></NavBar>
       <Container>
         <Block>
           <Content size="3" align="center">
@@ -103,18 +99,18 @@ function FrontPage() {
                   style={{
                     fontSize: "3.5em",
                     marginTop: "10px",
-                    marginBottom: "0px",
+                    marginBottom: "20px",
                   }}
                 >
                   Lissi Lynghede
                 </h2>
-                <p style={{ fontSize: "1.5em" }}>
+                {/* <p style={{ fontSize: "1.5em" }}>
                   Zoneterapi er en behandlingsform, som via tryk og massage på
                   de forskellige reflekszoner under fødderne sætter skub i
                   kroppens egne energier. Blodgennemstrømningen øges i området
                   og der kommer ny energi til, således at affaldsstofferne
                   skaffes bort.
-                </p>
+                </p> */}
               </HeroText>
               <ButtonWrapper size="1" style={{ justifyContent: "center" }}>
                 <Button

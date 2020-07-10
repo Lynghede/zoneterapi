@@ -14,7 +14,7 @@ body {
     color: ${({ theme }) => theme.primaryLight};
     display: flex;
     justify-content: center;
-    margin: 50px 16px 0px 16px;
+    margin: 0px 16px 0px 16px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     height: 100vh;
 }

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const StyledBurger = styled.button`
-  position: absolute;
+  ${"" /* position: absolute;
   top: 5%;
-  right: 16px;
+  right: 16px; */}
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -43,9 +43,8 @@ const StyledBurger = styled.button`
     }
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.tablet}){
+  @media screen and (min-width: ${({ theme }) => theme.tablet}) {
     right: 100px;
-    
   }
 `;
 

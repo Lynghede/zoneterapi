@@ -5,15 +5,13 @@ import styled from "styled-components";
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
-import  { BookingButton } from "./Components/Button";
+import { BookingButton } from "./Components/Button";
 import Progress, { Filler } from "./Components/ProgressBar/Progress.styled";
 import Header from "./Components/Header";
+import { Page } from "./Components/Wrapper";
 
 // SVG
-import  {
-  TickNegative,
-  TickConfirmed,
-} from "./Components/SVG/Tick.styled";
+import { TickNegative, TickConfirmed } from "./Components/SVG/Tick.styled";
 import PriceDisplay from "./Components/Display/PriceDisplay";
 import PriceTag from "./Components/SVG/Price.styled";
 import MassageIcon from "./Components/SVG/Massage.styled";
@@ -42,12 +40,12 @@ function Booking() {
   }
 
   return (
-    <>
+    <Page>
       <NavBar title="Booking"></NavBar>
 
       <Header>booking</Header>
       <Seperator />
-      <Wrapper>
+      <Wrapper style={{ alignSelf: "normal" }}>
         <Progress>
           {percentage >= 33 ? <TickConfirmed /> : <TickNegative />}
           {percentage >= 66 ? <TickConfirmed /> : <TickNegative />}
@@ -63,7 +61,6 @@ function Booking() {
             quantity={quantity}
             numDone={numDone}
             setNumDone={setNumDone}
-            
           />
         </div>
       )}
@@ -112,7 +109,8 @@ function Booking() {
         <h2 style={{ marginTop: "0px" }}>Priser</h2>
         <Seperator />
         <article>
-        En behandling må påregnes at vare 60 min., heraf minimum 45 min. zoneterapi.
+          En behandling må påregnes at vare 60 min., heraf minimum 45 min.
+          zoneterapi.
         </article>
         <PriceContainer>
           <PriceDisplay treatment="1 Behandling" price="425 KR"></PriceDisplay>
@@ -134,11 +132,13 @@ function Booking() {
         </PriceContainer>
 
         <article>
-        Den første behandling tager ca. 5 kvarter, grundet en forsamtale for at afklare de gener og udfordringer, du kommer med og for at tilpasse behandlingen mod den ønskede virkning.
+          Den første behandling tager ca. 5 kvarter, grundet en forsamtale for
+          at afklare de gener og udfordringer, du kommer med og for at tilpasse
+          behandlingen mod den ønskede virkning.
         </article>
       </div>
       <Seperator />
-    </>
+    </Page>
   );
 }
 

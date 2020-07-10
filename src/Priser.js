@@ -3,6 +3,7 @@ import styled from "styled-components";
 // Components
 import NavBar from "./Components/Navbar/Navbar";
 import Seperator from "./Components/Seperator";
+import { Page } from "./Components/Wrapper";
 // SVG
 import PriceDisplay from "./Components/Display/PriceDisplay";
 import DefaultDisplay from "./Components/Display/Display";
@@ -22,7 +23,7 @@ const DisplayContainer = styled.div`
 
 function Priser() {
   return (
-    <>
+    <Page>
       <NavBar title="Priser"></NavBar>
       <div>
         <PriceIcon></PriceIcon>
@@ -30,28 +31,34 @@ function Priser() {
 
         <Seperator />
         <article>
-        En behandling må påregnes at vare 60 min., heraf minimum 45 min. zoneterapi.
+          En behandling må påregnes at vare 60 min., heraf minimum 45 min.
+          zoneterapi.
           <br></br>
           <br></br>
-          Den første behandling tager ca. 5 kvarter, grundet en forsamtale for at afklare de gener og udfordringer, du kommer med og for at tilpasse behandlingen mod den ønskede virkning.
+          Den første behandling tager ca. 5 kvarter, grundet en forsamtale for
+          at afklare de gener og udfordringer, du kommer med og for at tilpasse
+          behandlingen mod den ønskede virkning.
           <PriceContainer>
-          <PriceDisplay treatment="1 Behandling" price="425 KR"></PriceDisplay>
-          <PriceDisplay
-            treatment="3 Behandlinger"
-            price="1.125 KR"
-            pricePr="(375 KR. PR.)"
-          ></PriceDisplay>
-          <PriceDisplay
-            treatment="5 Behandlinger"
-            price="1.800 KR"
-            pricePr="(360 KR. PR.)"
-          ></PriceDisplay>
-          <PriceDisplay
-            treatment="10 Behandlinger"
-            price="3.400 KR"
-            pricePr="(340 KR. PR.)"
-          ></PriceDisplay>
-        </PriceContainer>
+            <PriceDisplay
+              treatment="1 Behandling"
+              price="425 KR"
+            ></PriceDisplay>
+            <PriceDisplay
+              treatment="3 Behandlinger"
+              price="1.125 KR"
+              pricePr="(375 KR. PR.)"
+            ></PriceDisplay>
+            <PriceDisplay
+              treatment="5 Behandlinger"
+              price="1.800 KR"
+              pricePr="(360 KR. PR.)"
+            ></PriceDisplay>
+            <PriceDisplay
+              treatment="10 Behandlinger"
+              price="3.400 KR"
+              pricePr="(340 KR. PR.)"
+            ></PriceDisplay>
+          </PriceContainer>
         </article>
         <AdviceIcon />
         <h2>Fem gode grunde til at gå til zoneterapeaut</h2>
@@ -74,7 +81,7 @@ function Priser() {
         </article>
       </div>
       <Seperator />
-    </>
+    </Page>
   );
 }
 

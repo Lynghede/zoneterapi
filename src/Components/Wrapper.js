@@ -67,6 +67,7 @@ export const Page = styled.div`
   border: ${(p) => p.theme.debugBorderWidth} solid red;
   //height: 100%;
   width: 100%;
+  margin-top: 50px;
 `;
 
 export const Container = styled.div`
@@ -135,7 +136,7 @@ export const ButtonWrapper = styled.div`
 
   @media screen and (max-width: ${({ theme }) => theme.mobile}) {
     flex-direction: column;
-  } 
+  }
 `;
 
 export const ImageWrapper = styled.div`

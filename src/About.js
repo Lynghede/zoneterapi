@@ -3,6 +3,7 @@ import React from "react";
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
+import { Page } from "./Components/Wrapper";
 
 import Image from "./Components/IMG/Img";
 import TherapistIcon from "./Components/SVG/Therapist.styled";
@@ -12,7 +13,7 @@ import Lissi from "./Components/IMG/Lissi.jpg";
 
 function About() {
   return (
-    <>
+    <Page>
       <NavBar title="Om mig"></NavBar>
       <div>
         <h1>Om behandleren</h1>
@@ -165,7 +166,7 @@ function About() {
         <br />
       </article>
       <Seperator />
-    </>
+    </Page>
   );
 }
 
