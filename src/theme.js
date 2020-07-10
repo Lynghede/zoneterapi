@@ -14,7 +14,6 @@ export const theme = {
     "linear-gradient(0deg, rgba(237,236,244,1) 0%, rgba(35,138,43,1) 0%, rgba(35,203,227,1) 100%)",
   primaryBlue:
     "linear-gradient(0deg, rgba(237,236,244,1) 0%, rgba(44,62,140,1) 0%, rgba(35,203,227,1) 100%)",
-  
 
   // Responsive
   mobile: "576px",

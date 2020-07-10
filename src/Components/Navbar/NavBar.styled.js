@@ -9,7 +9,8 @@ const StyledNavBar = styled.nav`
   z-index: 9999;
   top: 0;
   left: 0;
-  background: ${({ theme }) => theme.primaryDark};
+  background: ${({ isTranparent, theme }) =>
+    isTranparent ? "transparent" : theme.primaryDark};
   width: 100%;
 
   padding: auto;
@@ -34,11 +35,10 @@ const StyledNavBar = styled.nav`
     justify-content: space-around;
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.tablet}){
-  svg {
-    left: 95px;
-  }
-  
+  @media screen and (min-width: ${({ theme }) => theme.tablet}) {
+    svg {
+      left: 95px;
+    }
   }
 `;
 
