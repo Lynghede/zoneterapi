@@ -87,49 +87,41 @@ function FrontPage() {
     <Page style={{ marginTop: "0" }}>
       <Hero src={process.env.PUBLIC_URL + "/Hero.jpg"}></Hero>
       <NavBar style={{ zIndex: "0" }} isTransparent title=""></NavBar>
-      <Container>
-        <Block>
-          <Content size="3" align="center">
-            <HeroDiv>
-              <HeroText>
-                <h1 style={{ fontSize: "3.5em", marginBottom: "0" }}>
-                  Zoneterapi
-                </h1>
-                <h2
-                  style={{
-                    fontSize: "3.5em",
-                    marginTop: "10px",
-                    marginBottom: "20px",
-                  }}
-                >
-                  Lissi Lynghede
-                </h2>
-                {/* <p style={{ fontSize: "1.5em" }}>
+      <HeroDiv>
+        <HeroText>
+          <h1 style={{ fontSize: "3.5em", marginBottom: "0" }}>Zoneterapi</h1>
+          <h2
+            style={{
+              fontSize: "3.5em",
+              marginTop: "10px",
+              marginBottom: "20px",
+            }}
+          >
+            Lissi Lynghede
+          </h2>
+          {/* <p style={{ fontSize: "1.5em" }}>
                   Zoneterapi er en behandlingsform, som via tryk og massage på
                   de forskellige reflekszoner under fødderne sætter skub i
                   kroppens egne energier. Blodgennemstrømningen øges i området
                   og der kommer ny energi til, således at affaldsstofferne
                   skaffes bort.
                 </p> */}
-              </HeroText>
-              <ButtonWrapper size="1" style={{ justifyContent: "center" }}>
-                <Button
-                  style={{ borderRadius: "0" }}
-                  onClick={() => history.push("/booking")}
-                >
-                  Bestil Tid
-                </Button>
-                <Button
-                  style={{ borderRadius: "0" }}
-                  onClick={() => history.push("/zoneterapi")}
-                >
-                  Lær mere
-                </Button>
-              </ButtonWrapper>
-            </HeroDiv>
-          </Content>
-        </Block>
-      </Container>
+        </HeroText>
+        <ButtonWrapper size="1" style={{ justifyContent: "center" }}>
+          <Button
+            style={{ borderRadius: "0" }}
+            onClick={() => history.push("/booking")}
+          >
+            Bestil Tid
+          </Button>
+          <Button
+            style={{ borderRadius: "0" }}
+            onClick={() => history.push("/zoneterapi")}
+          >
+            Lær mere
+          </Button>
+        </ButtonWrapper>
+      </HeroDiv>
 
       <Container>
         <Block style={{ flexDirection: "column" }}>
