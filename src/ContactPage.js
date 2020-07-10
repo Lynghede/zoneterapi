@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 
-
 import NavBar from "./Components/Navbar/Navbar";
 import Wrapper from "./Components/Wrapper";
 import Seperator from "./Components/Seperator";
-import  {  LargerButton } from "./Components/Button";
+import { LargerButton } from "./Components/Button";
 import Input from "./Components/Form/Input.styled";
 import Label from "./Components/Form/Label.styled";
 import TextArea from "./Components/Form/TextArea.styled";
 import EmailIcon from "./Components/SVG/Email.styled";
 
 function ContactPage() {
-   const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("");
 
   function submitForm(ev) {
     ev.preventDefault();
@@ -73,7 +72,7 @@ function ContactPage() {
             <p>Thanks!</p>
           ) : (
             <Wrapper>
-              <LargerButton>Submit</LargerButton>
+              <LargerButton>Insend</LargerButton>
             </Wrapper>
           )}
           {status === "ERROR" && <p color="red">Ooops! Der skete en fejl.</p>}
