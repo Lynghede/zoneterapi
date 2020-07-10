@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
- 
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
 import { theme } from "./theme";
@@ -28,7 +23,7 @@ export default function Routes() {
       <>
         <GlobalStyles />
 
-        <Router basename="/lyvner-mollen">
+        <Router basename="/">
           <Switch>
             <Route exact path="/">
               <FrontPage />
