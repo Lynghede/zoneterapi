@@ -362,21 +362,25 @@ function Reservation(props) {
             <div style={{ display: "flex", flexDirection: "column" }}>
               {error && <p style={{ color: "red" }}>{error}</p>}
               {currentQuantity() === 0 ? (
-                <p>Nu mangler du blot at confirm dine bookings</p>
+                <p style={{ textAlign: "center" }}>
+                  Nu mangler du blot at confirm dine bookings
+                </p>
               ) : (
-                <p>Vælg {currentQuantity()} tider</p>
+                <p style={{ textAlign: "center" }}>
+                  Vælg {currentQuantity()} tider
+                </p>
               )}
 
-              <Label>Name</Label>
+              <Label>Navn</Label>
               <Input
                 type="text"
                 value={name}
-                placeholder="Name"
+                placeholder="Navn"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
               />
-              <Label>Date</Label>
+              <Label>Dato</Label>
               <style>{StyledCalendar}</style>
               <DayPickerInput
                 placeholder=""
@@ -389,7 +393,7 @@ function Reservation(props) {
                 onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
               />
 
-              <Label>Time</Label>
+              <Label>Tid</Label>
               <Select
                 type="time"
                 value={{ label: time, value: time }}

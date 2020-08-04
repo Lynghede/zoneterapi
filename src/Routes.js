@@ -1,5 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
 import { theme } from "./theme";
@@ -17,6 +22,17 @@ import Admin from "./Admin";
 // Components
 import Footer from "./Components/Footer/Footer";
 
+// Function to scroll to top on page change.
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 export default function Routes() {
   return (
     <ThemeProvider theme={theme}>
@@ -24,6 +40,7 @@ export default function Routes() {
         <GlobalStyles />
 
         <Router basename="/">
+          <ScrollToTop />
           <Switch>
             <Route exact path="/">
               <FrontPage />
