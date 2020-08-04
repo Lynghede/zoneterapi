@@ -60,8 +60,8 @@ function Zoneterapi() {
           <Content>
             <ImageWrapper>
               <img
-                style={{ width: "100%", height: "100%", maxWidth: "330px" }}
-                src={process.env.PUBLIC_URL + "/zoneterapi.png"}
+                style={{ width: "100%", height: "100%" }}
+                src={process.env.PUBLIC_URL + "/Greb.jpg"}
               ></img>
             </ImageWrapper>
           </Content>

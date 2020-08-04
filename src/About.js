@@ -35,7 +35,7 @@ function About() {
           <br></br>
         </article>
         <Wrapper>
-          <Image src={process.env.PUBLIC_URL + "/Lissi.jpg"} />
+          <Image src={process.env.PUBLIC_URL + "/LissiReduced(1).jpg"} />
         </Wrapper>
       </div>
       <div>

@@ -85,7 +85,7 @@ function FrontPage() {
   let history = useHistory();
   return (
     <Page style={{ marginTop: "0" }}>
-      <Hero src={process.env.PUBLIC_URL + "/Hero.jpg"}></Hero>
+      <Hero src={process.env.PUBLIC_URL + "/HeroReduced(1).jpg"}></Hero>
       <NavBar style={{ zIndex: "0" }} isTransparent title=""></NavBar>
       <HeroDiv>
         <HeroText>
