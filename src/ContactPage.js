@@ -37,7 +37,7 @@ function ContactPage() {
       <NavBar title="Kontakt"></NavBar>
       <form
         method="POST"
-        action="https://formspree.io/mvoqlvbn"
+        action="https://formspree.io/xdowbpov"
         onSubmit={submitForm}
       >
         <div>
