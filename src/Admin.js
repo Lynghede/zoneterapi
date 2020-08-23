@@ -334,7 +334,7 @@ function Admin() {
 
   // Blocked days
   const before = { before: new Date() };
-  const daysOfWeek = { daysOfWeek: [0] };
+  //const daysOfWeek = { daysOfWeek: [0] };
 
   const { from, to } = selectedDay;
   const modifiers = { start: from, end: to };
@@ -342,7 +342,7 @@ function Admin() {
   //DayInputOverlay - props from DayPicker
   const dayPickProps = {
     selectedDays: selectedDay,
-    disabledDays: [before, daysOfWeek, ...blockDays],
+    disabledDays: [before, ...blockDays],
     StyledCalendar,
   };
 
@@ -370,7 +370,7 @@ function Admin() {
                 showWeekNumbers
                 onDayClick={handleDayClick}
                 selectedDays={[from, { from, to }]}
-                disabledDays={[before, daysOfWeek, ...blockDays]}
+                disabledDays={[before, ...blockDays]}
               ></DayPicker>
             </Wrapper>
 

@@ -344,11 +344,11 @@ function Reservation(props) {
     return quantity;
   }
   const before = { before: new Date() };
-  const daysOfWeek = { daysOfWeek: [0] };
+  //const daysOfWeek = { daysOfWeek: [0] };
 
   const dayPickProps = {
     selectedDays: selectedDay,
-    disabledDays: [before, daysOfWeek, ...blockDays],
+    disabledDays: [before, ...blockDays],
     StyledCalendar,
   };
 
