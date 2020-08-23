@@ -59,13 +59,12 @@ function ConfirmedReservation(props) {
         <h2>Reservations politik</h2>
         <Seperator />
         <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+        Ved afbud, skriv en sms, eller ring på: mobil 61 60 90 64
+        <br></br>
+        Giv besked senest dagen før den aftalte tid.
+        <br></br>
+        Ved udeblivelse, uden afbud, kr. 250,-
+
         </p>
       </div>
       <Seperator />
