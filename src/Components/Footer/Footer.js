@@ -46,8 +46,9 @@ const Footer = () => {
       </StyledItem1>
       <Wrapper>
         {" "}
-        <Copyright>© Copyright 2020 - Lissi Lynghede</Copyright>
+        <Copyright>© Copyright 2020 - Lissi Lynghede | CVR-nr: 25 96 14 98 </Copyright>
       </Wrapper>
+     
       <a href="https://www.facebook.com/Lissi-Lynghede-380928912748443">
         <FacebookIcon />
       </a>

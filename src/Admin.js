@@ -235,17 +235,29 @@ function Admin() {
     return true;
   }
 
+  const timeSlots = ["08:00", "09:30", "11:00", "12:30", "14:00", "15:30", "17:00", "18:30", "20:00"];
   const timeSlotOptions = [];
-  if (date !== "") {
-    for (let i = 10; i < 18; i += 1) {
-      for (let j = 0; j < 4; j += 3) {
-        const time = i + ":" + j + "0";
-        if (checkAvailability(date, time)) {
-          timeSlotOptions.push({ label: time, value: time });
-        }
-      }
+  for (let i = 0; i < 9; i += 1){
+    if (checkAvailability(date, timeSlots[i])){
+      timeSlotOptions.push({label: timeSlots[i], value: timeSlots[i]});
     }
+
   }
+  // const timeSlotOptions = [];
+  // if (date !== "") {
+  //   for (let i = 8; i < 20; i += 1) {
+  //    let j = 0;
+  //   if (i%2==1){j = 3; } 
+      
+  //     const time = i + ":" + j + "0";
+  //     if (checkAvailability(date, time)) {
+  //       timeSlotOptions.push({ label: time, value: time });
+  //     }
+  //     if (i%2==1) {
+  //       i += 1;
+  //       j = 0;}
+  //   }
+  // }
 
   // function addUser() {
   //   userOperations.add({ name: name });
@@ -363,12 +375,12 @@ function Admin() {
             </Wrapper>
 
             <Wrapper>
-              <Button onClick={handleClickBlockDays}>Block dates</Button>
+              <Button onClick={handleClickBlockDays}>Bloker dage</Button>
             </Wrapper>
           </Border>
         </div>
 
-        <h2>Resolved Reservations</h2>
+        <h2>Bogførte Reservations</h2>
         <Border>
           <Wrapper>
             <Select
@@ -386,12 +398,12 @@ function Admin() {
               <div>
                 <ReservationTab>
                   <h1>Completed</h1>
-                  <ol>Date: {resolve.date}</ol>
+                  <ol>Dag: {resolve.date}</ol>
                   <ol>Session: {resolve.session}</ol>
-                  <ol>Name: {resolve.name}</ol>
-                  <ol>Price: {resolve.price}</ol>
+                  <ol>Navn: {resolve.name}</ol>
+                  <ol>Pris: {resolve.price}</ol>
                   <Button onClick={() => handleRemoveResolve(resolve.id)}>
-                    Remove
+                    Fjern
                   </Button>
                 </ReservationTab>
               </div>
@@ -422,16 +434,16 @@ function Admin() {
               <div>
                 <ReservationTab>
                   <h1>Reservation</h1>
-                  <ol>Date: {reservation.date}</ol>
-                  <ol>Time: {reservation.time}</ol>
-                  <ol>Name: {reservation.name}</ol>
-                  <ol>Price: {reservation.price}</ol>
+                  <ol>Dato: {reservation.date}</ol>
+                  <ol>Tid: {reservation.time}</ol>
+                  <ol>Navn: {reservation.name}</ol>
+                  <ol>Pris: {reservation.price}</ol>
                   <Wrapper>
                     <Button onClick={() => handleRemove(reservation.id)}>
                       Cancel
                     </Button>
                     <Button onClick={() => addResolve(reservation)}>
-                      Resolve
+                      Bogfør
                     </Button>
                   </Wrapper>
                 </ReservationTab>
@@ -442,22 +454,22 @@ function Admin() {
       </div>
       <WrapperMakeReservation>
         <div>
-          <h2>Make Reservation</h2>
+          <h2>Book Reservation</h2>
 
           <MakeReservation>
             <div>
               {" "}
               {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-              <Label>Name</Label>
+              <Label>Navn</Label>
               <Input
                 type="text"
                 value={name}
-                placeholder="Name"
+                placeholder="Navn"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
               />
-              <Label>Date</Label> <style>{StyledCalendar}</style>
+              <Label>Dato</Label> <style>{StyledCalendar}</style>
               <DayPickerInput
                 placeholder=""
                 selectedDay={selectedDay}
@@ -471,7 +483,7 @@ function Admin() {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
               /> */}
-              <Label>Time</Label>
+              <Label>Tid</Label>
               <Select
                 type="time"
                 value={{ label: time, value: time }}
@@ -480,7 +492,7 @@ function Admin() {
                 styles={ColorStyles}
               ></Select>
               <Wrapper>
-                <Button onClick={addReservation}>Reserve</Button>
+                <Button onClick={addReservation}>Reserver</Button>
               </Wrapper>
             </div>{" "}
           </MakeReservation>

@@ -118,6 +118,7 @@ function parseDate(date) {
 
 function Reservation(props) {
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [price, setPrice] = useState(425);
@@ -211,17 +212,25 @@ function Reservation(props) {
     return true;
   }
 
+  const timeSlots = ["08:00", "09:30", "11:00", "12:30", "14:00", "15:30", "17:00", "18:30", "20:00"];
   const timeSlotOptions = [];
-  if (date !== "") {
-    for (let i = 10; i < 18; i += 1) {
-      for (let j = 0; j < 4; j += 3) {
-        const time = i + ":" + j + "0";
-        if (checkAvailability(date, time)) {
-          timeSlotOptions.push({ label: time, value: time });
-        }
-      }
+  for (let i = 0; i < 9; i += 1){
+    if (checkAvailability(date, timeSlots[i])){
+      timeSlotOptions.push({label: timeSlots[i], value: timeSlots[i]});
     }
+
   }
+  // const timeSlotOptions = [];
+  // if (date !== "") {
+  //   for (let i = 10; i < 18; i += 1) {
+  //     for (let j = 0; j < 4; j += 3) {
+  //       const time = i + ":" + j + "0";
+  //       if (checkAvailability(date, time)) {
+  //         timeSlotOptions.push({ label: time, value: time });
+  //       }
+  //     }
+  //   }
+  // }
 
   async function addReservation() {
     try {
@@ -240,6 +249,7 @@ function Reservation(props) {
   async function addTempReservation() {
     const reservationData = {
       date: date,
+      phone: phone,
       time: time,
       name: name,
       price: price,
@@ -247,15 +257,19 @@ function Reservation(props) {
 
     setError(null);
     if (!name) {
-      setError("Please enter a name");
+      setError("Du mangler at oplyse et navn");
+      return;
+    }
+    if (!phone) {
+      setError("Du mangler at oplyse et telefon nummer");
       return;
     }
     if (!date) {
-      setError("Please enter a date");
+      setError("Du mangler at vælge en dato");
       return;
     }
     if (!time) {
-      setError("Please enter a time");
+      setError("Du mangler at vælge et tidspunkt");
       return;
     }
 
@@ -380,6 +394,15 @@ function Reservation(props) {
                   setName(e.target.value);
                 }}
               />
+              <Label>Telefon nr.</Label>
+              <Input
+                type="text"
+                value={phone}
+                placeholder="21 32 43 54"
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+              />
               <Label>Dato</Label>
               <style>{StyledCalendar}</style>
               <DayPickerInput
@@ -430,12 +453,13 @@ function Reservation(props) {
             {tempFilteredReservations.map((reservation, i) => (
               <div>
                 <ReservationTab>
-                  <ol>Date: {reservation.date}</ol>
-                  <ol>Time: {reservation.time}</ol>
-                  <ol>Name: {reservation.name}</ol>
+                  <ol>Dato: {reservation.date}</ol>
+                  <ol>Tid: {reservation.time}</ol>
+                  <ol>Navn: {reservation.name}</ol>
+                  <ol>Telefon: {reservation.phone}</ol>
                   <Wrapper>
                     <Button onClick={() => removeTempReservation(i)}>
-                      Remove
+                      Fjern
                     </Button>
                   </Wrapper>
                 </ReservationTab>
