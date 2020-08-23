@@ -212,9 +212,9 @@ function Reservation(props) {
     return true;
   }
 
-  const timeSlots = ["08:00", "09:30", "11:00", "12:30", "14:00", "15:30", "17:00", "18:30", "20:00"];
+  const timeSlots = ["08:00", "09:30", "11:00", "13:00", "14:30", "16:15", "17:30", "19:00"];
   const timeSlotOptions = [];
-  for (let i = 0; i < 9; i += 1){
+  for (let i = 0; i < 8; i += 1){
     if (checkAvailability(date, timeSlots[i])){
       timeSlotOptions.push({label: timeSlots[i], value: timeSlots[i]});
     }
@@ -368,7 +368,7 @@ function Reservation(props) {
     <WrapperMakeReservation>
       <div>
         <div>
-          <h2>Make Reservation</h2>
+          <h2>Reservation</h2>
           <Seperator />
 
           <MakeReservation>
