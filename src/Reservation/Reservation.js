@@ -18,7 +18,7 @@ import MakeReservation, {
   WrapperMakeReservation,
 } from "../Components/MakeReservation";
 import Label, { FlashyLabel } from "../Components/Label";
-import Wrapper from "../Components/Wrapper";
+import Wrapper, {ButtonWrapper} from "../Components/Wrapper";
 import Seperator from "../Components/Seperator";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import format from "date-fns/format";
@@ -377,7 +377,7 @@ function Reservation(props) {
               {error && <p style={{ color: "red" }}>{error}</p>}
               {currentQuantity() === 0 ? (
                 <p style={{ textAlign: "center" }}>
-                  Nu mangler du blot at confirm dine bookings
+                  Nu mangler du blot at bekræfte dine bookings
                 </p>
               ) : (
                 <p style={{ textAlign: "center" }}>
@@ -428,11 +428,17 @@ function Reservation(props) {
           </MakeReservation>
           <Wrapper>
             {currentQuantity() === 0 ? (
-              <Button onClick={addReservation}>Reserver</Button>
+              <ButtonWrapper size="2" style={{ justifyContent: "center" }}>
+
+                <Button onClick={addReservation}>Bekræft</Button>
+              </ButtonWrapper>
             ) : (
+              <ButtonWrapper size="2" style={{ justifyContent: "center" }}>
+
               <Button onClick={addTempReservation}>
-                Tilføj {currentQuantity()} mere
+                Tilføj
               </Button>
+              </ButtonWrapper>
             )}
           </Wrapper>
           <div>
