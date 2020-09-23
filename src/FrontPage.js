@@ -15,6 +15,9 @@ import Seperator from "./Components/Seperator";
 import Button, { TransparentButton, LargerButton } from "./Components/Button";
 import TherapistIcon from "./Components/SVG/Therapist.styled";
 
+// Hook
+import {useDynamicHero} from "./hooks";
+
 const Hero = styled.img`
   display: block;
   width: 100vw;
@@ -85,7 +88,7 @@ function FrontPage() {
   let history = useHistory();
   return (
     <Page style={{ marginTop: "0" }}>
-      <Hero src={process.env.PUBLIC_URL + "/HeroReduced(1).jpg"}></Hero>
+      <Hero src={useDynamicHero()} alt="Hero"></Hero>
       <NavBar style={{ zIndex: "0" }} isTransparent title=""></NavBar>
       <HeroDiv>
         <HeroText>
