@@ -9,6 +9,7 @@ import { BookingButton } from "./Components/Button";
 import Progress, { Filler } from "./Components/ProgressBar/Progress.styled";
 import Header from "./Components/Header";
 import { Page } from "./Components/Wrapper";
+import MapContent from "./Components/Map/Map";
 
 // SVG
 import { TickNegative, TickConfirmed } from "./Components/SVG/Tick.styled";
@@ -137,6 +138,7 @@ function Booking() {
           behandlingen mod den ønskede virkning.
         </article>
       </div>
+      <MapContent></MapContent>
       <Seperator />
     </Page>
   );

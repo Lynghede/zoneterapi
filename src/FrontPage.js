@@ -14,7 +14,7 @@ import Wrapper, {
 import Seperator from "./Components/Seperator";
 import Button, { TransparentButton, LargerButton } from "./Components/Button";
 import TherapistIcon from "./Components/SVG/Therapist.styled";
-import Map from "./Components/Map/Map";
+import MapContent from "./Components/Map/Map";
 
 // Hook
 import { useDynamicHero } from "./hooks";
@@ -145,6 +145,7 @@ function FrontPage() {
             </a>
             .
           </article>
+          <MapContent></MapContent>
         </Block>
       </Container>
       <Seperator />
