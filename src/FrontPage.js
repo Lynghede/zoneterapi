@@ -145,7 +145,7 @@ function FrontPage() {
             </a>
             .
           </article>
-          <MapContent></MapContent>
+          {/* <MapContent></MapContent> */}
         </Block>
       </Container>
       <Seperator />

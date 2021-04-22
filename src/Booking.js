@@ -138,7 +138,7 @@ function Booking() {
           behandlingen mod den ønskede virkning.
         </article>
       </div>
-      <MapContent></MapContent>
+      {/* <MapContent></MapContent> */}
       <Seperator />
     </Page>
   );
