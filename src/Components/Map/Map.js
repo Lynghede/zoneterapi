@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-// import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
 import { Block } from "../Wrapper";
 import Seperator from "../Seperator";
 import { MapMarkerAlt } from "@styled-icons/fa-solid/";
 
-// import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
-// import MapboxWorker from "worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker";
-
-// mapboxgl.workerClass = MapboxWorker;
 const mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
 
 mapboxgl.accessToken =

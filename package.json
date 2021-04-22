@@ -19,7 +19,8 @@
     "react-styled-select": "^3.0.0",
     "styled-components": "^5.0.1",
     "styled-icons": "^10.33.0",
-    "use-media-query-hook": "^0.3.0"
+    "use-media-query-hook": "^0.3.0",
+    "worker-loader": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
