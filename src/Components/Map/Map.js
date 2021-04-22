@@ -28,7 +28,6 @@ const geojson = {
     },
   },
 };
-
 const Map = () => {
   const mapContainer = useRef();
   const bounds = [
