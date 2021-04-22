@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Block } from "../Wrapper";
 import Seperator from "../Seperator";
 import { MapMarkerAlt } from "@styled-icons/fa-solid/";
-
-const mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
+import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoibHluZ2hlZGUiLCJhIjoiY2tteXA4ZXJsMDYyODJwcGYyYXA2N2JvbCJ9.IfxBVyM4pdnJjoUswiwRhw";
