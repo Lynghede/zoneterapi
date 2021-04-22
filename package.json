@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "browserslist": "^4.16.4",
     "date-fns": "^2.9.0",
     "firebase": "^7.8.2",
     "mapbox-gl": "^2.2.0",
