@@ -20,7 +20,7 @@ function About() {
         <TherapistIcon />
         <Seperator />
         <article>
-          Lissi Lynghede, 56 år.
+          Lissi Lynghede, 57 år.
           <br></br>
           <br></br>
           Jeg har valgt at blive zoneterapeut, fordi jeg de sidste 7 år selv har
