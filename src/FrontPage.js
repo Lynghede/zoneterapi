@@ -1,5 +1,4 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 // Components
@@ -68,7 +67,7 @@ const HeroSpan = styled.span`
 `;
 
 function FrontPage() {
-  let history = useHistory();
+  let history = useNavigate();
   return (
     <Page style={{ marginTop: "0" }}>
       <Hero src={useDynamicHero()} alt="Hero"></Hero>
@@ -96,13 +95,13 @@ function FrontPage() {
         <ButtonWrapper size="1" style={{ justifyContent: "center" }}>
           <Button
             style={{ borderRadius: "0" }}
-            onClick={() => history.push("/booking")}
+            onClick={() => history("/booking")}
           >
             Bestil Tid
           </Button>
           <Button
             style={{ borderRadius: "0" }}
-            onClick={() => history.push("/zoneterapi")}
+            onClick={() => history("/zoneterapi")}
           >
             Lær mere
           </Button>

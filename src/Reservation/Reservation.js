@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "../firebase";
@@ -162,7 +162,7 @@ function Reservation(props) {
   ]);
   const [error, setError] = useState("");
 
-  let history = useHistory();
+  let history = useNavigate();
 
   tempReservation.sort((a, b) => {
     const parsedA = parseDate(a.date);
@@ -249,7 +249,7 @@ function Reservation(props) {
         bookReservation.add(reservation)
       );
       // handleSubmit();
-      history.push("/confirmed", { tempReservation });
+      history("/confirmed", { tempReservation });
     } catch (error) {
       const body = await error.response.text();
       setError(new Error(body));

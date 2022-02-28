@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import "mapbox-gl/dist/mapbox-gl.css";
 import "./index.css";
 
 import * as serviceWorker from "./serviceWorker";
-import Routes from "./Routes";
+import Routes from "./RoutesTree";
 
 ReactDOM.render(<Routes />, document.getElementById("root"));
 

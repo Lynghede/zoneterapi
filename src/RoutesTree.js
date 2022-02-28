@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   useLocation,
 } from "react-router-dom";
@@ -34,7 +34,7 @@ function ScrollToTop() {
   return null;
 }
 
-export default function Routes() {
+export default function RoutesTree() {
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -42,32 +42,16 @@ export default function Routes() {
 
         <Router basename="/">
           <ScrollToTop />
-          <Switch>
-            <Route exact path="/">
-              <FrontPage />
-            </Route>
-            <Route path="/booking">
-              <NewBooking />
-            </Route>
-            <Route path="/confirmed">
-              <Confirmed />
-            </Route>
-            <Route path="/priser">
-              <Priser />
-            </Route>
-            <Route path="/zoneterapi">
-              <Zoneterapi />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/contact">
-              <ContactPage />
-            </Route>
-            <Route path="/admin">
-              <Admin />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<FrontPage />}></Route>
+            <Route path="/booking" element={<NewBooking />}></Route>
+            <Route path="/confirmed" element={<Confirmed />}></Route>
+            <Route path="/priser" element={<Priser />}></Route>
+            <Route path="/zoneterapi" element={<Zoneterapi />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/contact" element={<ContactPage />}></Route>
+            <Route path="/admin" element={<Admin />}></Route>
+          </Routes>
           <Footer />
         </Router>
       </>
