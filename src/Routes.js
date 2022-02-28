@@ -13,6 +13,7 @@ import { theme } from "./theme";
 import FrontPage from "./FrontPage";
 import About from "./About";
 import Booking from "./Booking";
+import NewBooking from "./NewBooking";
 import Confirmed from "./Reservation/ConfirmedReservation";
 import Priser from "./Priser";
 import ContactPage from "./ContactPage";
@@ -46,7 +47,7 @@ export default function Routes() {
               <FrontPage />
             </Route>
             <Route path="/booking">
-              <Booking />
+              <NewBooking />
             </Route>
             <Route path="/confirmed">
               <Confirmed />

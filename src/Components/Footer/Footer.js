@@ -47,7 +47,7 @@ const Footer = () => {
       <Wrapper>
         {" "}
         <Copyright>
-          © Copyright 2021 - Lissi Lynghede | CVR-nr: 25 96 14 98{" "}
+          © Copyright 2022 - Lissi Lynghede | CVR-nr: 25 96 14 98{" "}
         </Copyright>
       </Wrapper>
 
