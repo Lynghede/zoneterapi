@@ -3,7 +3,12 @@ import styled from "styled-components";
 import { Block } from "../Wrapper";
 import Seperator from "../Seperator";
 import { MapMarkerAlt } from "@styled-icons/fa-solid/";
+// import ReactMapGl from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+// mapboxgl.workerClass =
+//   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoibHluZ2hlZGUiLCJhIjoiY2tteXA4ZXJsMDYyODJwcGYyYXA2N2JvbCJ9.IfxBVyM4pdnJjoUswiwRhw";
 
