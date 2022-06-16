@@ -9,6 +9,7 @@ import { BookingButton } from "./Components/Button";
 import Progress, { Filler } from "./Components/ProgressBar/Progress.styled";
 import Header from "./Components/Header";
 import { Page } from "./Components/Wrapper";
+import MapContent from "./Components/Map/Map";
 
 // SVG
 import { TickNegative, TickConfirmed } from "./Components/SVG/Tick.styled";
@@ -113,21 +114,21 @@ function Booking() {
           zoneterapi.
         </article>
         <PriceContainer>
-          <PriceDisplay treatment="1 Behandling" price="425 KR"></PriceDisplay>
+          <PriceDisplay treatment="1 Behandling" price="475 KR"></PriceDisplay>
           <PriceDisplay
             treatment="3 Behandlinger"
-            price="1.125 KR"
-            pricePr="(375 KR. PR.)"
+            price="1.275 KR"
+            pricePr="(425 KR. PR.)"
           ></PriceDisplay>
           <PriceDisplay
             treatment="5 Behandlinger"
-            price="1.800 KR"
-            pricePr="(360 KR. PR.)"
+            price="2.050 KR"
+            pricePr="(410 KR. PR.)"
           ></PriceDisplay>
           <PriceDisplay
             treatment="10 Behandlinger"
-            price="3.400 KR"
-            pricePr="(340 KR. PR.)"
+            price="3.900 KR"
+            pricePr="(390 KR. PR.)"
           ></PriceDisplay>
         </PriceContainer>
 
@@ -137,6 +138,7 @@ function Booking() {
           behandlingen mod den ønskede virkning.
         </article>
       </div>
+      <MapContent></MapContent>
       <Seperator />
     </Page>
   );

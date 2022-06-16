@@ -1,8 +1,9 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
-import * as firebase from "firebase/app";
+// import * as firebase from "firebase/app";
+import firebase from "firebase/compat/app";
 
 // Add the Firebase products that you want to use
-import "firebase/firestore";
+import "firebase/compat/firestore";
 
 import { useState, useEffect } from "react";
 
@@ -28,7 +29,7 @@ export function useCollection(path) {
       querySnapshot.forEach((doc) => docs.push({ id: doc.id, ...doc.data() }));
       setState(docs);
     });
-  }, []);
+  }, [path]);
   return [
     state,
     {

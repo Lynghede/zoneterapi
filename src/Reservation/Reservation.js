@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { parse, differenceInDays, getMonth, isSameDay } from "date-fns";
 import { useCollection } from "../firebase";
@@ -18,10 +18,11 @@ import MakeReservation, {
   WrapperMakeReservation,
 } from "../Components/MakeReservation";
 import Label, { FlashyLabel } from "../Components/Label";
-import Wrapper, {ButtonWrapper} from "../Components/Wrapper";
+import Wrapper, { ButtonWrapper } from "../Components/Wrapper";
 import Seperator from "../Components/Seperator";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import format from "date-fns/format";
+import { useForm, ValidationError } from "@formspree/react";
 
 const StyledDiscount = styled(Discount)`
   height: 1.2em;
@@ -161,7 +162,7 @@ function Reservation(props) {
   ]);
   const [error, setError] = useState("");
 
-  let history = useHistory();
+  let history = useNavigate();
 
   tempReservation.sort((a, b) => {
     const parsedA = parseDate(a.date);
@@ -212,13 +213,21 @@ function Reservation(props) {
     return true;
   }
 
-  const timeSlots = ["08:00", "09:30", "11:00", "13:00", "14:30", "16:15", "17:30", "19:00"];
+  const timeSlots = [
+    "08:00",
+    "09:30",
+    "11:00",
+    "13:00",
+    "14:30",
+    "16:15",
+    "17:30",
+    "19:00",
+  ];
   const timeSlotOptions = [];
-  for (let i = 0; i < 8; i += 1){
-    if (checkAvailability(date, timeSlots[i])){
-      timeSlotOptions.push({label: timeSlots[i], value: timeSlots[i]});
+  for (let i = 0; i < 8; i += 1) {
+    if (checkAvailability(date, timeSlots[i])) {
+      timeSlotOptions.push({ label: timeSlots[i], value: timeSlots[i] });
     }
-
   }
   // const timeSlotOptions = [];
   // if (date !== "") {
@@ -232,12 +241,15 @@ function Reservation(props) {
   //   }
   // }
 
+  const [state, handleSubmit] = useForm("xzbyqbkn");
+
   async function addReservation() {
     try {
       await tempReservation.forEach((reservation) =>
         bookReservation.add(reservation)
       );
-      history.push("/confirmed", { tempReservation });
+      // handleSubmit();
+      history("/confirmed", { tempReservation });
     } catch (error) {
       const body = await error.response.text();
       setError(new Error(body));
@@ -246,7 +258,8 @@ function Reservation(props) {
     }
   }
 
-  async function addTempReservation() {
+  async function addTempReservation(e) {
+    e.preventDefault();
     const reservationData = {
       date: date,
       phone: phone,
@@ -370,108 +383,123 @@ function Reservation(props) {
         <div>
           <h2>Reservation</h2>
           <Seperator />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit(e);
+              addReservation();
+            }}
+          >
+            <MakeReservation>
+              {" "}
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                {currentQuantity() === 0 ? (
+                  <p style={{ textAlign: "center" }}>
+                    Nu mangler du blot at bekræfte dine bookings
+                  </p>
+                ) : (
+                  <p style={{ textAlign: "center" }}>
+                    Vælg {currentQuantity()} tider
+                  </p>
+                )}
 
-          <MakeReservation>
-            {" "}
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              {error && <p style={{ color: "red" }}>{error}</p>}
+                <Label>Navn</Label>
+                <Input
+                  name="navn"
+                  type="text"
+                  value={name}
+                  placeholder="Navn"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+                <Label>Telefon nr.</Label>
+                <Input
+                  name="telefon"
+                  type="text"
+                  value={phone}
+                  placeholder="21 32 43 54"
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                  }}
+                />
+                <ValidationError
+                  prefix="Email"
+                  field="email"
+                  errors={state.errors}
+                />
+                <Label>Dato</Label>
+                <style>{StyledCalendar}</style>
+                <DayPickerInput
+                  name="dato"
+                  selectedDay={selectedDay}
+                  dayPickerProps={dayPickProps}
+                  type="date"
+                  inputProps={inputProps}
+                  placeholder="Klik for at vælge en dato"
+                  value={date}
+                  onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
+                />
+
+                <Label>Tid</Label>
+                <Select
+                  name="tid"
+                  type="time"
+                  value={{ label: time, value: time }}
+                  options={timeSlotOptions}
+                  onChange={(option) => setTime(option.value)}
+                  styles={ColorStyles}
+                ></Select>
+              </div>{" "}
+            </MakeReservation>
+            <Wrapper>
               {currentQuantity() === 0 ? (
-                <p style={{ textAlign: "center" }}>
-                  Nu mangler du blot at bekræfte dine bookings
-                </p>
+                <ButtonWrapper size="2" style={{ justifyContent: "center" }}>
+                  <Button type="submit" disabled={state.submitting}>
+                    Bekræft
+                  </Button>
+                </ButtonWrapper>
               ) : (
-                <p style={{ textAlign: "center" }}>
-                  Vælg {currentQuantity()} tider
-                </p>
+                <ButtonWrapper size="2" style={{ justifyContent: "center" }}>
+                  <Button type="button" onClick={addTempReservation}>
+                    Tilføj
+                  </Button>
+                </ButtonWrapper>
               )}
-
-              <Label>Navn</Label>
-              <Input
-                type="text"
-                value={name}
-                placeholder="Navn"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-              <Label>Telefon nr.</Label>
-              <Input
-                type="text"
-                value={phone}
-                placeholder="21 32 43 54"
-                onChange={(e) => {
-                  setPhone(e.target.value);
-                }}
-              />
-              <Label>Dato</Label>
-              <style>{StyledCalendar}</style>
-              <DayPickerInput
-                placeholder=""
-                selectedDay={selectedDay}
-                dayPickerProps={dayPickProps}
-                type="date"
-                inputProps={inputProps}
-                placeholder="Klik for at vælge en dato"
-                value={date}
-                onDayChange={(e) => setDate(format(e, "yyyy-MM-dd"))}
-              />
-
-              <Label>Tid</Label>
-              <Select
-                type="time"
-                value={{ label: time, value: time }}
-                options={timeSlotOptions}
-                onChange={(option) => setTime(option.value)}
-                styles={ColorStyles}
-              ></Select>
-            </div>{" "}
-          </MakeReservation>
-          <Wrapper>
-            {currentQuantity() === 0 ? (
-              <ButtonWrapper size="2" style={{ justifyContent: "center" }}>
-
-                <Button onClick={addReservation}>Bekræft</Button>
-              </ButtonWrapper>
-            ) : (
-              <ButtonWrapper size="2" style={{ justifyContent: "center" }}>
-
-              <Button onClick={addTempReservation}>
-                Tilføj
-              </Button>
-              </ButtonWrapper>
-            )}
-          </Wrapper>
-          <div>
-            <Wrapper>
-              <FlashyLabel>
-                <StyledMoneyBillAlt />
-                Total: {totalPrice()}
-              </FlashyLabel>
             </Wrapper>
-            <Wrapper>
-              <FlashyLabel>
-                <StyledDiscount />
-                Discount: {totalDiscount()}
-              </FlashyLabel>
-            </Wrapper>{" "}
-          </div>
-          <ReservationContainer>
-            {tempFilteredReservations.map((reservation, i) => (
-              <div>
-                <ReservationTab>
-                  <ol>Dato: {reservation.date}</ol>
-                  <ol>Tid: {reservation.time}</ol>
-                  <ol>Navn: {reservation.name}</ol>
-                  <ol>Telefon: {reservation.phone}</ol>
-                  <Wrapper>
-                    <Button onClick={() => removeTempReservation(i)}>
-                      Fjern
-                    </Button>
-                  </Wrapper>
-                </ReservationTab>
-              </div>
-            ))}
-          </ReservationContainer>
+            <div>
+              <Wrapper>
+                <FlashyLabel>
+                  <StyledMoneyBillAlt />
+                  Total: {totalPrice()}
+                </FlashyLabel>
+              </Wrapper>
+              <Wrapper>
+                <FlashyLabel>
+                  <StyledDiscount />
+                  Discount: {totalDiscount()}
+                </FlashyLabel>
+              </Wrapper>{" "}
+            </div>
+            <ReservationContainer>
+              {tempFilteredReservations.map((reservation, i) => (
+                <div>
+                  <ReservationTab>
+                    <ol>Dato: {reservation.date}</ol>
+                    <ol>Tid: {reservation.time}</ol>
+                    <ol>Navn: {reservation.name}</ol>
+                    <ol>Telefon: {reservation.phone}</ol>
+                    <Wrapper>
+                      <Button onClick={() => removeTempReservation(i)}>
+                        Fjern
+                      </Button>
+                    </Wrapper>
+                  </ReservationTab>
+                </div>
+              ))}
+            </ReservationContainer>
+          </form>
         </div>
       </div>
     </WrapperMakeReservation>

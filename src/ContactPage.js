@@ -9,40 +9,41 @@ import Label from "./Components/Form/Label.styled";
 import TextArea from "./Components/Form/TextArea.styled";
 import EmailIcon from "./Components/SVG/Email.styled";
 import { Page } from "./Components/Wrapper";
+import { useForm, ValidationError } from "@formspree/react";
 
 const mapToken =
   "pk.eyJ1IjoibHluZ2hlZGUiLCJhIjoiY2tteXA4ZXJsMDYyODJwcGYyYXA2N2JvbCJ9.IfxBVyM4pdnJjoUswiwRhw";
 
 function ContactPage() {
   const [status, setStatus] = useState("");
+  const [state, handleSubmit] = useForm("xzbyqbkn");
+  // if (state.succeeded) {
+  //   return <p></p>;
+  // }
 
-  function submitForm(ev) {
-    ev.preventDefault();
-    const form = ev.target;
-    const data = new FormData(form);
-    const xhr = new XMLHttpRequest();
-    xhr.open(form.method, form.action);
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) {
-        form.reset();
-        setStatus("SUCCES");
-      } else {
-        setStatus("ERROR");
-      }
-    };
-    xhr.send(data);
-  }
+  // function submitForm(ev) {
+  //   ev.preventDefault();
+  //   const form = ev.target;
+  //   const data = new FormData(form);
+  //   const xhr = new XMLHttpRequest();
+  //   xhr.open(form.method, form.action);
+  //   xhr.setRequestHeader("Accept", "application/json");
+  //   xhr.onreadystatechange = () => {
+  //     if (xhr.readyState !== XMLHttpRequest.DONE) return;
+  //     if (xhr.status === 200) {
+  //       form.reset();
+  //       setStatus("SUCCES");
+  //     } else {
+  //       setStatus("ERROR");
+  //     }
+  //   };
+  //   xhr.send(data);
+  // }
 
   return (
     <Page>
       <NavBar title="Kontakt"></NavBar>
-      <form
-        method="POST"
-        action="https://formspree.io/xdowbpov"
-        onSubmit={submitForm}
-      >
+      <form onSubmit={handleSubmit}>
         <div>
           <EmailIcon />
           <h1>Kontakt</h1>
@@ -61,14 +62,21 @@ function ContactPage() {
           <Label>E-mail</Label>
           <Input type="email" name="Email" required />
           <Label>Besked/Spørgsmål</Label>
-          <TextArea type="text" name="Besked" required />
-          {status === "SUCCESS" ? (
-            <p>Thanks!</p>
-          ) : (
-            <Wrapper>
-              <LargerButton>Send</LargerButton>
-            </Wrapper>
-          )}
+          <TextArea
+            type="text"
+            name="Besked"
+            placeholder="Jeg vil gerne vide mere om din praksis .. "
+            required
+          />
+          <Wrapper>
+            {state.succeeded ? (
+              <p>Jeg vil forsøge at svare dig hurtigst muligt!</p>
+            ) : (
+              <LargerButton type="submit" disabled={state.submitting}>
+                Send
+              </LargerButton>
+            )}
+          </Wrapper>
           {status === "ERROR" && <p color="red">Ooops! Der skete en fejl.</p>}
         </div>
       </form>

@@ -20,7 +20,7 @@ function About() {
         <TherapistIcon />
         <Seperator />
         <article>
-          Lissi Lynghede, 56 år.
+          Lissi Lynghede, 57 år.
           <br></br>
           <br></br>
           Jeg har valgt at blive zoneterapeut, fordi jeg de sidste 7 år selv har
@@ -35,7 +35,7 @@ function About() {
           <br></br>
         </article>
         <Wrapper>
-          <Image src={process.env.PUBLIC_URL + "/LissiReduced(1).jpg"} />
+          <Image src={process.env.PUBLIC_URL + "/Lissi.jpg"} />
         </Wrapper>
       </div>
       <div>

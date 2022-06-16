@@ -1,4 +1,4 @@
-image: node:8.10.0
+image: node:16.13.0
 
 pages:
   stage: deploy
@@ -6,8 +6,8 @@ pages:
     paths:
       - node_modules/
   script:
-    - npm install
-    - CI=false npm run build
+    - yarn install
+    - CI=false yarn run build
     - rm -rf public
     - mv build public
     - cp public/index.html public/404.html

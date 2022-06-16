@@ -1,5 +1,4 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 // Components
@@ -14,22 +13,21 @@ import Wrapper, {
 import Seperator from "./Components/Seperator";
 import Button, { TransparentButton, LargerButton } from "./Components/Button";
 import TherapistIcon from "./Components/SVG/Therapist.styled";
+import MapContent from "./Components/Map/Map";
 
 // Hook
-import {useDynamicHero} from "./hooks";
+import { useDynamicHero } from "./hooks";
 
 const Hero = styled.img`
   display: block;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  
-  
+
   background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 `;
 
 const HeroText = styled.div`
@@ -38,35 +36,19 @@ const HeroText = styled.div`
   //margin-left: 25px;
 
   //text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  text-shadow: 0 1px 0 white,
-               0 2px 0 white,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px rgba(0,0,0,.15);
+  text-shadow: 0 1px 0 white, 0 2px 0 white, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
   p {
     text-align: center;
-    text-shadow: 0 1px 0 #ccc,
-               0 2px 0 #c9c9c9,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px rgba(0,0,0,.15);
-}
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+      0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+      0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+      0 20px 20px rgba(0, 0, 0, 0.15);
   }
-}
 `;
 
 const HeroDiv = styled.div`
@@ -85,7 +67,7 @@ const HeroSpan = styled.span`
 `;
 
 function FrontPage() {
-  let history = useHistory();
+  let history = useNavigate();
   return (
     <Page style={{ marginTop: "0" }}>
       <Hero src={useDynamicHero()} alt="Hero"></Hero>
@@ -113,13 +95,13 @@ function FrontPage() {
         <ButtonWrapper size="1" style={{ justifyContent: "center" }}>
           <Button
             style={{ borderRadius: "0" }}
-            onClick={() => history.push("/booking")}
+            onClick={() => history("/booking")}
           >
             Bestil Tid
           </Button>
           <Button
             style={{ borderRadius: "0" }}
-            onClick={() => history.push("/zoneterapi")}
+            onClick={() => history("/zoneterapi")}
           >
             Lær mere
           </Button>
@@ -132,7 +114,7 @@ function FrontPage() {
           <h2>Behandleren</h2>
           <Seperator />
           <article>
-            Lissi Lynghede, 56 år.
+            Lissi Lynghede, 57 år.
             <br></br>
             <br></br>
             Jeg har valgt at blive zoneterapeut, fordi jeg de sidste 7 år selv
@@ -162,6 +144,7 @@ function FrontPage() {
             </a>
             .
           </article>
+          {/* <MapContent></MapContent> */}
         </Block>
       </Container>
       <Seperator />
