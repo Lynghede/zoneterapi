@@ -10,6 +10,9 @@ import TextArea from "./Components/Form/TextArea.styled";
 import EmailIcon from "./Components/SVG/Email.styled";
 import { Page } from "./Components/Wrapper";
 
+const mapToken =
+  "pk.eyJ1IjoibHluZ2hlZGUiLCJhIjoiY2tteXA4ZXJsMDYyODJwcGYyYXA2N2JvbCJ9.IfxBVyM4pdnJjoUswiwRhw";
+
 function ContactPage() {
   const [status, setStatus] = useState("");
 
@@ -52,23 +55,13 @@ function ContactPage() {
         </div>
         <div>
           <Label>Navn</Label>
-          <Input type="text" name="Navn" placeholder="Lars Larsen" required />
+          <Input type="text" name="Navn" required />
           <Label>Telefon</Label>
-          <Input type="telephone" name="Telefon nr" placeholder="12345678" />
+          <Input type="telephone" name="Telefon nr" />
           <Label>E-mail</Label>
-          <Input
-            type="email"
-            name="Email"
-            placeholder="lars@gmail.dk"
-            required
-          />
+          <Input type="email" name="Email" required />
           <Label>Besked/Spørgsmål</Label>
-          <TextArea
-            type="text"
-            name="Besked"
-            placeholder="Jeg vil gerne vide mere om din praksis .. "
-            required
-          />
+          <TextArea type="text" name="Besked" required />
           {status === "SUCCESS" ? (
             <p>Thanks!</p>
           ) : (
